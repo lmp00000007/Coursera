@@ -1,0 +1,123 @@
+Fare delle osservazioni su ciò che succede, come
+abbiamo fatto nella sezione precedente, ci permette di prevedere la performance ma non ci permette
+di capire veramente cosa sta facendo l'algoritmo. Quindi ora vedremo un modello matematico.
+Un modo per concettualizzare meglio quello che succede veramente. Lo ripeto,
+questo concetto è stato sviluppato e reso popolare da Don Knuth a partire dalla fine degli
+anni '60. A quel tempo, per la prima volta i computer stavano diventando qualcosa di
+complesso. E gli informatici erano preoccupati chiedendosi se saremmo stati
+in grado di capire veramente ciò che stava succedendo. E Knuth fu molto diretto nel
+dire che questo era qualcosa che certamente saremmo stati in grado di fare. Possiamo calcolare il
+tempo di esecuzione totale di un programma identificando le operazioni di base, definendo il
+costo di ognuna, calcolando la frequenza con cui vengono eseguite e infine sommando il costo moltiplicato
+per la frequenza di tutte le operazioni. Bisogna analizzare il programma per
+determinare qual è l'insieme delle operazioni e il costo delle operazioni
+dipende dal computer come abbiamo detto in precedenza. La frequenza ci riporta alla
+matematica perché dipende dall'algoritmo e dai dati in input. Knuth ha scritto una
+serie di libri che fanno un'analisi dettagliata ed esatta per un gran numero di algoritmi usando
+un particolare modello di computer. Perciò, grazie a Knuth, sappiamo che in
+generale possiamo definire degli accurati modelli matematici per la performance degli
+algoritmi o programmi in esecuzione. Allora, vediamo un po' più nel dettaglio
+questa procedura. È possibile fare degli esperimenti. Ai miei tempi si guardava
+nel manuale del computer e ogni computer aveva un proprio manuale che
+diceva precisamente quanto tempo richiedeva ciascuna istruzione. Ma oggi, è un po' più
+complicato. Perciò facciamo degli esperimenti per esempio facendo un miliardo di addizioni
+e calcolando che, magari, sul vostro computer un'addizione richiede 2,1 nanosecondi. Oppure potete eseguire
+funzioni più complicate come come il seno o l'arcotangente anche se questo
+si avvicina già all'analisi degli algoritmi. Perciò ci sono vari modi per determinare
+i costi delle operazioni di base. Ma nella maggior parte dei casi assumeremo
+semplicemente che è una qualche costante che è possibile determinare in
+qualche modo. Tuttavia quando usiamo delle collezioni di N
+oggetti, ci sono delle operazioni che richiedono un tempo
+proporzionale ad N. Per esempio se allochiamo un array di dimensione N, è necessario un tempo
+proporzionale ad N perché in Java tutti gli elementi nell'array vengono inizializzati
+a zero. Nelle altre operazioni il tempo richiesto dipende dall'implementazione.
+Una particolarmente importante è la concatenazione di stringhe. Se concateniamo
+due stringhe il tempo di esecuzione è proporzionale alla lunghezza totale della stringa.
+Molti principianti in Java commettono un errore pensando che ciò richieda un tempo
+costante, ma non è affatto così. Va bene, questo è quanto per il costo di ogni operazione.
+Più interessante è invece la frequenza con cui vengono eseguite le operazioni. Ecco una
+semplice variante del problema 3-sum. È il problema 1-sum. Cioè, quanti numeri
+sono uguali a zero? Quanti gruppi di un numero sommano a zero? C'è solo un ciclo for per controllare quali
+numeri sono uguali a zero e incrementare count se è il caso. Analizzando il codice vediamo che
+sono dichiarate le variabili i e count e e gli viene assegnato il valore zero.
+Le variabili i e N vengono confrontate N+1 volte. A[i] viene confrontato con il valore zero
+N volte. Si accede all'array N volte. Il numero di volte che si esegue
+un'operazione di incremento è variabile. i è incrementata N volte, ma count può essere
+incrementata da zero a N volte. Perciò la frequenza dipende dai dati di input.
+Potremmo avere bisogno di un modello per descrivere questo oppure forse ci sono
+altre operazioni molto più costose e perciò non dobbiamo preoccuparci di questo.
+Va bene, ora vediamo la versione più complicata del problema appena visto. Quale sarà
+la frequenza di esecuzione delle istruzioni in questo programma che risolve il problema 2-sum?
+Quante coppie di interi sommano a zero? Beh, in questo caso, c'è bisogno di fare
+qualche calcolo per vedere che quando i varia tra zero e N, e j varia da i+1 a N
+il numero di accessi all'array è due per ogni volta che si esegue 
+l'istruzione if, una volta per a[i] e una per a[j].
+L'istruzione if è eseguita N-1 volte la prima volta che si esegue il ciclo for,
+N-2 la seconda e così via. Questa è la somma degli interi da zero a N-1 che è una semplice somma discreta che
+equivale a N*(N-1)/2 e siccome il numero di accessi all'array per ogni
+istruzione if è due, il risultato è N*(N-1). Perciò potremmo calcolare precisamente
+questi valori per ogni operazione ma sta già diventando piuttosto noioso. Già Turing,
+così come Babbage, erano interessati a definire una misura per la quantità di lavoro
+necessaria per svolgere una certa computazione. Turing notò che non era necessario tenere
+conto di tutti i minimi dettagli. Anche una stima grossolana può essere
+utile. Perciò è possibile contare il numero di volte che ogni operazione viene eseguita,
+associargli un costo e fare tutte le operazioni tediose viste prima. Ma forse sarebbe meglio
+contare solo quelle più costose e questo è quello che Turing pensò nel 1947.
+E realisticamente è ciò che oggi facciamo. Perciò invece che adoperarsi per mettere
+in conto ogni minimo dettaglio, prendiamo qualche operazione di base che forse è
+la più costosa oppure quella che è eseguita più spesso. Quella per cui il costo moltiplicato
+per la frequenza ha il valore più alto e usare quella come mezzo per stimare
+il tempo di esecuzione. Essenzialmente ipotizzando che il tempo di esecuzione effettivo crescerà
+come una costante moltiplicata per quel valore. Nel nostro esempio scegliamo l'operazione di
+accesso all'array. Questa è la prima semplificazione. La seconda è che ignoreremo i termini di
+basso grado nella formula che otterremo. Esiste un modo semplice per fare ciò,
+la cosiddetta notazione tilde. L'idea di base è che quando N ha un valore
+molto grande in una formula come questa il termine N^3 è molto più grande che il termine N o sedici.
+Infatti è così grande che questi termini di basso grado quasi scompaiono in confronto. Perciò tutte queste
+formule sono tilde un sedicesimo N^3 e questo è un buon rappresentante o
+approssimazione di queste quantità. Inoltre è più semplice calcolare il valore
+delle formule se non si contano i termini di basso grado. Perciò, tenendo in conto solo una operazione
+e non contando i termini di basso grado... ... a proposito questa è la definizione formale
+della notazione tilde. f(N) tilde g(N) significa che il limite di f(N)/g(N) per N che
+tende all'infinito è uguale a uno. Se uno vuole può verificare che questa uguaglianza
+vale in queste situazioni. Perciò questo semplifica molto i conti delle frequenze.
+Qui, per esempio, si riduce a tilde N^2. Anche per l'istruzione incremento abbiamo tilde N^2
+per il problema 2-sum. Va bene. Per ripetere, quando N è grande
+i termini di basso grado sono trascurabili e quando N è molto piccolo i termini di basso
+grado non sono trascurabili ma non ci interessa perché stiamo cercando di stimare il tempo di
+esecuzione per grandi valori di N. Per piccoli valori di N il tempo sarà comunque poco a prescindere.
+Perfetto, allora adesso usiamo sia il modello di costo semplificato che la notazione tilde e perciò
+possiamo dire che il programma esegue tilde N^2 accessi all'array e implicitamente abbiamo fatto
+l'ipotesi che il tempo di esecuzione è tilde una costante moltiplicata per N^2.
+Va bene, ora vediamo quanti accessi all'array vengono fatti nel problema 3-sum.
+Abbiamo tre cicli for per cui dobbiamo risolvere un problema combinatorio più complicato
+ma non è poi così difficile. Siamo interessati a sapere, avendo N interi,
+in quanti modi è possibile sceglierne tre: ma è il coefficiente binomiale! Facendo
+qualche calcolo e usando la notazione tilde otteniamo che il risultato è tilde 1/6*N^3.
+Per ogni gruppo di tre interi eseguiamo tre accessi all'array, perciò il risultato è
+1/2*N^3. Come abbiamo visto non contiamo e sommiamo il costo di ogni singola operazione,
+è troppo lavoro! Scegliamo solo quelle più costose in termini di costo moltiplicato per frequenza e approssimiamo
+questo valore cercando di ottenere un buon modello per il tempo di esecuzione. Va bene, ora non
+faremo un corso di matematica discreta ma ci sono alcune nozioni di base che useremo
+e non sono così difficili da capire. A volte capita di dover stimare il valore di
+una somma discreta. Come abbiamo fatto per la somma di uno
+più due ... fino a N. Oppure la somma dei quadrati o altre cose come il triplo ciclo nel problema 3-sum.
+Se avete studiato un po' di calcolo infinitesimale un modo di pensarla è semplicemente
+sostituendo la sommatoria con un integrale. Questo metodo solitamente funziona. Oppure possiamo
+usare la formula di Eulero-Maclaurin per ottenere un'approssimazione migliore. In questo modo
+potete fidarvi di noi quando vi diciamo che una cosa è tilde 1/2*N^2 oppure la somma
+di 1 più 1/2 più 1/3 ... fino a 1/N è l'integrale da 1 a N di 1/x che equivale al
+logaritmo naturale di N. E nel caso del triplo ciclo del problema
+3-sum otteniamo che il risultato è 1/16*N^3
+se siete pratici con gli integrali multipli. Esistono molte altre tecniche che vengono
+usate in questi casi. E non ve le insegneremo tutte, ma a volte faremo riferimento a
+risultati di questo tipo. Va bene, perciò in teoria Knuth ci dice
+che modelli matematici accurati sono possibili. Ma in pratica si ottengono delle formule
+matematiche molto complesse. Inoltre può essere necessario conoscere della matematica
+avanzata per la gioia dei teorici ma che forse delle persone che stanno seguendo un corso di
+algoritmi per la prima volta potrebbero non conoscere. Quindi è meglio lasciare i modelli esatti agli esperti,
+in quanto spesso diventano molto complicati. D'altronde i modelli approssimati sono
+decisamente utili. E per ogni algoritmo che considereremo
+cercheremo di dare un ragionevole modello approssimato che può essere usato per definire
+il suo tempo di esecuzione. A volte daremo la dimostrazione matematica
+e altre volte citeremo soltanto il lavoro di qualche esperto.

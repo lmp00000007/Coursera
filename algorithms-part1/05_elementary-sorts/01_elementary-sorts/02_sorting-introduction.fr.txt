@@ -1,0 +1,146 @@
+Bien, quelles sont les règles que nous allons devoir suivre ?
+Eh bien, commençons par étudier un problème de tri typique. Soit une université
+stockant des informations concernant les étudiants. Pour chaque étudiant, il y a un certain nombre
+de données. Par exemple, un numéro de classe, un niveau, un numéro de téléphone,
+peut–être une adresse pour se référer à un élément et un enregistrement ou l'information
+que nous allons trier. Mais en particulier, il y a une partie de l'entrée
+appelée une clé et ce que nous souhaitons faire c'est arranger les entrées en ordre selon
+cette clé. C'est le problème du tri. Réorganiser un tableau de n éléments en ordre croissant
+selon une clé qui fait partie de l'élément. Bien, notre but est d'être capable
+de trier n'importe quel type de données. Alors intéressons nous à quelques programmes d'application. Le premier example
+est simplement le tri de nombre réels aléatoires en ordre croissant. Donc voici une application
+qui appelle notre méthode de tri par insertion et tout ce qu'elle fait c'est de lire des nombres depuis
+l'entrée standard dans un tableau et ensuite d'appeler le tri par insertion et enfin de les afficher.
+Et vous pouvez voir sur la droite que les nombres sont affichés dans l'ordre.
+Cela semble un ensemble d'entrée artificielle mais en fait nous en verrons une application
+dès ce cours. De plus, il y a de nombreuses applications pour lequelles des entrées
+aléatoires constituent un modèle représentatif. Ici, il s'agit peut-être d'une application de tri plus familière, sur des chaînes
+de charactères. Dans ce cas, elle lit les chaînes depuis un fichier en utilisant cette méthode readStrings() de la
+class In qui prend un fichier en paramètre. Donc nous prenons le nom du fichier comme premier
+paramètre de la ligne de commande, nous lisons dans un tableau les chaînes séparées par des blancs,
+et nous appelons encore la méthode Insertion.sort(). Bien, Insertion.sort est une méthode qui prend
+en paramètre un tableau, et c'est le premier paramètre, et elle réorganise
+les chaînes de ce tableau afin qu'elles soient triées. Dans ce cas, words three.text
+a un certain nombre de mots de trois lettres et ce programme
+va produire la liste de ces mots de trois lettres rangés en ordre alphabétique.
+Voici une nouvelle application qui pourrait utiliser notre programme de tri, si nous réussissons
+à trier n'importe quel type de donnée. Dans celui-ci, nous allons trier des noms de fichier
+d'un répertoire donné. Encore une fois, nous utilisons la classe File de Java et nous utilisons
+la méthode listFiles() de cette classe pour obtenir un tableau qui contient tous les 
+noms de fichiers du répertoire donné. Il s'agit tableau avec les noms à l'intérieur. Insertion.sort()
+prend en premier argument ce tableau et encore une fois, trie les éléments.
+Alors nous les parcourons un à un et ils sont écrits à l'écran dans l'ordre
+des noms de fichiers. Il y a donc trois applications différentes, trois types de données
+complètement différents. Et la première règle du jeu à laquelle nous devons penser est,
+comment pouvons-nous faire pour mettre en oeuvre un programme de tri qui puisse
+être utilisé par ces trois applications différentes pour gérer trois types de données différents.
+La manière dont cela se fait est un méchanisme appelé une callback (fonction de rappel).
+C'est notre question de base, comment trier, maintenant comment comparer des données de tous ces différents
+types sans connaître aucune information à propos du type de la clé des éléments ? Et la
+réponse est de mettre en place un mécanisme connu comme callback ou référence
+vers un code exécutable dans lequel l'application, transmet un tableau d'objets à la fonction
+de tri. En Java, il y a un mécanisme implicite qui implique qu'un tel tableau d'objet
+doive avoir une méthode compareTo(). Alors la fonction de tri appelle la méthode
+compareTo() associée aux objets du tableau lorsqu'elle en a besoin,
+à chaque fois qu'il est nécessaire de comparer deux éléments. Il y a de nombreux moyens
+de mettre en oeuvre des callbacks et c'est spécifique au langage de programmation. Des langages
+différents ont des mécanismes différents. Dans tous les cas, il s'agit de passer une fonction
+en argument à une autre fonction ce qui constitue une paire et nous amène à la programmation fonctionnelle
+et à penser à tout le chemin depuis Turing et Church. Pour Java, à cause de la volonté
+de vérifier les types au moment de la compilation, on utilise une méthode spécifique appelée une interface.
+Bien, nous allons tout de suite entrer dans les détails de la mise en oeuvre des callbacks
+grâce aux interfaces de Java. Cela va nous faire rentrer dans des détails du langage de programmation,
+mais ça en vaut la peine parce que cela va nous permettre d'utiliser les tris que nous avons développés
+pour n'importe quel type de données du manière sécurisée. Nous nous sommes déjà intéressés à quelques applications.
+Voilà l'exemple de l'application qui trie les fichiers d'un répertoire donné par
+leurs noms. Donc le programme appelle juste notre méthode sort() avec un tableau d'un certain type d'objets
+comme premier argument. Parmi les internes de Java, est fourni ce qui s'appelle l'interface Comparable
+et ce que fait cette interface Comparable est de stipuler qu'un type, un type
+de données qui met en oeuvre Comparable aura une méthode compareTo(). C'est générique
+et ce sera comparé à un certain type d'élément. Maintenant, lorsque nous créerons des objets
+qui vont être triés, nous metterons en oeuvre cette méthode Comparable. C'est en haut de la classe File,
+met en oeuvre des fichiers comparables. Et puisque trier est une opération qui est
+utilisée énormément de situations, la plupart des types standard de Java que vous aimeriez
+pouvoir trier mettent en oeuvre Comparable. Et tout ce que cela signifie est que
+ce type de données a une méthode d'instance qui met en oeuvre la méthode compareTo().
+Elle compare l'objet par rapport à l'objet passé en argument et selon le résultat
+de quelques tests compliqués, elle retourne -1 pour indiquer inférieur, +1 pour supérieur
+et 0 si les deux objets sont égaux. Là, cette méthode compareTo() est vraiment tout ce dont la mise en oeuvre
+du tri a besoin. D'abord il précise qu'il prendra en argument un tableau
+de type Comparable. Cela signifie que les objets du tableau mettent en oeuvre
+l'interface Comparable ou qu'ils ont une méthode compareTo(). Et ainsi
+le code du tri peut simplement utiliser cette méthode compareTo(), invoquée depuis un objet
+comme une entrée dans le tableau avec en argument une autre instance d'objet
+comme une autre entrée dans le tableau pour tester si le premier est inférieur
+au second comme dans cet exemple. Le point important est que la mise en oeuvre du tri 
+ne dépend pas du type de données manipulé par l'interface Comparable et
+un tableau Comparable différent sera trié de la même manière bien que finalement,
+à cause du méchanisme d'interface, ils utilisent chacun le véritable code de compareTo() associé
+au type d'objets en train d'être trié. Il y a quelques règles qui sont naturelles
+mais il est nécessaire d'en parler et de faire attention à ce que la méthode
+compareTo() se doit de mettre en oeuvre ce qu'on appelle un ordre total. Cela signifie qu'il faut réellement
+que ce soit possible d'organiser les objets en ordre. Il y a trois propriétés.
+La première dit que si v est inférieur ou égal à w et que w est inférieur ou
+égal à v alors la seule manière que ce soit correct est qu'ils soient égaux.
+Il y a aussi la transitivité. Si v inférieur à w, et w est inférieur à x, alors v doit être
+inférieur ou égal à x. Précisément, soit v est inférieur ou égal à w soit w est inférieur
+ou égal à v soit ils sont égaux. Il y a de nombreux ordres totaux tout à fait naturels
+parmi les types de donnés que nous souhaitons classiquement considérer comme clés de tri. Comme les
+entiers ou les nombres naturels ou les nombres réels, ou l'ordre alphabétique pour les chaînes,
+l'ordre chronologique pour les dates ou les durées, etc. Le dessin sur la droite montre
+que tous les ordres ne sont pas forcément des ordres totaux. Papier, ciseaux, cailloux est non transitif.
+Si vous savez que v est moins que w, w inférieur à v, vous ne savez pas
+si v est inférieur ou égal à v. Désolé, v est inférieur à w, w est inférieur ou égal à x
+et vous ne savez pas nécessairement si v est inférieur ou égal à x. Bien.
+Alors dans l'API Comparable, par convention, en Java nous devrons toujours mettre en oeuvre compareTo()
+de manière à ce que v comparé à w soit un ordre total. Et également par convention,
+la méthode retourne un entier négatif pour inférieur zéro si c'est égal et un entier positive si c'est supérieur,
+si cet objet est plus grand que l'objet passé en paramètre. Si les types
+sont incompatibles ou si jamais l'un des objets est vide compareTo() devrait envoyer une exception.
+Encore une fois, de nombreux types standard de Java pour les nombres, les dates, les fichiers, etc
+mettent en oeuvre compareTo() par convention. Maintenant, si nous voulions mettre en oeuvre
+notre propre type alors nous devrions aller plus loin et mettre en oeuvre l'interface Comparable
+en respectant ces règles. Et la plupart du temps, c'est assez direct. Voici un exemple.
+C'est la version simplifiée de la classe Date qui est implantée en interne
+dans le langage Java, simplement pour vous donner une idée de la mise en oeuvre de Comparable. Donc, après 
+la déclaration de la classe, on écrit "implements" Comparable et on remplit le generic
+avec le même type parce que nous allons seulement comparer des dates à d'autres dates.
+Dans cette version, la clase Date a trois variables d'instances. Le mois,
+le jour, l'année et le constructeur les remplit en utilisant les arguments comme vous pouvez le voir.
+Donc maintenant si vous voulez comparer deux dates différentes, alors la première chose à faire
+et de tester si cette année est inférieure à cette année-là, l'année de la date donnée
+en paramètre. Si c'est vrai, alors c'est inférieur, on retourne -1 et si
+l'année est plus grande, on retourne +1. Sinon, les années doivent être égales
+et dans ce cas, nous devons regarder les mois pour effectuer la comparaison et ainsi de suite jusqu'aux jours.
+C'est seulement dans le cas où ils sont tous égaux que nous retournons zéro. Bref, c'est un exemple
+de mise en oeuvre de Comparable en implantant la méthode compareTo() pour
+mettre les dates en ordre comme attendu. Ainsi, le langage Java nous aide avec ce
+mécanisme Comparable pour que nous puissions trier des données de n'importe quel type. Quand nous allons
+avancer pour mettre en oeuvre des algorithmes de tri, nous serons en fait caché sous nos
+propres implantations. En fait, les algorithmes de tri, leur véritable code peut être 
+utilisé pour exécuter des tris dans plusieurs autres langages. La manière de faire ça est de prendre
+les deux opérations primaires, comparer et échanger qui étaient utilisées
+pour se référer aux données et de les encapsuler comme des méthodes statiques. Nous allons
+utiliser une méthode less() qui prend deux objets Comparable en arguments et 
+qui retourne simplement v.compareTo(w) inférieur à 0. Alors ce que nous faisons aussi
+pour trier les objets qui sont dans le tableau est un swap, un échange de l'objet 
+à un indice donné i avec celui à un indice donné j. Ça c'est ce que tout programmeur fait comme 
+première introduction aux affectations. On sauvegarde a[i] dans une variable swap,
+on met a[j] dans a[i] et alors on remet swap dans a[j]. Donc là, pour se référer aux données,
+notre méthode de tri va seulement utiliser ces deux méthodes statiques. Et il y a une bonne raison à ça.
+Voici un exemple. Supposons que nous souhaitons tester si un tableau est trié. Voici
+une méthode statique qui est sensée retourner vrai si le tableau est trié et faux si ce n'est pas le cas
+Et tout ce qu'elle fait, c'est de parcourir le tableau de 1 jusqu'à la taille du tableau
+et de tester si chaque élément est inférieur au précédent. Si vous avez un élément
+qui est inférieur au précédent alors ce n'est pas trié et vous retournez false. Si vous parcourez
+tout le tableau sans que cela se produise, alors vous dites true, que le tableau est trié.
+C'est un code plutôt simple, la question est, si vous avez un algorithme de tri qui
+valide ce test, êtes-vous sûr qu'il a correctement trié le tableau ? Eh bien
+la réponse à cette question est oui si, oui si, vous avez utilisé seulement les méthodes less()
+et exchange() pour vous référez aux données parce que dans ce cas vous savez, puisque vous avez utilisé
+la méthode exchange(), que les données dans le tableau après le tri sont bien les mêmes que celles
+qui étaient dans le tableau avant le tri. Si vous aviez une méthode de tri qui pouvait stocker
+n'importe quelles valeurs dans un tableau, elle pourrait, par exemple, stocker des 0 dans toutes les entrées du tableau
+et cette méthode réussirait le test, mais n'aurait pas correctement trié le tableau parce qu'elle
+aurait écrasé toutes les valeurs. Du coup, nous utilisons less() et exchange() pour être certain
+de pouvoir vérifier avec une méthode de ce type que nos méthodes fonctionnent correctement.

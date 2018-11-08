@@ -1,0 +1,363 @@
+1
+00:00:09,035 --> 00:00:15,063
+Ok, então o primeiro passo é ser capaz de fazer algumas observações sobre o funcionamento
+
+2
+00:00:15,063 --> 00:00:22,004
+tempo dos programas. E para a análise de algoritmos que é mais fácil do que em um monte de
+
+3
+00:00:22,026 --> 00:00:27,096
+disciplinas científicas, como veremos. Para um exemplo de execução, vamos utilizar o
+
+4
+00:00:27,096 --> 00:00:34,016
+os chamados 3 soma-problema. E é um problema fácil de estado. Se você tem N distinta
+
+5
+00:00:34,016 --> 00:00:40,254
+inteiros, quantos soma triplo exatamente zero? Por exemplo, neste 8ints.text arquivo.
+
+6
+00:00:40,254 --> 00:00:48,096
+Texto que tem oito inteiros nele. Há quatro triplos que soma a zero. 30
+
+7
+00:00:48,096 --> 00:00:56,832
+- 40, 10. 30 - 20-10 e assim por diante e assim nosso objetivo é escrever um programa que
+
+8
+00:00:56,832 --> 00:01:03,554
+pode calcular esta quantidade para qualquer arquivo de entrada, qualquer conjunto de n inteiros. Isto é
+
+9
+00:01:03,554 --> 00:01:09,796
+realmente um, um cálculo extremamente importante que está profundamente relacionado a muitos
+
+10
+00:01:09,796 --> 00:01:16,446
+problemas de geometria computacional, que é um ramo da ciência da computação que
+
+11
+00:01:16,446 --> 00:01:24,536
+cobre os algoritmos e ciência subjacente relacionadas a gráficos e filmes, e
+
+12
+00:01:24,536 --> 00:01:32,040
+modelos geométricos de todo o tipo. Portanto, esta é uma verdade, um importante problema prático.
+
+13
+00:01:32,040 --> 00:01:40,459
+Mas é um simples para escrever código para em uma visão que você poderia escrever este programa
+
+14
+00:01:40,759 --> 00:01:49,583
+sem muito esforço. É um, tem uma contagem de método estático que está a ir em frente e
+
+15
+00:01:49,583 --> 00:01:56,317
+tomar um array de inteiros como argumento. E, é isso, que é uma série de números inteiros,
+
+16
+00:01:56,317 --> 00:02:02,660
+que é o comprimento da matriz. Vamos começar com uma contagem variável igual a zero,
+
+17
+00:02:02,660 --> 00:02:09,363
+e depois um triplo loop, que verifica cada triplo I jk, vamos eu e de um j
+
+18
+00:02:09,363 --> 00:02:15,181
+de I 1 a n, e k de j 1 a n, de modo que ficamos cada triplo apenas uma vez. E
+
+19
+00:02:15,181 --> 00:02:19,818
+então se eu + j, ai + aj + ak = zero, incrementar a contagem. Tudo bem. E depois
+
+20
+00:02:19,818 --> 00:02:25,093
+que malha quatro triplos, voltamos a contagem. E, em seguida, o método principal, neste
+
+21
+00:02:25,093 --> 00:02:30,769
+classe simples, apenas lê, todos os números inteiros e imprime a contagem. Assim
+
+22
+00:02:30,769 --> 00:02:35,696
+que é um algoritmo de força bruta que é um método muito bem para resolver a soma três
+
+23
+00:02:35,696 --> 00:02:41,615
+problema, agora o que interessa é quanto tempo isso ter como função
+
+24
+00:02:41,615 --> 00:02:47,808
+do "n? Bem, uma para o nosso tempo é programa é apenas olhar para o relógio. Se você tem um
+
+25
+00:02:47,808 --> 00:02:54,925
+cronômetro, ou olhar para o relógio ou telefone, ou o que você pode precisar você pode
+
+26
+00:02:54,925 --> 00:03:02,164
+ir em frente e tempo que se quiser ou o que temos, Java tem esta parte é
+
+27
+00:03:02,164 --> 00:03:09,024
+biblioteca padrão, uma classe cronômetro que irá adiante e calcular um lapso de tempo.
+
+28
+00:03:09,024 --> 00:03:15,968
+Assim, em ordem, quando você executar um programa, se ele está configurado para facilmente tirar a entrada de
+
+29
+00:03:15,968 --> 00:03:23,990
+tamanhos diferentes, uma coisa natural a fazer, é só executá-lo para tamanhos maiores. Assim, para oito
+
+30
+00:03:23,990 --> 00:03:32,381
+ints Este programa não leva muito tempo, para 1000 ints leva meio segundo. Para
+
+31
+00:03:32,381 --> 00:03:42,303
+2000. Leva mais tempo. Isso é 3,7 segundo executá-lo novamente, ainda leva 3,7 segundo para
+
+32
+00:03:42,303 --> 00:03:50,231
+4000, de modo que cada vez estamos dobrando o tamanho da entrada e é definitivamente
+
+33
+00:03:50,231 --> 00:03:58,930
+tendo mais tempo de cada vez. E, na verdade, como vamos ver se os programadores que começam na
+
+34
+00:03:58,930 --> 00:04:05,490
+hábito de teste ou em qualquer altura no seu programa, desta forma pode obter, de modo que lhe
+
+35
+00:04:05,490 --> 00:04:13,038
+pode realmente muito facilmente e rapidamente avaliar quando vai terminar. Em
+
+36
+00:04:13,038 --> 00:04:20,010
+fato. Enquanto você espera que ela termine muitas vezes você pode descobrir isso. Assim
+
+37
+00:04:20,010 --> 00:04:27,000
+que um levou 30 segundos para 4K e definitivamente poderíamos descobrir quanto tempo
+
+38
+00:04:27,000 --> 00:04:33,047
+que vai levar para 8K antes de terminar, e você vai ver como em apenas um
+
+39
+00:04:33,047 --> 00:04:40,037
+segundo. Eu não vou esperar agora. Você pode pensar sobre o que você pensa. Ok
+
+40
+00:04:40,037 --> 00:04:45,203
+assim [tosse] que é a análise empírica, análise. Executá-lo para vários tamanhos de entrada
+
+41
+00:04:45,203 --> 00:04:51,869
+e medir o seu tempo de execução. Agora, se isso fosse algum problema científico onde
+
+42
+00:04:51,869 --> 00:04:57,320
+estavam contando algo que acontece no mundo natural. O número de formigas em um
+
+43
+00:04:57,320 --> 00:05:03,255
+formigueiro ou o que então teríamos apenas alguns pontos de dados e nós vamos tentar
+
+44
+00:05:03,255 --> 00:05:08,837
+entender o que está se estava a passar, fazendo uma parcela de tempo ou correr com bastante
+
+45
+00:05:08,837 --> 00:05:15,240
+interessados ​​em no eixo Y e problema de tamanho, com o eixo dos x. Bata uma curva como
+
+46
+00:05:15,240 --> 00:05:21,767
+isso e, na verdade, o que é a ciência costuma fazer por causa de alguns problemas de muitos caem
+
+47
+00:05:21,767 --> 00:05:29,001
+fora desta classe é fazer o enredo como uma trama lg lg. Se você fizer isso como um, lg lg trama
+
+48
+00:05:29,001 --> 00:05:36,320
+muitas vezes você vai obter uma linha reta. E a inclinação da linha reta é a chave
+
+49
+00:05:36,320 --> 00:05:41,582
+para o que está acontecendo. Neste caso, a inclinação da linha recta é três e assim
+
+50
+00:05:41,582 --> 00:05:49,272
+você pode executar o que é chamado de uma regressão para atender a uma final, a linha reta através do
+
+51
+00:05:49,272 --> 00:05:55,078
+pontos de dados. E então, não é difícil mostrar que fazer a matemática para mostrar que, se você
+
+52
+00:05:55,078 --> 00:06:01,409
+obter uma linha reta ea inclinação é B, então a sua função é proporcional a A,
+
+53
+00:06:01,409 --> 00:06:06,799
+N ^ B. Isso chama-se a lei de potência. E isso é verdade para muitos, muitos científico
+
+54
+00:06:06,799 --> 00:06:13,633
+problemas, incluindo a maioria dos algoritmos. Então aqui vai um pouco da matemática para isso.
+
+55
+00:06:13,633 --> 00:06:22,794
+Assim, a linha reta significa que desde que fez um lg, lg lote com potências de dois, que
+
+56
+00:06:22,794 --> 00:06:29,850
+lg (T (N) = B lg N + C. E nós temos nossos valores empíricos de B e C, e em seguida, se
+
+57
+00:06:29,850 --> 00:06:37,950
+você levantar ambos os lados da equação para dois para que o poder depois que você começa T (N) = a
+
+58
+00:06:37,950 --> 00:06:44,422
+constante vezes N ^ B. Então, de imediato apenas a partir da observação que temos uma boa bonita
+
+59
+00:06:44,422 --> 00:06:50,512
+modelo para o tempo de execução para o nosso programa, podemos descobrir e fazer as contas e
+
+60
+00:06:50,512 --> 00:06:59,028
+figura que parece que o tempo de execução é de cerca de 10 ^ -10 N ^ 3 segundos.
+
+61
+00:06:59,028 --> 00:07:05,053
+Podemos usar essa hipótese de ir em frente e fazer previsões. Basta ligar para
+
+62
+00:07:05,053 --> 00:07:11,067
+diferentes valores de N e ele diz que vai levar-nos 400 segundo para 16.000. 400
+
+63
+00:07:11,067 --> 00:07:16,059
+segundos é muito tempo, mas agora podemos ir em frente e investir e executar o que
+
+64
+00:07:16,059 --> 00:07:22,611
+experiência e com certeza estamos muito perto de que 408 segundo quando executá-lo.
+
+65
+00:07:22,611 --> 00:07:27,109
+E agora podemos fazer uma previsão para 32000 ou para ou para qualquer outra coisa que
+
+66
+00:07:27,109 --> 00:07:32,219
+pode estar interessado em O modelo nos ajuda a fazer previsões sem investir
+
+67
+00:07:32,219 --> 00:07:38,927
+despesa para executar os experimentos. De facto, nesta situação, se existe uma lei de potência,
+
+68
+00:07:38,927 --> 00:07:45,689
+e novamente em uma grande maioria de algoritmo de computador que executa vezes vai
+
+69
+00:07:45,689 --> 00:07:51,812
+para ser uma lei de potência. O que se pode fazer é simplesmente o dobro do tamanho da entrada de cada vez que o
+
+70
+00:07:51,812 --> 00:07:58,009
+jeito que éramos e tirar a razão dos tempos de execução para N e 2N. E se você fizer
+
+71
+00:07:58,009 --> 00:08:04,713
+que, essa relação irá convergir para uma constante. E, de facto, o log da razão
+
+72
+00:08:04,713 --> 00:08:10,258
+vai convergir para que constante, o que é o expoente de N e a execução
+
+73
+00:08:10,258 --> 00:08:16,342
+tempo. E você só precisa de um pouco de matemática para verificar se um, mas isso é muito fácil e
+
+74
+00:08:16,342 --> 00:08:21,460
+caminho natural para ir em frente e prever tempos de execução. Então é isso que eu disse
+
+75
+00:08:21,460 --> 00:08:26,756
+antes é, por isso temos esta maneira rápida de estimar B no ip relationsh poder de direito.
+
+76
+00:08:26,767 --> 00:08:33,342
+Como podemos estimar A? Bem, podemos apenas executá-lo e resolver para A. Assim, uma vez que decidimos
+
+77
+00:08:33,342 --> 00:08:41,138
+isso, que expoente é três vamos executá-lo para algum N grande e ficamos muito perto
+
+78
+00:08:41,138 --> 00:08:48,197
+modelo para o que teve de planejar as coisas. Então, é quase idêntico
+
+79
+00:08:48,197 --> 00:08:56,197
+hipótese e nós acabou-lo executando o programa de dupla N de cada vez. Ok então
+
+80
+00:08:56,522 --> 00:09:04,905
+há uma série de efeitos na tentativa de entender o tempo de execução de um programa
+
+81
+00:09:04,905 --> 00:09:10,182
+em diante, em sua máquina. [Tosse] Então. Principais efeitos são independentes do que computador
+
+82
+00:09:10,182 --> 00:09:15,004
+é. E esse é o algoritmo que você está usando e qual é o de dados. E isso é
+
+83
+00:09:15,004 --> 00:09:20,269
+vai realmente determinar o expoente da lei de potência. E então há um monte de,
+
+84
+00:09:20,269 --> 00:09:25,632
+efeitos dependente do sistema. Que tipo de hardware que você tem? Você tem um rápido
+
+85
+00:09:25,632 --> 00:09:30,056
+computador ou uma lenta? Que tipo de software? O que está acontecendo em sua
+
+86
+00:09:30,056 --> 00:09:35,095
+computador? Todas essas coisas realmente determinar o uma constante na lei de potência.
+
+87
+00:09:35,095 --> 00:09:40,894
+So. Nos sistemas modernos, é tanta coisa acontecendo no hardware e software, é
+
+88
+00:09:40,894 --> 00:09:46,288
+às vezes difícil de obter medições precisas realmente. Mas por outro lado nós
+
+89
+00:09:46,288 --> 00:09:52,050
+não tem que sacrificar animais, ou voar para outro planeta da maneira que fazem em outros
+
+90
+00:09:52,050 --> 00:09:57,304
+ciências, podemos apenas executar um grande número de experimentos e geralmente cuidar de
+
+91
+00:09:57,304 --> 00:10:00,032
+compreensão estes tipos de efeitos.

@@ -1,0 +1,107 @@
+Willkommen. Ich bin Bob Sedgewick, Professor
+für Informatik in Princeton. Das ist unser Onlinekurs Algorithmen, entwickelt von mir
+und Kevin Wayne hier in Princeton. Wir werden mit einem Überblick darüber
+beginnen, warum ihr euch evtl. mit Algorithmen befassen solltet und werden ein
+wenig die Voraussetzungen besprechen, die ihr für diesen Kurs braucht. Also, wovon handelt dieser
+ Kurs? Es ist ein Querschnittskurs zu Algorithmen für Anfänger mit Grundwissen. Wir werden uns auf
+das Programmieren und Problemlösen in Zusammenhang mit echten Anwendungen
+konzentrieren, und unser Fokus wird auf zwei Dingen liegen, Algorithmen, also Methoden um
+Probleme zu lösen und Datenstrukturen, die die Daten speichern, die sich auf das Problem
+beziehen und mit Algorithmen Hand in Hand gehen. Das sind die grundlegenen Themen, die wir
+in Teil eins und zwei des Kurses behandeln werden. Im ersten Teil geht es um das Sortieren
+und Durchsuchen von Datentypen. Wir betrachten eine Reihe von Datenstrukturen und Algorithmen
+die grundlegend für alle Methoden sind die wir behandeln, incl. Stapel, Schlangen, Taschen
+und Vorrangschlangen. Dann betrachten wir klassische Algorithmen zum Sortieren, also
+Dinge in Reihenfolge zu bringen. Das wären Quicksort, Mergesort, Heapsort und radix sort.
+Und wir betrachten klassische Methoden für Suchen. Das beinhaltet binäre Suchbäume,
+rot-schwarze binäre Suchbäume und Hash- Tabellen. Im zweiten Teil des Kurses geht es
+um fortgeschrittenere Algorithmen inklusive Graphenalgorithmen, klassische Graphen-Such-
+Algorithmen, minimaler Spann-Bäume und Kürzester-Pfad Algorithmen, Algorithmen um
+Strings zu verarbeiten incl. reguläre Ausdrücke und Datenkomprimierung. Außerdem
+noch einige weitergehende Algorithmen die Gebrauch von den Basis-Algorithmen vom Begin
+des Kurses machen. Also, warum sollte man sich mit Algorithmen befassen? Naja, ihre Bedeutung
+ist sehr umfangreich und weitreichend. Vom Internet über Biologie, über kommerzielle
+IT, Computergrafik, Sicherheit, Multimedia, soziale Netzwerke und wissenschaftliche
+Verwendungen, umgeben uns überall Algorithmen. Sie werden in Filmen und Video-
+spielen verwendet, für Kollisionsberechnungen von Teilchen, durch sie wird das Genom
+erforscht und eine Menge weitere Anwendungen. Das ist ein wichtiger Grund,
+um sich mit Algorithmen zu befassen. Ihre Auswirkungen sind weitreichend. Das Studieren
+von Algorithmen ist aber auch interessant, denn sie haben altertümliche Wurzeln. Die ältesten
+davon reichen bis zu 300 v. Chr. zurück, wenigstens bis zu Euklid. Die Vorstellung
+von Algorithmen wurde hier in Princeton von Church und Turing in den 30ern formalisiert
+beschrieben. DIe meisten Algorithmen die wir betrachten werden wurden aber erst in
+den letzten Jahrzehnten entdeckt. In der Tat wurden einige von Anfangssemestern in
+Kursen wie diesem entwickelt. Und es warten noch eine ganze Reihe Algorithmen darauf,
+von Studenten wie euch entdeckt zu werden. Der Hauptgrund, warum wir Algorithmen
+erforschen, ist Probleme zu lösen, die anders nicht bearbeitet werden können. In der
+ersten Lektion werden wir z.B. über das Netzwerk-Verbindungs-Problem sprechen,
+bei dem sich das Problem stellt, in einer großen Anzahl miteinander paarweise verbundener
+Elemente einen Pfad zwischen zwei Elementen entlang deren Verbindungen zu finden. Wie
+ihr an dem Beispiel seht, ist nicht sicher, ob es einen solchen Pfad gibt. Wir brauchen
+dafür ein Programm, bzw. einen effizienten Algorithmus.
+In unserem Beispiel lautet das Ergebnis, das ein solcher Pfad existiert. Ein weiterer Grund
+Algorithmen zu untersuchen ist geistige Stimulierung. Algorithmen sind sehr
+interessante Studienobjekte. Don Knuth, der div. Bücher über Algorithmen geschrieben
+hat und ein Pionier in diesem Feld ist, sagte einmal, "Einen Algorithmus muss man sehen
+um an ihn zu glauben". Man kann nicht einfach über Algorithmen nachdenken, man muss
+mit ihnen arbeiten. Ein anderes Zitat von Francis Sullivan lautet, "Die großen Algorithmen
+sind die Poesie des Rechnens". Wie ein Vers können Sie prägnant, dicht, und sogar
+geheimnisvoll sein. Aber einmal entschlüsselt, werfen sie ein strahlendes Licht auf einige Aspekte des
+Berechnens. Algorithmen sind interessant als intellektuelle Stimulation. Ein anderer Grund,
+warum viele Leute Algorithmen untersuchen - und ich nehme an viele von Ihnen gehören dazu - ist, dass es notwendig ist,
+gute Algorithmen, effiziente Algorithmen und gute Datenstrukturen zu verstehen,
+um ein kompetenter Programmierer zu sein. Linus Torvalds, der Schöpfer von Linux, sagt
+der Unterschied zwischen einem schlechten Programmierer und einem guten ist, ob er
+den Code oder die Datenstrukturen für wichtiger hält. Schlechte Programmierer machen sich Gedanken
+um den Code, gute Programmierer machen sich Gedanken um Datenstrukturen und deren
+Beziehungen. Und, so möchte ich hinzufügen, um die Algorithmen, die sie bearbeiten. Niklaus
+Wirth, ein weiterer Pionier der Informatik schrieb ein berühmtes Buch namens
+Algorithms + Data Structures = Programs. [Husten] Ein anderer Grund, heute Algorithmen 
+zu studieren ist, dass sie eine gemeinsame Grundlage geworden sind, die Natur zu verstehen.
+Algorithmen sind Berechnungsmodelle, und algorithmische Modelle ersetzen
+mathematische Modelle in der Wissenschaft. Im 20. Jahrhundert entwickelten Mathematiker
+und Naturwissenschaftler mathematische Modelle, um zu versuchen, Phänomene der Natur zu verstehen. Es wurde
+aber bald klar, dass diese mathematischen Modelle schwierig zu lösen waren. Es war
+schwierig, Lösungen zu erhalten, Hypothesen an natürlichen Phänomene zu messen. 
+Daher entwickeln heute mehr und mehr und mehr Leute Berechnungsmodelle,
+mit denen sie versuchen, zu simulieren was in der Natur geschehen könnte, um
+zu versuchen, es besser zu verstehen. Algorithmen spielen eine ungeheuer wichtige Rolle in diesem
+Prozess. Und wir werden einige Beispiele dafür in diesem Kurs kennenlernen. Ein anderer wichtiger Grund 
+ist, dass wenn Sie wissen, wie sie Algorithmen und Datenstrukturen effektiv verwenden
+können, haben Sie deutlich bessere Chancen in Bewerbungsgesprächen in
+der IT-Industrie als wenn Sie diese nicht kennen. Es gibt also eine ganze Menge von Gründen,
+um Algorithmen zu untersuchen. Ihr Einfluss ist groß und weitreichend,
+sie haben alte Wurzeln und zeigen neue Möglichkeiten auf, sie erlauben uns, Probleme
+zu lösen, die anderenfalls nicht angegangen werden können; Sie können Sie als 
+intellektuelle Stimulation verstehen, um ein guter Programmierer zu werden. Sie können
+Geheimnisse des Lebens im Universum enthüllen, und sie eignen sich für Freude und Gewinn. Im Grunde
+kann ein Programmierer mit Recht fragen, warum man überhaupt etwas anderes untersuchen sollte. Nun ja,
+es gibt viele gute Gründe, andere Dinge zu untersuchen, aber ich bin überzeugt, dass es keinen guten Grund gibt,
+Algorithmen nicht zu studieren. [Husten] Also, für diesen Kurs gibt es zwei Quellen, über die
+ich hier reden möchte um sicherzustellen dass diese allen bekannt sind bevor wir in die Materie
+einsteigen. Das ist ein Modell der Veröffentlichung, die Kevin Wayne und ich entwickelt haben und seit
+Jahren nutzen. Und wir denken, es ist ein sehr effektiver Weg, die Art von Lektionen
+zu begleiten, die wir in diesem Kurs geben werden. Ganz unten 
+- und das ist optional für diesen Kurs - haben wir ein Textbuch. Ein normales Buch
+dass die Themen des Kurses im Detail behandelt. Sogar deutlich mehr Themen, als wir in den
+Lektionen behandeln können. Und dann, begleitend zum Lehrbuch, gibt es kostenloses
+Lehrmaterial online, dass wir die "book site" nennen. Sie können "books" die "book site" besuchen, um die
+Folien zu den Lektionen zu bekommen. Aber viel wichtiger ist: dort gibt es Code, dort gibt es Übungen, und dort
+gibt es eine ziemliche Menge an Informationen. Vielleicht zehnmal mehr, als was im Buch zu finden ist,
+inklusive einer Zusammenfassung der Inhalte. Sie werden sich während des Kurses also oft auf die
+"book site" beziehen, während sie online arbeiten. Oft fragen Leute nach
+Voraussetzungen. Wir nehmen an, dass die, die diesen Kurs besuchen wissen, wie man programmiert
+und die Grundlagen von Schleifen, Arrays und Funktionen kennen. Sie haben bereits Kontakt
+zur Objektorientierten Programmierung und zu Rekursionen. Wir verwenden Java, aber wir setzen keine
+Details zu Java voraus; wir verwenden es eher als Sprache zur Darstellung. Wir werden etwas
+Mathematik betreiben, aber keine sehr fortgeschrittene. Wenn Sie einen Eindruck davon gewinnen möchten, welches Material
+wir als Voraussetzung zu dem Material dieses Kurses betrachten, können Sie sich kurz die
+Abschnitte 1.1 und 1.2 des Buchs anschauen. Entweder auf der "book site" oder 
+im Lehrbuch. Für eine tiefergehende Besprechung haben wir ein Lehrbuch "An
+Introduction to Programming in Java: An Interdisciplinary Approach". Dort gibt es
+ebenfalls eine "book site" und ein Lehrbuch. Aber im Grunde geht es um Folgendes: Sie sollten
+Programmieren können, und eine einfache Übung zu Vorbereitung ist, auf Ihrem Computer ein Java-Programm
+zu schreiben, in dem sie vielleicht ein Programmier- modell aus der "book site" verwenden. Wir
+werden noch viele weitere Hinweise geben, wenn wir zu den Aufgaben kommen.
+Sie können die Programmierumgebung verwenden, die Ihnen vertraut ist, oder
+unsere herunterladen. Im Netz haben wir Anleitungen, wie das geht.

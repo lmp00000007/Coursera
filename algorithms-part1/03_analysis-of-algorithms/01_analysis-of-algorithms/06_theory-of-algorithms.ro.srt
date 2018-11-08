@@ -1,0 +1,567 @@
+1
+00:00:01,087 --> 00:00:07,024
+De fapt, ordinea clasificărilor 
+de creștere sunt atât de importante că au
+
+2
+00:00:07,024 --> 00:00:13,038
+condus la o cantitate enormă de cercetare în 
+ultimii ani și doar vorbesc pe scurt despre
+
+3
+00:00:13,038 --> 00:00:19,692
+asta acum. Deci, există, viața este un pic 
+mai complicată decât cea subliniată în
+
+4
+00:00:19,692 --> 00:00:25,747
+ultimul exemplu și o problemă este că
+intrările pot determina performanța
+
+5
+00:00:25,747 --> 00:00:31,076
+algoritmulului să varieze foarte mult. Așa că de multe ori trebuie să ne
+ gândim la modalități diferite de
+
+6
+00:00:31,076 --> 00:00:37,001
+analiză a algoritmului în funcție de 
+intrare. Așa că, timpul de rulare va fi
+
+7
+00:00:37,001 --> 00:00:42,014
+undeva între cel mai bun caz și cel mai 
+rău caz. Cel mai bun caz este limita inferioară 
+
+8
+00:00:42,014 --> 00:00:48,008
+la cost. Oferă ceva la care 
+timpul de rulare va fi mai mare decât
+
+9
+00:00:48,008 --> 00:00:53,368
+ acela întotdeauna sau nu mai mic decât acela și apoi 
+e cel mai rău caz, care este cel mai 
+
+10
+00:00:53,368 --> 00:00:58,562
+dificil de introdus. Dacă vom analiza asta atunci 
+putem garanta că timpul de rulare în
+
+11
+00:00:58,562 --> 00:01:04,327
+algoritmii nu va fi mai mare decât 
+acela. Și apoi, într-o mulțime de situații noi
+
+12
+00:01:04,327 --> 00:01:11,078
+am putea lua în considerare intrarea noastră să fie aleatorie.
+ Ei bine, avem nevoie, de a modela oarecum, ceea ce noi
+
+13
+00:01:11,078 --> 00:01:17,577
+înțelegem prin aleator pentru problema pe care noi o
+rezolvăm, dar există o mulțime de situații
+
+14
+00:01:17,577 --> 00:01:24,680
+unde putem face asta și apoi avem un 
+mod de a prezice performanța chiar și atunci când
+
+15
+00:01:24,680 --> 00:01:33,369
+intrarea poate varia foarte mult . Deci, de exemplu, 
+pentru 3-sumă, e cam mereu la fel.
+
+16
+00:01:33,617 --> 00:01:39,441
+Cu notația tilda, singura 
+variabilitate în acel algoritm este 
+
+17
+00:01:39,441 --> 00:01:46,514
+de câte ori contorul este incrementat
+și asta e în termeni de ordine inferioară așa că
+
+18
+00:01:46,514 --> 00:01:53,318
+nu are nevoie să se amestece în analiza noastră.
+ Pentru căutarea binară este, ați putea găsi
+
+19
+00:01:53,318 --> 00:02:00,553
+ce cautăm imediat în care caz este constantă de timp și putem arăta că media și
+
+20
+00:02:00,553 --> 00:02:08,205
+cel mai rău caz sunt ambele lg baza doi (N) .
+Acolo e altul, în alte exemple care să fie
+
+21
+00:02:08,205 --> 00:02:17,256
+chiar de mai multă variabilitate. Așa că, noi avem
+aceste diferite tipuri de analiză în funcție
+
+22
+00:02:17,256 --> 00:02:22,398
+de intrare. Și, dar întrebarea este, 
+ce putem spune despre problema actuală pe care
+
+23
+00:02:22,398 --> 00:02:28,543
+clientul încearcă să rezolve? Așa că trebuie să 
+înțelegem astea două pentru a putea fi în măsură
+
+24
+00:02:28,543 --> 00:02:33,933
+să înțelegem performanța algoritmului. 
+Și, există două abordări, care sunt, sau
+
+25
+00:02:33,933 --> 00:02:40,346
+de succes în asta. Una dintre ele este de a elabora pentru 
+cel mai rău caz. Doar să vă  asigurați că
+
+26
+00:02:40,346 --> 00:02:45,403
+algoritmul vostru întotdeauna se execută rapid 
+și asta e cu siguranță ideal. O alta este
+
+27
+00:02:45,403 --> 00:02:50,794
+de a, în cazul în care nu puteți face asta este să luați la ȋntamplare
+ și apoi depinde de un fel de
+
+28
+00:02:50,794 --> 00:02:55,769
+garanție probabilistică și vom vedea 
+exemple cu ambele dintre acestea pe măsură ce trecem prin
+
+29
+00:02:55,769 --> 00:03:00,546
+curs. Acum, aceste tipuri de 
+considerații, știți ideea de ordine
+
+30
+00:03:00,546 --> 00:03:06,058
+a creșterii duce la discutarea, a ceea ce se 
+numește, ceea ce eu numesc teoria
+
+31
+00:03:06,058 --> 00:03:12,022
+algoritmilor. Și aici obiectivele noastre sunt, noi
+avem o problemă de rezolvat ca rezolvarea
+
+32
+00:03:12,022 --> 00:03:17,500
+problemei 3-sumă și vrem să știm cât de 
+greu este. Ne dorim să găsim cel mai bun
+
+33
+00:03:17,500 --> 00:03:24,302
+algoritm pentru rezolvarea acelei probleme.
+Abordarea pe care o folosește omul de știință
+
+34
+00:03:24,302 --> 00:03:30,091
+pentru asta este să încerce să suprime cât mai multe detalii posibile în analiză. Și
+
+35
+00:03:30,091 --> 00:03:37,015
+așa doar analizează timpul de funcționare spre sau
+ într-un factor constant. Asta e ceea ce
+
+36
+00:03:37,015 --> 00:03:42,831
+ordinea creșterii obține și, de asemenea, eu 
+vreau, nu vă faceți griji cu privire la modelul de intrare
+
+37
+00:03:42,831 --> 00:03:48,070
+deloc. Și așa ne-am concentrat pe cel mai rău caz 
+de proiectare și putem vorbi despre performanța
+
+38
+00:03:48,090 --> 00:03:54,372
+algoritmilor doar în ceea ce privește ordinea 
+de creștere și este de fapt posibil, este
+
+39
+00:03:54,372 --> 00:03:59,357
+de fapt posibil de a face acest lucru într-un mod foarte
+ riguros, care ne-a învățat o mulțime
+
+40
+00:03:59,357 --> 00:04:04,692
+despre dificultatea de a rezolva probleme. 
+Și scopul nostru este de a găsi un algoritm
+
+41
+00:04:04,692 --> 00:04:11,326
+optim unde putem garanta într-un factor constant performanță sigură pentru
+
+42
+00:04:11,326 --> 00:04:17,735
+orice intrare pentru că am descoperit cel mai rău caz, 
+dar noi, de asemenea, am putut aproba că 
+
+43
+00:04:17,735 --> 00:04:24,022
+nu am știut algoritm care poate oferi o garanție de 
+performanță mai bună. Voi da câteva
+
+44
+00:04:24,022 --> 00:04:31,549
+exemple simple despre aceasta. Acum, în scopul de 
+a face aceasta sunt, aceste notații utilizate în mod obișnuit
+
+45
+00:04:31,549 --> 00:04:39,745
+numite notații theta mare,O mare și 
+omega mare. Astfel încât și acele
+
+46
+00:04:40,033 --> 00:04:47,396
+definiții sunt date aici. Așa că notația theta mare este doar modul de a descrie
+
+47
+00:04:47,396 --> 00:04:53,733
+ordinea creșterii. Theta (N) ^ 2 este un fel de mână scurtă pentru orice N ^ 2. Este mărginită
+
+48
+00:04:53,733 --> 00:05:00,393
+sus și jos de constanta de timp N ^ 2 și 
+asta e ceea ce folosim cu adevărat pentru a clasifica
+
+49
+00:05:00,393 --> 00:05:05,730
+algoritmii. Și apoi, există o notație O mare 
+care este limita superioară de la
+
+50
+00:05:05,730 --> 00:05:11,360
+performanţă. Atunci când spunem O (N ^ 2), înțelegem 
+că este mai mică decât o constantă de timp N ^ 2
+
+51
+00:05:11,360 --> 00:05:17,569
+cum crește N.
+
+52
+00:05:17,569 --> 00:05:23,694
+constant time N^2 as N grows. So those
+three notations were able to use to
+
+53
+00:05:23,918 --> 00:05:30,113
+classify algorithms and I'll show them in
+the following. So, examples from our
+
+54
+00:05:30,113 --> 00:05:36,725
+1-sum, 2-sum, and 3-sum are easy to
+articulate so our goals are to establish
+
+55
+00:05:36,725 --> 00:05:42,829
+the difficulty of the problem and to
+develop an optimal algorithm. So, the
+
+56
+00:05:42,829 --> 00:05:48,999
+1-sum problem is 00 in the array. Well, an
+upper bound on the difficulty of the
+
+57
+00:05:48,999 --> 00:05:54,299
+problem is some specific algorithm. So,
+for example, the brute force algorithm
+
+58
+00:05:54,299 --> 00:06:00,049
+that looked, that looks at every array
+entry is a specific algorithm and it means
+
+59
+00:06:00,049 --> 00:06:06,490
+that and that takes O(N) time. We have to
+look at every, it's less than a constant
+
+60
+00:06:06,490 --> 00:06:12,307
+time N for some constant. So, the running
+time of the optimal algorithm has to be
+
+61
+00:06:12,307 --> 00:06:17,616
+O(N) that is that's specific algorithm
+provides an upper bound on the running
+
+62
+00:06:17,616 --> 00:06:23,431
+time of the optimal algorithm. And but in
+this case it's also easy to develop a
+
+63
+00:06:23,431 --> 00:06:29,052
+lower bound, that's a proof that no
+algorithm can do better. Well, for 1-sum
+
+64
+00:06:29,052 --> 00:06:34,536
+you have to examine all entries in the
+array. If you miss one, then that one
+
+65
+00:06:34,536 --> 00:06:40,016
+might be zero so that means that the
+optimal algorithm has to have a running
+
+66
+00:06:40,016 --> 00:06:46,270
+time at least some constant times N where
+we say the running time is omega of n. Now
+
+67
+00:06:46,270 --> 00:06:52,287
+in this case, the upper bound and the
+lower bound match. So, doing the constant
+
+68
+00:06:52,287 --> 00:06:59,133
+factor so, that's a proof that the brute
+force algorithm for 1-sum is optimal. It's
+
+69
+00:06:59,133 --> 00:07:05,459
+running time is theta(N). It's both omega
+and O(N). That's, for that simple problem
+
+70
+00:07:05,459 --> 00:07:11,576
+it was okay to get the optimal algorithm.
+For a more complicated problems it's going
+
+71
+00:07:11,576 --> 00:07:17,027
+to be more difficult to get upper balance
+and lower balance and particularly upper
+
+72
+00:07:17,027 --> 00:07:22,617
+balance and lower balance that match. For
+example let's look at 3-sum. So, upper
+
+73
+00:07:22,617 --> 00:07:30,211
+bound for 3-sum, say our first brute force
+algorithm, say that the proof, was a proof
+
+74
+00:07:30,211 --> 00:07:37,375
+that the running time of the optimal
+algorithm is O(N^3) but we found a better
+
+75
+00:07:37,375 --> 00:07:43,691
+improved algorithm. Whose running time is
+O(N^2) lg N. So, that's a better upper
+
+76
+00:07:43,691 --> 00:07:49,526
+bound. Lower bound well, we have to
+examine all entries cuz again, we might
+
+77
+00:07:49,526 --> 00:07:56,274
+miss one that makes 3-sum = zero and
+that's a proof that the running time in
+
+78
+00:07:56,274 --> 00:08:02,304
+the optimal algorithm is omega(N) but
+nobody knows higher or lower bound for
+
+79
+00:08:02,304 --> 00:08:08,280
+3-sum. So there's a gap between the upper
+bound and the lower bound and open
+
+80
+00:08:08,280 --> 00:08:14,237
+problems. Is there an optimal algorithm
+for 3-sum? We don't know what it is. We
+
+81
+00:08:14,237 --> 00:08:20,592
+don't even know if there's a algorithm
+whose running time is < O(N^2) or we don't
+
+82
+00:08:20,592 --> 00:08:27,130
+know higher lower bound and linear. So
+that's an example of an open problem in
+
+83
+00:08:27,130 --> 00:08:33,181
+the theory of algorithms we don't know how
+difficult it is to solve the 3-sum
+
+84
+00:08:33,181 --> 00:08:40,448
+problem. Now, this point of view has been
+extremely successful in recent decades. We
+
+85
+00:08:40,448 --> 00:08:45,958
+have a new problem, develop some
+algorithm, proves some lower bound. If
+
+86
+00:08:45,958 --> 00:08:51,679
+there's a gap, we look for new algorithm
+that will lower the upper bound or we try
+
+87
+00:08:51,679 --> 00:08:56,527
+to find a way to raise the lower bound.
+Usually it's very difficult to prove
+
+88
+00:08:56,527 --> 00:09:02,164
+non-trivial or lower bounds. Trivial or
+lower bound like look at every input items
+
+89
+00:09:02,164 --> 00:09:07,435
+is not so hard non-trivial lower bounds
+like for example, the proof that we're
+
+90
+00:09:07,435 --> 00:09:13,251
+talking about for Union-find problem are
+much more difficult. And in the last
+
+91
+00:09:13,251 --> 00:09:20,081
+several decades people have learned about
+the computational difficulty of problems
+
+92
+00:09:20,081 --> 00:09:26,124
+by examining steadily decreasing upper
+bounds so the algorithms were better worst
+
+93
+00:09:26,124 --> 00:09:31,979
+case running times for lots and lots of
+important problems and plenty of optimal
+
+94
+00:09:31,979 --> 00:09:37,944
+algorithms and plenty of gaps still
+remain. It's a fascinating field of
+
+95
+00:09:37,944 --> 00:09:43,617
+research that many people are engaged in.
+Now there is a couple of caveats on this
+
+96
+00:09:43,617 --> 00:09:48,770
+on the context to this course. And the
+first one is maybe it's overly pessimistic
+
+97
+00:09:48,770 --> 00:09:54,409
+to be focusing on the worst case. We've
+got data out there. We've got problems to
+
+98
+00:09:54,409 --> 00:09:59,786
+solve. Maybe it's not worst case data and
+lots of fields of engineering and science.
+
+99
+00:09:59,786 --> 00:10:05,194
+We don't focus on the worst case. The
+worst case for this course would be
+
+100
+00:10:05,194 --> 00:10:10,708
+lightning to strike and it would be over
+so we don't plan for that. And since
+
+101
+00:10:10,708 --> 00:10:16,301
+similar it's true for algorithms. Maybe we
+should be focusing on understanding prope
+
+102
+00:10:16,301 --> 00:10:21,252
+rties of the input and finding algorithms
+that are efficient for that input. And the
+
+103
+00:10:21,252 --> 00:10:26,645
+other thing is in order to really predict
+performance and compare algorithms we need
+
+104
+00:10:26,645 --> 00:10:33,210
+to do a closer analysis than to within a
+constant factor. So we talked about the
+
+105
+00:10:33,210 --> 00:10:39,719
+tilde notation in the big theta, big O,
+and big omega, omega that are used in the
+
+106
+00:10:39,719 --> 00:10:46,161
+theory of algorithms. And really there's
+so much published research in the theory
+
+107
+00:10:46,161 --> 00:10:51,608
+of algorithms that a lot of people make
+the mistake of interpreting the big O
+
+108
+00:10:51,608 --> 00:10:56,964
+results that are supposed to give improved
+upper bounds on the difficulty of the
+
+109
+00:10:56,964 --> 00:11:02,179
+problem as approximate models for the
+running time and that's really a mistake.
+
+110
+00:11:02,179 --> 00:11:07,619
+So in this course, we're going to focus on
+approximate models by, you know making
+
+111
+00:11:07,619 --> 00:11:12,738
+sure that we use the tilde notation and
+we'll try to give specific results for
+
+112
+00:11:12,738 --> 00:11:17,766
+certain quantities of interest and the
+constant, any unspecified constant in the
+
+113
+00:11:17,766 --> 00:11:22,271
+running time. We'll have to do with
+properties in the machine and in the
+
+114
+00:11:22,271 --> 00:11:27,542
+system so they will be able to use these
+results to predict performance and to
+
+115
+00:11:27,542 --> 00:11:29,013
+compare algorithms.

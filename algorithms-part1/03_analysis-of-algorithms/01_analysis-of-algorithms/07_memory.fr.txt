@@ -1,0 +1,79 @@
+Jusqu'ici, nous avons parlé de temps d'exécution. 
+Il est maintenant temps de parler de la consommation mémoire.
+A la base, on a besoin de connaitre combien de bits le programme utilise ou
+octet, un bloc de 8 bits. En fait, nous allons parler en terme de millions de bits ou
+milliards de bit et étonnamment il y a une contreverse au sujet même de 
+ces simples définitions. Les informaticiens pensent qu'1 million de bits est 2^20 et
+1 milliard est 2^30 car c'est le nombre de valeurs possibles qui tiennent dans 
+30 bits et tout est cohérent avec nos calculs. Les autres scientifiques gardent
+1 million ou 1 milliard. Pour plein de raisons, nous utiliserons 2^20, je
+veux dire un megaoctet. Les vieux ordinateurs que l'on a longtemps utilisé étaient des machines 
+32-bit, donc les pointeurs faisaient 4 octets. Récemment, nous sommes passé à des 
+modèles de machine 64-bit et donc à des pointers de 8 octers. Cela nous permet
+d'addresser plus de mémoire mais les pointeurs utilisent plus de place et en fait, cette
+transition a causé pas mal de problèmes au début car les programmes utilisaient
+bien plus de place que ce que les gens pensaient. Vous n'allez pas avoir
+à revivre ce genre de problème parce que 64 bits est définitivement
+suffisant pour addresser tout ce que vous avez besoin d'addresser. 2^64 est vraiment
+un très gros nombre. En parlant d'octet, commençons par les utilisations mémoire typique. Une fois de plus, 
+c'est fortement dépendant de la machine et de l'implémentation, mais ces chiffres sont
+raisonnables et se retrouve dans les implémentations courantes. Donc le booléen. Ca serait bien
+qu'un booléen ne prenne qu'un bit car en fait un booléen, c'est juste vrai ou faux. Mais 
+en fait il faut compter 1 octet pour un booléen. Tous les byte font 1 octet. De nos
+jours, les caractères font 2 octets, 16-bit char. Il n'y a pas si longtemps, on utilisait 8 bits pour
+les char. Un entier, le int standard, fait 4 octets ou 32 bits et un float fait aussi 4 octets.
+Le long int en fait 8 et le double aussi. En général, on utilise double pour les nombre réels
+et int pour le entiers dans la pluspart des applications. Ca, c'était pour les types de base.
+Pour les tableaux, il y a un certain surcoût pour la construction du trableau
+et si il y a n éléments, c'est ce que coûte le type de base fois n
+donc un tableau de double serait 8n + 24. Pour un tableau à 2 dimensions et bien
+on pourrait continuer et calculer le truc exact mais maintenant, il est temps d'utiliser
+la notation tilde (~). Et donc pour les tableaux on pourrait dire qu'un tableau de 
+double est ~8n pour une dimension. Pour un tableau de double à deux dimensions
+on a ~8mn.  Et il y a aussi le terme en plus pour le surcoût, mais pour des grandes valeurs de
+m et n, c'est suffisamment précis. Voila pour l'utilisation standard des types de base 
+et des tableaux dans une implémentation Java. Beaucoup de nos programmes utilisent des objets
+comme les listes chaînes, etc. Donc nous devons ajouter le surcoût des références croisées, et 
+il y a aussi le padding qui est inclus dans chaque implémentation standard de façon
+à ce que chaque objet utilise un multiple de 8 octets. Par exemple, si vous avez un objet
+date qui est composé de 3 variables int alors cet objet prendrait 
+au total 32 octets. Chaque int utilise 4 octets, le surcoût de l'objet est de 16 octets
+Il faut 4 octets de padding pour arriver à un total de 32 octets. L'autre cas
+qui arrive souvent est la chaine de caractères et c'est plus compliqué pour une string
+que pour un tableau, mais l'implémentation standard d'une chaîne en Java contient 
+une référence à un tableau de caractères puis des int pour les valeurs d'offset, 
+de nombre et de hash et ensuite du padding. En compatibilisant tout, the
+coût d'une chaîne est d'à peu près 2n+ 64 octets. Donc voilà les bases qui vont nous
+servir à analyser l'utilisation mémoire d'un programme Java standard. Pour les
+types de base, valeur de type de données, si c'est un type de base, c'est 4 pour un int, 
+8 pour un double et ainsi de suite. Si c'est une référence, cela va être 8 octets, c'est 
+pour le pointeur. Un tableau prend 24 octets plus la mémoire de chaque éléments.
+Un objet, c'est 16 octets plus la mémoire pour chaque instance de variable, et ajouter
+8 octets si il y a une classe interne, comme ce qu'on avait dit pour nœuds des listes chainées.
+Et ensuite, il y a le padding. Donc, ensuite nous devons réfléchir à qui est responsable
+des objets pointés, vous savez, dans certains cas. On s'en occupera quand
+la situation se présentera. Donc prenons un exemple, un simple exemple, d'analyse
+d'utilisation mémoire. Regardons combien la fonction WeightedQuickUnionUF, 
+des lectures précédentes utilise en fonction de N. Il y a seulement quelques
+éléments en mémoire, et chacun d'entre eux peuvent être facilement analysés en utilisant
+les bases que je viens de donner. C'est un objet donc 16 octets pour le surcoût. Il y a
+deux tableaux d'int. Chacun d'entre eux ont un surcoût de 24, plus 4n pour les n
+éléments. Chacun des n éléments prends 4 octets. Puis il y a 4 octets pour le count
+and 4 octets pour le padding et quand vous additionnez tout, cela donne
+8n+88, ce qui fait ~8n. Une fois de plus, tout ce que cela dit c'est que quand n est grand
+tout ce qui nous intéresse pour l'analyse de la mémoire est que nous avons 2n entiers
+2 tableaux de taille n, qui font chacun 4 octets pour un total de 8n octets.
+Ok. Donc pour résumer on peut vraiment déterminer combien de fois on
+doit faire tourner les rouages d'un ordinateur moderne. On peut le faire de façon
+empirique en exécutant réellement le programme, on peut faire des expériences
+et utiliser la loi des puissances, formuler des hypothèses et faire des prédictions. Mais
+on peut faire plus. On peut faire des analyses mathématiques où on identifie les opérations
+les plus chères, on analyse la fréquence d'exécution de ces opérations et on utilise
+la notation ~ pour simplifier l'analyse. On peut en fait expliquer le comportement, 
+pas seulement le prédire. Et c'est un bon exemple de l'utilisation de méthode
+scientifique pour comprendre les artefacts que nous étudions: les algorithmes. Nos
+modèles mathématiques sont en général indépendants d'un système informatique
+particulier et peuvent même s'appliquer à des machines qui n'existent pas encore. Mais
+toujours valider nos modèles mathématiques en faisant des expériences sur des machines réelles, 
+de façon à être confiant quand on fait des prédictions et que l'on analyse des
+algorithmes.

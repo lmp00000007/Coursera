@@ -1,0 +1,108 @@
+Velkommen. Jeg er Bob Sedgewick, professor i
+datalogi på Princeton. Dette er vores online kursus Algoritmer udviklet af
+mig selv og Kevin Wayne her på Princeton. Vi vil starte med en overordnet
+diskussion af hvorfor det er smart at studere algoritmer og en lille smule
+om de ressourcer du får brug når du tager dette kursus. Så, hvad er dette kursus? Det
+er et kursus på mellemniveau om algoritmer. Vi vil koncentrere os om
+programmering og problemløsning i forbindelse med rigtige applikationer, og vores
+fokus vil være på disse to ting, Algoritmer som metoder til at løse
+problemer og datastrukturer, der gemmer den information der er associeret
+med et problem, og som går hånd i hånd med algoritmerne. Dette er de basis emner
+som vi vil dække i del et og del 2 i kurset. Den første del er sortering
+i data typer og søgning. We vil studere et antal datastrukturer og algoritmer,
+som danner basis for alle de metoder we overvejer inklusiv stakke, køer, tasker
+og priotitetskøer. Derefter vil vi kigge på klassiske algoritmer til sortering, altså
+putte ting i orden. Det er quicksort, mergesort, heapsort og radix sort. Og
+vi vil kigge på klassiske metoder til søgning inklusiv binære søgetræer,
+rød-sorte binære søgetræer og hashtabeller. Anden halvdel af kurset drejer sig om
+mere avancerede algoritmer inklusiv grafalgoritmer, klassiske grafsøge-
+algoritmer, mindst udspændende træer og korteste-vej algoritmer, algoritmer til
+at processere strenge inklusiv regulære udtryk og data compression. Og derudover
+nogle avancerede algoritmer der bruger de basis algoritmer, som vi udviklede
+tidligere i kurset. Nå, hvorfor skulle man studere algoritmer? Ja, deres 
+indflydelse er meget bred og vidtrækkende. Fra internettet til biologi til
+kommerciel programmering, computergrafik, sikkerhed, multimedie, sociale netværk og
+videnskabelige applikationer. Algoritmer er alle steder. De bliver brugt til film og
+computerspil, til simuleringer af partikelkollisioner. De bliver brug til at studere
+gener, og alle mulige andre applikationer. Så det er en vigtig
+grund til at studere algoritmer - deres indflydelse er bred og vidtrækkende. Algoritmer er
+også interessante at studere, fordi de har gamle rødder. De første
+algoritmer vi studerer kan føres tilbage til 300 før Kristi, så langt tilbage som til Euclid. 
+Konceptet om en algoritme blev formaliseret her på Princeton, af Church og
+Turing i 30'erne. De fleste af de algoritmer som vi vil kigge på blev dog fundet indenfor
+de sidste årtier. Nogen blev ovenikøbet opdaget af studerende på et kursus
+som dette. Og der er masser af andre algoritmer, der venter på at blive opdaget
+af studerende som dig. Hovedårsagen til at folk studerer algoritmer, er for at kunne
+løse problemer, som ellers kunne blive undersøgt. F.eks. i den første
+forelæsning, skal vi snakke om netværksforbindelsesproblemet. Problemet
+erom det givet et stort sæt ting der er forbundet med hinanden parvis, er
+muligt at komme fra den ene til den anden via en vej gennem forbindelserne. Som
+du kan se fra dette eksempel, er det ikke klart om der eksisterer sådan en vej. 
+Vi har brugt for et computerprogram til at løse det, eller i virkeligheden en effektiv algoritme.
+I dette tilfælde er svaret er der sådan en vej. Endnu en grund til at studere
+algoritmer er for intellektuel stimulering. Algoritmer er meget
+interessante objekter at studere. Don Knuth der skrev flere bøger om algoritmer
+og var en pioner indenfor feltet sagde: "En algoritme skal ses for at kunne blive
+forstået". Du kan ikke bare forestille dig en algoritme, det er nødvendigt at du arbejder med den.
+Et andet citat fra Francis Sullivan siger: "De store algoritmer er beregningers
+poesi". Ligesom digte, kan de være kortfattede, undvigende, tunge, ja selv
+mystiske. Men når de først er forstået, kaster de et klart nyt lys over nogle aspekter af
+programmering. Algoritmer er interessante for intellektuel stimulering. En anden grund til
+at mange mennesker studerer algoritmer og jeg tror netop mange af jer, er at det er nødvendigt at
+forstå gode algoritmer, effektive algoritmer, gode datastrukturer for
+at blive en kyndig programmør. Linus Torvalds, der lavede Linux, siger
+at forskellen mellem en dårlig programmør og en god programmør er om han
+tænker på sin kode eller sine datastrukturer som det vigtigste. Dårlige programmører bekymrer
+sig om kode, gode programmører bekymrer sig om datastrukturer, og deres
+forhold. Og, kan jeg tilføje, om de algoritmer der bruger dem. Niklaus
+Wirth, endnu en pioner indenfor datalogien skrev en berømt bog kaldet
+Algorithms + Data Structures = Programs 
+(Algoritmer + Datastrukturer = Programmer). [host]. Endnu en grund nutildags til at studere
+algoritmer er at de er blevet et almindeligt sprog til at forstå naturen.
+Algoritmer er computermodeller, og algoritmemodeller erstatter 
+matematiske modeller i videnskabelige undersøgelser. I det tyvende århundredes matematik udviklede 
+videnskabsmænd matematiske modeller for at forsøge at forstå naturlige fænomener. Det blev hurtigt
+klart at disse matematiske modeller var svære at løse. Det var
+svært at finde løsninger, og at teste hypoteser mod naturlige
+fænomener. Så mere og mere og mere i dag udvikler folk computermodeller
+hvor de forsøger at simulere hvad der måske sker i naturen for
+bedre at kunne forsøge at forstå. Algoritmer spiller en meget vigtig del i denne
+proces. Og vi vil se nogle eksempler på det i dette kursus. En anden vigtig
+grund er at hvis du kender effekten, hvordan du effektivt bruger algoritmer og data-
+strukturer, har du en meget større chance for at skaffe dig et job i
+teknologyindustrien end hvis du ikke gør. Så der er mange grunde, som jeg lige
+gennemgik, for at studere algoritmer. Deres indflydelse er bred og vidtrækkende,
+de har gamle rødder og præsenterer nye muligheder, de tillader os at løse
+problemer, som ikke ellers kunne løses, du kan bruge dem til at 
+stimulere dig selv intellektuelt til at blive en kyndig programmør. Det kan være
+de kan åbne hemmeligheden om livet i universet, og de er gode til sjov og profit. Faktisk 
+kan en programmør spørge, hvorfor studere noget som helst andet? Ja, der er masser af
+gode grunde til at studere andre ting, men jeg vil mene at der ikke er nogen grund til ikke
+at studere algoritmer. [host] Så i dette kursus bruger vi to ressourcer, som jeg gerne
+vil snakke om og sikre mig at folk er bekendte med inden vi starter på selve
+indholdet. Dette er en model, som Kevin Wayne og jeg udviklede og har
+brugt i mange år, og vi synes at det er en meget effektiv måde at understøtte den slags
+forelæsninger, som vi vil holde i dette kursus. For neden, og
+det er frivilligt i dette kursus, har vi en lærebog. Det er en traditionel lærebog
+der grundigt dækker emnerne i kurset, ja, faktisk mange flere emner end vi
+kan vise i forelæsningerne. Ved siden af lærebogen er frit tilgængeligt
+materiale, som vi kalder bogsiden. Du kan gå til bogsiden for at se
+slid'sne for forelæsningerne. Endnu vigtigere dog er der kode, opgaver og en 
+stor mængde information gemt der. Der er faktisk måske 10 gange så meget som i bogen,
+inklusiv et sammendrag af indholdet. Derfor vil du i løbet af dette kursus referrere til
+bogsiden ofte mens du arbejder online. Folk spørger ofte omkring 
+forudsætninger. Vi antager at folk der tager dette kursus, kan programmere,
+og kender basis ting, som løkker, tabeller, funktioner. De har noget erfaring med
+objektorienteret programmering og rekursion. Vi bruger sproget Java, men vi dvæler
+ikke ved detaljerne omkring Java, vi bruger det mest som et eksempelsprog. Vi bruger noget
+matematik, men ikke avanceret matematik. Hvis du vil gennemse the materiale, som vi mener er en
+forudsætning for materialet i dette kursus, kan du tage en hurtig gennemgang ved
+at kigge på sektionerne 1.1 og 1.2 i bogen. Enten på bogsiden eller i 
+lærebogen. Hvis du vil have en dybdegående gennemgang har vi en hel læsebog kaldet: An
+Introduction to Programming in Java: An Inerdisciplinary Approach. Der er også en
+bogside og en lærebog. Men når alt kommer til skal du kunne
+programmere, og den hurtige måde at blive klar på, er at skrive et Java-program på din egen
+computer, måske ved at bruge en programmerings- model, som beskrevet på bogsiden. Vi
+vil give dig meget mere detaljeret information omkring det, som vi nærmer osopgaverne.
+Du kan bruge dit eget programmerings- system, hvis du allerede er fortrolig med et
+eller du kan downloade vores. Vi har instruktioner på internettet omkring hvordan man gør det.

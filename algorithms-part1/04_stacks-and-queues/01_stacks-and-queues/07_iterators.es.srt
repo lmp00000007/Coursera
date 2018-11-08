@@ -1,0 +1,339 @@
+1
+00:00:01,010 --> 00:00:06,509
+Bien. Hay otra particularidad que Java
+proporciona que conduce a un muy elegante
+
+2
+00:00:06,509 --> 00:00:11,759
+y compacto programa cliente que definitivamente
+vale la pena agregar a nuestros tipos básicos de datos
+
+3
+00:00:11,759 --> 00:00:17,058
+y els la iteración, de eso es de lo
+que vamos a hablar ahora. Entonces, lo que queremos 
+
+4
+00:00:17,058 --> 00:00:23,176
+hacer es permitirle al cliente iterar 
+a través de los items en una colección. Pero
+
+5
+00:00:23,364 --> 00:00:28,286
+el cliente no sabe si
+estamos usando un arreglo o una lista de enlaces o
+
+6
+00:00:28,286 --> 00:00:34,620
+cualquier otra representación interna que podamos
+tener en mente. No es relevante para el 
+
+7
+00:00:34,620 --> 00:00:41,189
+cliente. Y muchos de los clientes solo quieren
+iterar a través de las cosas en 
+
+8
+00:00:41,189 --> 00:00:47,304
+la colección. Pero Java provee una buena
+solución a esto llamada iteración. Entonces
+
+9
+00:00:47,304 --> 00:00:53,523
+lo que vamos a hacer es mirar cómo 
+hacer nuestras pilas, y colas y otras  
+
+10
+00:00:53,523 --> 00:00:58,914
+estructuras de datos que consideraremos después
+ para implementar la así llamada interfaz iterable
+
+11
+00:00:59,108 --> 00:01:05,662
+y funcionará para el programa cliente sin importar
+cuál implementación usemos. Veamos
+
+12
+00:01:05,662 --> 00:01:13,497
+en detalle esto. ¿Qué es 
+un iterable? Bueno, en jerga Java un
+
+13
+00:01:13,497 --> 00:01:20,914
+iterable es una clase que tiene un
+método que devuelve un iterador. Y entonces
+
+14
+00:01:21,182 --> 00:01:29,271
+¿qué es un iterador? Bueno, un iterador es
+algo, una clase que posee los métodos hasNext()
+
+15
+00:01:29,271 --> 00:01:37,519
+y next(). Java también permite remove()
+Pensamos que este último es una mala noticia, no lo
+
+16
+00:01:37,519 --> 00:01:45,861
+usamos porque puede conducir a muchos problemas 
+de debugging. Asi que, tenemos hasNext() y
+
+17
+00:01:45,861 --> 00:01:52,828
+next() para hacer la estructura de datos
+iterable. Vamos a implementar estas
+
+18
+00:01:52,828 --> 00:01:58,837
+cosas. Parece mucho equipaje para
+andar llevando y la razón por la que lo hacemos,
+
+19
+00:01:58,837 --> 00:02:04,768
+por la cual nos tomamos el trabajo de hacerlo
+es que podemos, si tenemos una estructura de datos
+
+20
+00:02:04,768 --> 00:02:10,795
+que sea iterable podemos usar un programa 
+cliente en Java, muy compacto y elegante, la así
+
+21
+00:02:10,795 --> 00:02:16,185
+llamada instrucción for-each. De modo que si tenemos una
+pila por ejemplo - (for String s:stack)
+
+22
+00:02:16,185 --> 00:02:22,587
+Significa que para cada cadena en la 
+pila - imprima. Y si no tuvieramos
+
+23
+00:02:22,587 --> 00:02:29,442
+eso, ahora lo tendríamos, si estuvieramos usando
+iteradores, podríamos adelantarnos y escribir
+
+24
+00:02:29,442 --> 00:02:35,550
+un largo codigo a mano que nunca nadie va a 
+hacer porque es equivalente a este
+
+25
+00:02:35,550 --> 00:02:42,710
+atajo o le podríamos hacer escribir al programa
+cliente que ya hace un montón de solicitudes
+
+26
+00:02:42,710 --> 00:02:48,386
+y envíos innecesarios que simplemente haga esta iteración. Entonces
+esta es la clave que nos habilita a tener un programa
+
+27
+00:02:48,386 --> 00:02:53,928
+cliente que es tan compacto para
+iterar a través de los items en la estructura
+
+28
+00:02:53,928 --> 00:02:59,370
+de datos por lo que vamos a proveerle
+iteración a todas nuestras estructuras básicas
+
+29
+00:02:59,370 --> 00:03:05,712
+de datos y no es tan difícil de hacer
+definitivamente vale el esfuerzo. Asi 
+
+30
+00:03:05,712 --> 00:03:12,877
+que aquí está como se vería para una lista de enlaces
+Entonces hay que implementar iterables y qué 
+
+31
+00:03:12,877 --> 00:03:19,470
+significa implementar iterable? Es
+que tiene que tener un método iterator() que
+
+32
+00:03:19,470 --> 00:03:25,017
+devuelva un iterador. Entonces ¿qué es un
+iterador? Vamos a usar una
+
+33
+00:03:25,017 --> 00:03:30,926
+clase interna. En este caso, la llamaremos
+Listiterator que implementa iterator y
+
+34
+00:03:30,926 --> 00:03:36,498
+es genérico. Y básicamente lo que esto 
+tiene que hacer es implementar esos métodos
+
+35
+00:03:36,498 --> 00:03:42,158
+hasNext() y next(). Y la semántica está
+clara por los nombres. hasNext() supone que
+
+36
+00:03:42,365 --> 00:03:47,917
+si hemos concluído debe devolver 
+falso. Si no hemos concluido, debería
+
+37
+00:03:47,917 --> 00:03:53,462
+devolver verdadero y next() debería darnos 
+el próximo item en la iteración. Entonces si
+
+38
+00:03:53,462 --> 00:03:58,973
+tenemos una lista enlazada vamos a 
+empezar por el primero. Tenemos este que
+
+39
+00:03:58,973 --> 00:04:04,896
+es nuestro primer item en la lista y vamos a
+mantener una instancia para la variable actual
+
+40
+00:04:04,896 --> 00:04:10,461
+dentro de este iterador que es el que
+actualmente estamos iterando. Entonces, toma el
+
+41
+00:04:10,461 --> 00:04:15,439
+siguiente de la misma manera en que si quisieramos
+remover el primero. Extraemos el item actual
+
+42
+00:04:15,439 --> 00:04:21,073
+y luego avanzamos la referencia actual y 
+devolvemos el item. Volviendo el siguiente lugar
+
+43
+00:04:21,073 --> 00:04:27,483
+el actual. El cliente siempre va a estar
+probando hasNext() tal como ya lo mostramos
+
+44
+00:04:27,483 --> 00:04:35,069
+y con ese código provisorio y cuando 
+se anula devuelve falso en la
+
+45
+00:04:35,069 --> 00:04:41,084
+parada de la iteración Pero para nuestra iteración
+solo tenemos que preocuparnos por la implementación
+
+46
+00:04:41,084 --> 00:04:47,952
+de next() y hasNext() y quizás usar una instancia
+de una variable local para conseguirlo. Tenemos
+
+47
+00:04:47,952 --> 00:04:54,457
+problablemente que hacer código a prueba de balas
+a través de excepciones, si un cliente intenta
+
+48
+00:04:54,457 --> 00:05:01,339
+llamar next() sin items e intenta
+usar remove(), no seremos capaces 
+
+49
+00:05:01,339 --> 00:05:07,326
+de dar respuesta a remove(). For y un arreglo for
+es una solución más simple. Así que ahora con el iterador
+
+50
+00:05:07,326 --> 00:05:13,041
+tenemos control sobre en qué orden vamos
+pasando a través de los items y eso
+
+51
+00:05:13,041 --> 00:05:18,834
+va a ir junto con la semántica y las estructuras de
+datos, así que probablemente en una pila quieras
+
+52
+00:05:18,834 --> 00:05:24,504
+conseguir las cosas en el orden que salen de
+la pila y eso es 
+
+53
+00:05:24,504 --> 00:05:31,686
+al revés del orden del arreglo, en ese caso
+next() va decreciendo y devuelve el 
+
+54
+00:05:31,686 --> 00:05:37,522
+siguiente y nuestra variable es el 
+indice del arreglo. Así, hasNext() 
+
+55
+00:05:37,522 --> 00:05:48,052
+sigue bien siempre y cuando sea positivo. 
+Con un poco [tose] de codigo Java nos provee
+
+56
+00:05:48,052 --> 00:05:55,229
+esta utilidad de iterar sin realmente
+tener que hacer demasiado trabajo y puedes
+
+57
+00:05:55,229 --> 00:06:02,108
+ver cómo implementarlo para tus propios
+tipos de datos y usaremos este paradigma para
+
+58
+00:06:02,108 --> 00:06:07,873
+cada tipo básico de tipo de dato que 
+involucre colecciones de objetos que 
+
+59
+00:06:07,873 --> 00:06:14,633
+podamos encontrar. Bien, de hecho, esto nos lleva
+a que para un montón de clientes
+
+60
+00:06:14,633 --> 00:06:20,905
+realmente no importa en que orden obtengamos
+los items. Muchas veces en realidad lo que hacemos es
+
+61
+00:06:20,905 --> 00:06:27,275
+simplemente insertar items en una colección
+y luego, más tarde, iterar a través de ellos
+
+62
+00:06:27,275 --> 00:06:34,410
+Esa estructura de datos es
+llamada una bolsa y veamos cómo 
+
+63
+00:06:34,410 --> 00:06:40,680
+se ve esa API. El orden no importa
+así que todo lo que vamos a hacer es agregar un item
+
+64
+00:06:40,913 --> 00:06:47,303
+a veces queremos saber el tamaño y 
+queremos iterar a través de todos los items
+
+65
+00:06:47,303 --> 00:06:53,986
+en la bolsa. Por tanto esta es una API mas simple
+y más pequeña pero igual expresa la importante
+
+66
+00:06:53,986 --> 00:07:00,370
+colección de operaciones y, y
+usaremos esta y lo que ya hemos visto
+
+67
+00:07:00,370 --> 00:07:06,512
+sobre implementaciones. Tomaremos la pila
+y quitaremos el meter, o el encolar y quitaremos el
+
+68
+00:07:09,792 --> 00:07:13,072
+desencolar [tose] y tendrán una buena
+imprementación de una útil estructura de datos.

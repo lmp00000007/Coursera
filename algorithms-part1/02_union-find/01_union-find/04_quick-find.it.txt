@@ -1,0 +1,96 @@
+Vediamo ora la nostra prima implementazione 
+di un algoritmo per risolvere il problema della connessione dinamica, chiamato Quick-find. 
+Questo algoritmo si definisce avido e risolve un problema in modo semplice. 
+La struttura dati che useremo per implementare l'algoritmo è semplicemente un array 
+di oggetti con indice intero. La valutazione è che i due oggetti P e Q
+sono connessi se e solo se le loro posizioni nell'array  sono le stesse. Così
+in questo esempio con i nostri dieci oggetti l'array ideale che descrive
+la situazione dopo sette connessioni è è illustrato a metà della diapositiva. 
+A questo punto, zero, cinque, e sei sono tutti nello stesso componente
+connesso, perché hanno tutti lo stesso valore dell'array, zero. Uno due e sette hanno
+tutti valore uno. E tre, quattro, otto e nove hanno tutti valore otto. Così
+questa rappresentazione mostra che sono connessi. Naturalmente questo fornisce 
+una implementazione veloce dell'operazione di ricerca. Noi controlliamo solamente i valori
+per vedere se sono uguali. Controllare se P e Q hanno lo stesso ID. Così sei e uno hanno
+differenti ID. Uno ha ID nove, sei ha ID zero. Non sono nel medesimo componente
+connesso. L'unione per poter fondere due componenti che contengono due oggetti dati
+è più complicata Dobbiamo cambiare tutti i valori, in modo che abbiano ID uguale a uno 
+di quelli dell'altro array. Arbitrariamente scegliamo di cambiare quelli che sono
+come P in quelli che sono come Q. Così se consideriamo di unire sei e uno,
+dobbiamo cambiare gli ingressi zero, cinque e sei. Ogni elemento nella stessa componente
+connessa ha lo stesso valore di sei. Da zero ad uno. Questo come vedremo, rappresenta un
+problema quando si ha un ampio numero di oggetti, perché ci sono molti valori
+che possono cambiare. Però è facile da implementare, così iniziamo da qui.
+Iniziamo con la dimostrazione di come funziona. Inizialmente impostiamo
+l'ID dell'array, ogni ingresso uguale al proprio indice. Questo ci dice che tutti 
+gli oggetti sono indipendenti. Sono connessi con se stessi. Adesso 
+facciamo una operazione d'unione. Poniamo che quattro sia collegato a tre.Di conseguenza 
+dobbiamo cambiare tutti gli ingressi che abbiano ID uguale al primo ID con il secondo ID.
+Così in questo caso, cambieremo il tre e il quattro che sono connessi, significa
+che dobbiamo cambiare il quattro in tre. Ne faremo ancora qualcuno, così vi farete
+un'idea di come funzioni. Occupiamoci di tre e otto. Così sono connessi, ed
+ora devono essere connessi ad otto. Così entrambe questi valori devono
+cambiare in otto. Okay? Ora cosa diciamo di sei e cinque? Di nuovo cambiamo
+il primo per fare il paio con il secondo. Così per connettere sei e cinque cambiamo il sei
+con un cinque. Cosa dire di nove e quattro? Ora dobbiamo cambiare la connessione di nove
+e quattro, quindi il valore di nove perché diventi lo stesso di quattro. Ora abbiamo tre
+quattro, otto e nove. Tutti hanno valore otto. Sono tutti nello stesso elemento connesso.
+Due ed uno significano che possiamo connettere due ed uno cambiando il due in uno.
+Otto e nove sono già connessi hanno lo stesso ingresso nell'array. Così se
+ci chiediamo se siano connessi, la ricerca dice sì sono già connessi. Cinque e zero
+hanno ingressi differenti. Non sono connessi e la ricerca torna il valore falso
+cioè, non connesso. Allora se vogliamo connettere cinque e zero, come al solito, dobbiamo
+connettere gli ingressi in modo che corrispondano per entrambe, cinque
+e sei a zero. Vediamo sette e due e uniamoli. Questo è facile. Uniamo sei ed uno,
+così ci saranno tre ingressi da cambiare. Tutti questi zero devono essere
+cambiati in uno. Questa è una veloce dimostrazione di Quick-find. Ora diamo un'occhiata al codice
+per implementarlo. Bene, con questo caso concreto in mente ci muoviamo
+verso il codice di questo algoritmo che è piuttosto diretto. Sebbene sia un esercizio
+di programmazione interessante molti di voi lo sbaglieranno la prima volta.
+Iniziamo con il costruttore Abbiamo un array d'interi privato. Che
+sarebbe il nostro array di ID. Questa è la struttura dati che mantiene questa implementazione.
+Il costruttore deve creare l'array, attraversarlo e inizializzare i valori
+uguali all'indice corrispondente uno ad uno. Questo è immediato. L'operazione
+di ricerca, o di connessione, è quella facile. Questo è l'algoritmo
+Quick-find. Semplicemente prende due argomenti, P e Q, e controlla se i
+loro valori di ID sono uguali, e restituisce quel valore. Se sono uguali restituisce vero.
+Se non sono uguali restituisce falso. L'operazione più complicata
+da implementare è l'unione. Così prima troviamo l'ID corrispondente con il primo argomento,
+e poi l'ID corrispondente al secondo argomento. Poi percorriamo
+tutto l'array per cercare gli elementi con ID uguale all'ID del
+primo elemento, e li impostiamo con il valore dell'ID del secondo elemento.
+Questa è una realizzazione piuttosto diretta. Ho detto che molti di voi avrebbero fatto errori.
+L'errore che possiamo fare è mettere l'ID di P qui prima di selezionarlo.
+Potete immaginare con quali implicazioni. E' un errore
+insidioso. Questa è una buona implementazione di Quick-find, così
+la prossima cosa da decidere è quanto efficace o efficiente sia questo algoritmo. 
+Vedremo prossimamente alcuni dettagli di come farlo, per ora sarà sufficiente pensare
+al numero di volte che codice deve accedere all'array. Come
+abbiamo visto mentre lo realizzavamo entrambe le operazioni di inizializzazione ed unione utilizzazano
+il ciclo for che scandisce tutto l'array. Così devono raggiungere una costante
+proporzionale a n volte dopo aver visitato l'ingresso dell'array. L'operazione find è veloce
+controlla solo un numero di volte costante gli ingressi dell'array. Questo è un problema
+perché l'operazione di unione è troppo costosa, in particolare, se si hanno
+N comandi di unione su N oggetti, che non è irragionevole. Che siano connessi o no
+ci vorrà sempre un tempo elevato al quadrato E uno dei temi che affronteremo
+più e più volte in questo corso è che un tempo al quadrato
+è troppo lento. Non possiamo accettare un tempo al qudrato per algoritmi per risolvere problemi di grandi dimensioni.
+Il problema è che il tempo non diminuisce. Anche se i computer diventano più veloci e più capaci,
+gli algoritmi quadratici in realtà diventano più lenti. Parliamo un po di cosa intendo.
+In modo grossolano diciamo, per ora che le persone hanno computer che possono
+eseguire miliardi di operazioni al secondo e mantengono miliardi di dati nella
+memoria principale.Questo significa Significa che potresti accedere ad ogni dato
+della memoria principale in circa un secondo. E' un fatto piacevole che questo standard grossolano
+abbia tenuto per 50 o 60 anni. I computer diventano più grandi ma diventano più veloci, così per
+accedere ad ogni dato nella memoria ci vorranno pochi secondi. E' vero quando i computer
+hanno poche migliaia di parole ed è vero quando, come ora, ne hanno
+miliardi e più. Diciamo che questa è una rappresentazione di come appare un computer. Significa che
+con una memoria così grande, noi possiamo indirizzare problemi altrettanto grandi. Così potremmo
+avere miliardi di oggetti, e sperare di fare su di essi, miliardi di operazioni di unione.
+Ma il vero problema con l'algoritmo di ricerca veloce è che ci vorrebbero 10^18 operazioni, o accessi all'array o accessi di memoria. Se fate il calcolo matematico,
+il tempo impiegato sarebbe di circa 30 anni di tempo macchina. Ovviamente non è pratico
+affrontare un tale problema con i computer attuali. Il problema reale è che gli algoritmi quadratici
+non migliorano le prestazioni con la tecnologia. Potreste avere un nuovo computer, diciamo dieci volte più veloce e affrontare un problema che sia dieci volte
+più grande. Ma con l'algoritmo quadratico, vedrete che sarà dieci volte più lento.
+Questo è il tipo di situazione che cercheremo di evitare
+per sviluppare algoritmi più efficienti per risolvere problemi come questo.

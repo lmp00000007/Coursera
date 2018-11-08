@@ -1,0 +1,162 @@
+Bentornati. Oggi parleremo 
+di algoritmi e strutture dati che implementano dei tipi di dati fondamentali chiamati bags,
+queues  o code e stacks. Forse ne hai già sentito parlare, ma oggi
+ le analizzeremo più da vicino. In molte applicazioni abbiamo collections  -  insieme di oggetti 
+dello stesso tipo, eventualmente con ripetizioni - di oggetti  che vogliamo mantenere. E le
+ operazioni sono molto semplici. Vogliamo aggiungere nuovi oggetti alla collection, forse 
+rimuovere oggetti e iterare fra tutti gli oggetti della collection, eseguendo
+ un'operazione su ciascuno di essi, e naturalmente, controllare se è vuoto. Per quasi tutte
+ le operazioni il significato è chiaro. Il problema riguarda la rimozione di un elemento.
+ Quale elemento rimuoviamo? Le due strutture dati classiche fondamentali,
+ lo stack e la queue differiscono per il modo in cui viene scelto l'elemento da rimuovere.
+Per quello che riguarda lo stack, estraiamo l'ultimo elemento aggiunto. Chiameremo
+ push l'operazione che usiamo per inserire un elemento e pop l'operazione per rimuovere l'ultimo
+ elemento aggiunto. Questo tipo di comportamento è chiamato LIFO last-in-first-out cioè 
+ultimo-dentro-primo-fuori. Per la queue, estraiamo l'elemento più vecchio e chiamiamo inqueue l'operazione che 
+usiamo per inserire un elemento e dequeue l'operazione per rimuovere un elemento. 
+Chiamiamo questo comportamento FIFO first-in- first-out cioè primo-dentro-primo-fuori. Vedremo adesso 
+come implementare queste operazioni. Impareremo a programmare 
+in modo modulare. E useremo la programmazione modulare durante 
+tutto il resto del corso. Il concetto fondamentale è di separare 
+l'interfaccia dall'implementazione. Ovvero quando abbiamo dei tipi di strutture dati
+ben definite come stacks and queues, 
+vogliamo nascondere completamente i dettagli dell'implementazione al client - programma utilizzatore -.
+Il client potrebbe avere molte implementazioni diverse fra cui scegliere, 
+ma il codice del client dovrebbe eseguire solo le operazioni base. 
+L'implementazione, d'altro lato non conosce in dettaglio le esigenze del client, tutto 
+quello che deve fare è implementare queste operazioni. In questo modo, molti client possono 
+riusare la stessa implementazione. Questo principio ci permette di creare librerie modulari 
+riutilizzabili di algoritmi e strutture dati che possiamo poi utilizzare per costruire 
+algoritmi e strutture dati più complesse. Ci permette anche di focalizzare la nostra attenzione 
+sulle prestazioni, se necessario, Questo stile di programmazione modulare è reso 
+possibile dai linguaggi di programmazione object-oriented come Java e saremo molto
+ disciplinati nel seguire questo stile. Bene. Parliamo di stacks. [colpo di tosse]. 
+Gli stacks sono comuni, molti di voi hanno probabilmente implementato stacks in un
+corso di programmazione introduttivo, ma qui faremo una introduzione approfondita 
+dell'implementazione. Come riscaldamento, immaginiamo di avere una stringa, una 
+collection di stringhe. Queste possono essere corte, possono essere lunghe e 
+vogliamo salvare una collection di stringhe e di tanto in tanto rimuovere 
+e restituire quella aggiunta più di recente e anche di controllare se è vuota. Ecco qui le nostra 
+API - Application Programming Interface -. Abbiamo un costruttore per creare uno stack vuoto, un metodo 
+per inserire una stringa chiamato push che prende una stringa come parametro. Per rimuovere 
+un elemento abbiamo un metodo chiamato pop che restituisce la stringa aggiunta più di recente. E abbiamo 
+il controllo per la stringa vuota che restituisce un Boolean. In alcune applicazioni, vogliamo anche
+includere la dimensione dello stack. Così come sempre, prima vediamo un esempio
+ di client, il nostro semplice client leggerà delle stringhe 
+dallo standard input e eseguirà dei comandi pop indicati dal trattino -.
+Quindi il nostro client leggerà delle stringhe dallo standard input. Se la stringa è uguale
+al carattere -, eseguirà un'operazione pop per avere la stringa in cima allo stack e
+la visualizzerà sull'output. Altrimenti, se la stringa non è uguale al trattino, farà il push
+della stringa sullo stack. Così nell'esempio qui sotto, se abbiamo un
+file chiamato tobe.txt, quello che il client farà, sarà fare push di "to", "be", "or", "not", "to" 
+sullo stack poi c'è il trattino che rimuoverà l'elemento inserito più recentemente
+che in questo caso è "to" poi farà push di "b" sulla cima dello stack
+e poi farà pop dell'elemento in cima allo stack che adesso è "b" e poi farà di nuovo pop dell'elemento
+aggiunto più di recente, "b" non c'e più, "to" non c'è quindi il successivo è "not" e così via. Questo è
+un semplice client di test che useremo per fare i tests delle nostre implementazioni. Adesso
+commentiamo il codice per implementare lo stack. La prima implementazione che
+esamineremo usa le linked list. Se non sai cos'è la linked list, ripassala
+nella sezione 1.3 nel libro o nel libro "Introduction to Programming
+ Java". Anche se conosci la linked list, è utile esaminare questo
+codice perché introduce lo stile di programmazione che useremo per tutto il corso anche per 
+strutture dati più complicate. Quindi l'idea è di avere una linked list che
+consiste di nodi che contengono le stringhe come elemento e hanno un puntatore - link-
+all'elemento successivo nella lista. Per implementare uno stack, quando abbiamo una operazione push,
+inseriamo un nuovo nodo all'inizio della linked list e quando facciamo un'operazione di pop
+rimuoviamo il primo nodo all'inizio della linked list, cioè l'elemento aggiunto più 
+recentemente. Guardiamo il codice Useremo le linked list per tutte le
+ strutture linkate attraverso il corso. Usiamo una class 
+inner (nidificata) in Java per descrivere gli oggetti "nodo" 
+che vogliamo monipolare, ognuno dei quali consiste in una stringa e un puntatore 
+a un altro nodo. Quindi, l'operazione pop con le linked list è molto facile da implementare.
+ [colpo di tosse]. Per prima cosa dobbiamo restituire il primo elemento della lista, quindi,
+lo salviamo.Prendiamo  first.item  e lo salviamo nella variabile item. Poi
+per sbarazzarci del primo nodo, facciamo semplicemente puntare il puntatore al primo elemento della lista
+al secondo elemento (il reference del primo), così la memoria occupata dal primo nodo può essere 
+recuperata dal garbage collector. E infine, l'ultima cosa che dobbiamo fare è 
+restituire l'elemento che abbiamo salvato. Bene, questa è l'operazione pop. E l'operazione 
+push? [colpo di tosse]. Per l'operazione push vogliamo aggiungere un nuovo nodo
+all'inizio della lista. Così, per prima cosa dobbiamo salvare il puntatore
+all'inizio della lista. cioè oldfirst = first Poi creiamo un nuovo nodo, 
+che sarà il nuovo nodo che all'inizio della lista, cioè first = new Node(). E poi settiamo le sue variabili d'istanza. Le sue componenti
+ saranno item, la stringa che vogliamo mettere all'inizio della lista, in questo caso, "not". 
+E il suo puntatore next sarà = a oldfirst della lista che adesso è il secondo elemento della
+lista. Così, con questa operazione, puntiamo all'inizio della lista e abbiamo gli elementi
+della lista in ordine decrescente dal più nuovo al più vecchio. 
+Queste sono le quattro linee di codice per implementare l'operazione di push sullo stack.
+Questa è una completa implementazione di una linked list di tutto il codice per implementare 
+una link list per uno stack di stringhe in Java. E' una classe il cui 
+costruttore non deve fare niente, quindi non c'è bisogno del costruttore esplicito. Abbiamo questa
+inner class che usiamo per costruire gli elementi della linked list e abbiamo fatto una inner class in 
+modo da poterci direttamente riferire alle sue variabili di istanza. E la solo variabile
+ d'istanza dello stack è il puntatore al primo nodo della lista che
+all'inizio sarà uguale a null. Quindi l'operazione isEmpty, controlla semplicemente se il
+il primo nodo della lista è uguale a null e poi push è costituito dalle quattro linee di codice che vi ho mostrato
+nella trasparenza precedente e pop è costituita dalle tre line di codice che vi ho mostrato nella trasparenza
+ancora prima. Questa è un'implementazione completa della linked list che funzionerà 
+come un'implementazione dello stack per ogni client. Adesso possiamo 
+analizzarne le prestazioni in modo da dare ai clients informazioni 
+su quanto bene le operazioni della struttura dati eseguono. In questo caso 
+è facile accorgersi che ogni operazione impiega un tempo costante anche nel caso peggiore.
+Ci sono poche istruzioni per ognuna delle operazioni, non ci sono cicli.
+Questo è ovviamente una caratteristica desiderabile. Cosa possiamo dire sull'uso 
+della memoria? Questo dipende molto dall'implementazione della macchina, quindi faremo
+l'analisi su una tipica implementazione di Java e  la confronteremo facilmente con diversi
+tipi di ambiente In Java c'è un over head di sedici bytes 
+per ogni oggetto di una inner class. C'è un ulteriore overhead, 8 bytes, perché è una inner class e poi ci sono 
+i due riferimenti che costruiamo nella nostra classe Node. Uno alla stringa e un altro 
+al nodo successivo e questi occupano ognuno otto bytes. Così abbiamo 40 bytes per ogni nodo, 
+dello stack quindi, se abbiamo uno stack di dimensione n, avremo circa 40n bytes.C'è ancora un piccolo 
+overhead per il puntatore first, ma è un overhead unico per tutto lo stack. Se n è grande, 40n 
+è una stima molto precisa della quantità di memoria usato. Questa stima non include lo
+spazio per le stringhe stesse che sono di proprietà del client. Con questo, possiamo
+fissare il costo di questa implementazione per diversi programmi client. il tempo è costante ma c'è un'implementazione più veloce dello stack
+e poiché lo stack è usato nei cicli interni di alcuni algoritmi, è importante pensare a
+implementazioni più veloci. E un altro modo facile per implementare uno stack consiste nell'usare
+un array per conservare gli elementi sullo stack quindi esaminiamolo. L'alternativa fra strutture linked e arrays è fondamentale e 
+si presenterà ancora e ancora quando considereremo strutture dati più 
+complicate negli algoritmi. Quindi analizziamo questa implementazione nel caso facile dello stack
+per farci una prima idea per strutture più complicate poi. Bene,
+se usiamo un'array mettiamo gli n elementi sullo stack nell'array e
+la posizione n è la cima dello stack dove il prossimo
+elemento verrà messo. Così per l'operazione push aggiungiamo un nuovo elemento s[n], per pop
+rimuoviamo l'elemento a s[n-1] e decrementiamo n. C'è un problema fondamentale
+nell'usare un array e ed è che bisogna dichiarare la dimensione dell'array
+all'inizio e così lo stack avrà una capacità finita. E se ci sono più elementi sullo
+stack della capacità dobbiamo occuparci di questo problema e questo è un
+problema fondamentale che dovremo affrontare con le implementazioni che usano array sia
+negli algoritmi che nelle strutture. Quindi considerarlo ora nel caso semplice ci 
+aiuterà in seguito. Bene, ecco l'implementazione dello stack che usa
+un array. Adesso abbiamo una variabile d'istanza che consiste in un
+array di stringhe e una variabile n che rappresenta sia la dimensione dello stack che
+l'indice della posizione successiva, la prossima posizione libera sullo stack. Questa volta c'è un
+costruttore e il costruttore crea l'array. Adesso, stiamo barando in questa 
+implementazione per tenerla semplice e ci occuperemo di ciò in seguito. Per ora 
+chiediamo al client di fornirci la capacità dello stack. In qualche applicazione
+questo può andare bene, ma nella maggior parte delle applicazioni è un requisito troppo oneroso
+e il client può non  sapere quanto sarà grande lo stack. In più il client potrebbe
+avere molti stack da gestire contemporaneamente e magari queste raggiungono 
+la massima capacità in tempi diversi e altro ancora. Quindi dovremo rimuovere la 
+semplificazione e lo faremo. Ma il codice è banale, se abbiamo la capacità. Per 
+controllare se lo stack è vuoto, controlliamo se n è uguale a zero. Per l'operazione push usiamo n come
+posizione dell'array per il nuovo elemento e poi incrementiamo n. In molti linguaggi di 
+programmazione moderni c'è un'istruzione per usare l'indice e incrementarlo. Per l'operazione pop
+decrementiamo l'indice e poi lo usiamo per restituire l'elemento. Ogni operazione
+è di una linea e questa è una operazione adeguata per alcuni clients.
+Questa è l'implementazione dello stack che usa l'array ma non è conforme alla specifica perché richiede al 
+client la capacità. Quindi cosa possiamo fare per questo? Bene, ci
+sono ancora un paio di cose che non abbiamo considerato. Non abbiamo previsto il codice
+per lanciare un'anomalia se il cliente esegue pop da uno stack vuoto. Probabilmente dovremmo lanciarla
+anche per overflow, che può succedere quando il client mette un elemento di troppo, ma parleremo più
+avanti di un approccio per ridimensionare gli array che ci permette di evitare l'overflow. 
+Dobbiamo anche decidere se permettere al client di inserire elementi nulli 
+nella struttura dati. In questo caso permettiamo al client di inserire elementi nulli In Java 
+dobbiamo preoccuparci anche del problema dei riferimenti a oggetti nella nostra implementazione con gli array
+che non sono più utilizzati. Infatti quando decrementiamo l'indice, nella posizione 
+indice c'è ancora un puntatore alla cosa che abbiamo rimosso dallo stack che resta nell'array. Noi sappiamo che 
+non stiamo più usando il puntatore ma il sistema Java no. Per permettere un uso più efficiente della
+memoria la cosa migliore è assegnare a questo [colpo di tosse] elemento
+rimosso null così non rimane nessun riferimento al vecchio elemento e quindi il garbage
+collector può recuperare la memoria perché non ci sono puntatori attivi.
+Questo è un dettaglio importante di cui dobbiamo preoccuparci nella nostra
+implementazione per essere sicuri che stiamo facendo un uso efficiente della memoria.

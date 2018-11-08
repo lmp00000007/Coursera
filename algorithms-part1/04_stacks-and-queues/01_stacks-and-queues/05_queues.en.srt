@@ -1,0 +1,283 @@
+1
+00:00:02,501 --> 00:00:07,071
+Okay, next we'll briefly consider
+queue implementations using
+
+2
+00:00:07,071 --> 00:00:10,182
+the same basic underlying data structures.
+
+3
+00:00:10,182 --> 00:00:14,552
+So here's the corresponding API for
+QueueOfStrings.
+
+4
+00:00:14,552 --> 00:00:20,723
+Actually it's the same API as for
+stacks, just the names are different.
+
+5
+00:00:20,723 --> 00:00:25,827
+Instead of push we have enqueue
+instead of pop we have dequeue.
+
+6
+00:00:25,827 --> 00:00:31,593
+And the semantics is different, for
+enqueue we add an item say at the end
+
+7
+00:00:31,593 --> 00:00:37,089
+of the queue, and for dequeue we
+remove an item from the beginning.
+
+8
+00:00:37,089 --> 00:00:41,122
+It's as if you're waiting
+in line to buy a ticket.
+
+9
+00:00:41,122 --> 00:00:43,339
+When you're enqueue you go at the end, and
+
+10
+00:00:43,339 --> 00:00:47,044
+when the one that's been in there
+the longest is the one that comes off.
+
+11
+00:00:47,044 --> 00:00:54,072
+So lets look at how we implement those,
+first using linked list and then arrays.
+
+12
+00:00:54,072 --> 00:00:58,377
+So now our representation of
+a queue with a length list,
+
+13
+00:00:58,377 --> 00:01:02,144
+we need to maintain two pointers,
+references.
+
+14
+00:01:02,144 --> 00:01:07,243
+One, to the first item in the list and
+the other to the last item in the list.
+
+15
+00:01:07,243 --> 00:01:08,126
+When we insert,
+
+16
+00:01:08,126 --> 00:01:12,108
+we're going to add the item at the end
+of the list instead of at the beginning.
+
+17
+00:01:12,108 --> 00:01:17,050
+And when we remove, we'll do the same,
+we'll take it off at the front.
+
+18
+00:01:17,050 --> 00:01:22,234
+So here's the implementation of dequeue.
+
+19
+00:01:22,234 --> 00:01:26,688
+It's identical to the code for
+pop for a stack.
+
+20
+00:01:26,688 --> 00:01:32,583
+We save away the item, we delete the first
+node by advancing the reference and
+
+21
+00:01:32,583 --> 00:01:35,677
+then we return the item, so identical.
+
+22
+00:01:35,677 --> 00:01:40,580
+To add a note, or enqueue,
+add a new note to a linked-list.
+
+23
+00:01:40,580 --> 00:01:48,016
+We want to put it at the end, so
+that will be the last one returned.
+
+24
+00:01:48,016 --> 00:01:50,666
+So we, to add it at the end, so
+
+25
+00:01:50,666 --> 00:01:55,555
+first thing we need to do is save a link,
+the last node.
+
+26
+00:01:55,555 --> 00:02:00,264
+We're going to need that because
+we need to change it's reference
+
+27
+00:02:00,264 --> 00:02:02,802
+from null to point to the new node.
+
+28
+00:02:02,802 --> 00:02:07,964
+Then we'll create a new node for
+the end of the list.
+
+29
+00:02:07,964 --> 00:02:13,448
+We'll populate its fields and
+then that old link
+
+30
+00:02:13,448 --> 00:02:19,609
+will change that from null to
+a pointer to the new node.
+
+31
+00:02:19,609 --> 00:02:23,151
+So again, just a few lines of code,
+
+32
+00:02:23,151 --> 00:02:28,002
+[COUGH] that's basic
+linked-list processing.
+
+33
+00:02:28,002 --> 00:02:33,779
+Actually years ago when we taught courses
+in algorithms and data structures,
+
+34
+00:02:33,779 --> 00:02:38,867
+much of the course would be about
+this kind of pointer manipulation.
+
+35
+00:02:38,867 --> 00:02:45,159
+But nowadays that's restricted to just
+a few implementations like stack and
+
+36
+00:02:45,159 --> 00:02:49,431
+queue and
+a few other fundamental data structures.
+
+37
+00:02:49,431 --> 00:02:55,701
+So we don't need so much any more general
+programs for manipulating linked-lists.
+
+38
+00:02:55,701 --> 00:03:00,531
+We encapsulate them in basic
+data types like these.
+
+39
+00:03:00,531 --> 00:03:06,089
+All right, so let's go back to
+our full implementation and
+
+40
+00:03:06,089 --> 00:03:12,997
+this is just taking care of collecting
+the code from the previous slides.
+
+41
+00:03:12,997 --> 00:03:19,045
+But also taking care of special
+cases when the queue is empty.
+
+42
+00:03:19,045 --> 00:03:23,902
+To make sure that if the queue
+is empty after we move an item
+
+43
+00:03:23,902 --> 00:03:26,141
+we gotta set last to null.
+
+44
+00:03:26,141 --> 00:03:30,461
+Make sure that both first and
+last are always what we want them to be.
+
+45
+00:03:30,461 --> 00:03:35,451
+So those are details
+that are easy to check.
+
+46
+00:03:35,451 --> 00:03:36,729
+Okay, what about arrays?
+
+47
+00:03:36,729 --> 00:03:39,229
+Well, we won't do the details, but
+
+48
+00:03:39,229 --> 00:03:44,079
+it's not difficult to implement
+queues with resizing arrays as well.
+
+49
+00:03:44,079 --> 00:03:45,365
+Not difficult, but
+
+50
+00:03:45,365 --> 00:03:50,139
+a definitely tricky programming exercise
+that people are welcome to try.
+
+51
+00:03:50,139 --> 00:03:54,584
+So we'll maintain two pointers,
+the first item in the queue and
+
+52
+00:03:54,584 --> 00:03:58,800
+the tail, which is the position for
+the next item to appear.
+
+53
+00:03:58,800 --> 00:04:01,765
+So for enqueue, you add a new item a tail.
+
+54
+00:04:01,765 --> 00:04:04,501
+And for dequeue you remove an item for
+a head.
+
+55
+00:04:04,501 --> 00:04:08,681
+And the trick is that once
+you get past the capacity,
+
+56
+00:04:08,681 --> 00:04:11,152
+you have to reset back to zero.
+
+57
+00:04:11,152 --> 00:04:14,584
+And so that's a little extra code, and
+
+58
+00:04:14,584 --> 00:04:19,264
+then you have to add the resizing
+capability as well to
+
+59
+00:04:19,264 --> 00:04:23,851
+implement the data structure
+the same as for stack.
+
+60
+00:04:23,851 --> 00:04:27,498
+And we'll leave that as an exercise.

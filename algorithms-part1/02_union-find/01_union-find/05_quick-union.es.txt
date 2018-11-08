@@ -1,0 +1,70 @@
+¡Muy bien! Así que QuickFind es demasiado lento para
+problemas grandes. Entonces, ¿cómo vamos a hacerlo mejor? Nuestro primer intento es una
+alternativa llamada, Quick-union. Este es el llamado enfoque perezoso al diseño de
+algoritmos donde intentamos evitar hacer el trabajo hasta que tengamos que hacerlo. Usa la misma
+estructura de datos o array ID de tamaño M pero ahora tiene una interpretación distinta. Vamos a
+pensar en el array como una representación de un conjunto de árboles llamados
+un bosque como se muestra a la derecha. Así que cada entrada en el array va a contener una
+referencia a su padre en el árbol. Así, por ejemplo, el padre de 3 es cuatro, el padre
+de 4 es 9. Entonces la entrada de 3 es cuatro y la entrada de 4 es nueve en el array. Ahora cada
+entrada en el array tiene asociada a ella una raíz. Esa es la raíz de su árbol.
+Los elementos que están por sí mismos en sólo sy propio componente conectado,
+apuntan a sí mismos, así que "uno" apunta a sí mismo pero "nueve" también apunta a sí mismo.
+Es la raíz del árbol, que contiene "dos", "cuatro" y "tres". Así que, desde esta estructura
+de datos podemos asociar con cada ítem una raíz, que es representativa, digamos, de
+su componente conectado. Así pues la raíz de "tres" es "nueve", subiendo a esa raíz.
+Ahora, una vez podemos calcular esas raíces, entonces podemos implementar la operación de
+encontrar simplemente comprobando si los dos ítems con los que se supone tenemos que comprobar
+son conectivos donde tienen la misma raíz. Eso es equivalente a decir, ¿están en
+el mismo componente conectivo? Eso es algo de trabajo, encontrar las raíces de cada
+ítem pero la operación de unión es muy fácil. Para combinar componentes que contengan
+dos ítems diferentes. Dos ítems que están en diferentes componentes. Todo lo que hacemos es
+fijar el ID de la ruta de P al ID de la ruta de Q. Vamos a hacer que el árbol de P apunte a Q. En este
+caso, cambiaríamos la entrada de "nueve" a "seis" para combinar "tres" y "cinco". Los
+componentes que contiene "tres" y "cinco". Y con sólo cambiar un valor en el array conseguimos
+que los dos componentes grandes emerjan juntos. Ese es el algoritmo Quick-union.
+Porque una operación de unión sólo implica cambiar una entrada en el array.
+La operación de encontrar requiere un poco más de trabajo. Vamos a ver la implementación,
+una demo de esa en funcionamiento primero. De nuevo empezamos de la misma forma pero ahora
+la idea de entrada de array significa en realidad que cada una de estas cosas es un pequeño árbol
+donde el nodo "uno" de cada uno de ellos apunta a sí mismo. Es la raíz de su propio árbol
+así que ahora si tenemos que poner cuatro y tres en el mismo componente, entonces todo lo que hacemos
+es tomar la raíz del componente que contiene el primer ítem y hacerlo hijo de la
+raíz del componente que contiene el segundo ítem. En este caso
+simplemente hacemos a cuatro padre de tres. Ahora tres y ocho. Así que de nuevo, tomamos el
+primer ítem y lo hacemos hijo de la raíz del árbol que contiene el segundo ítem. Así
+ahora tres, cuatro, y ocho están en el mismo componente. Seis y cinco, seis va debajo de
+cinco. Nueve y cuatro, ahora cuatro es la raíz del árbol que contiene cuatro es ocho.
+Y la raíz del árbol que contiene nueve es nueve. Así que hacemos nueve un hijo de
+ocho. Dos y uno, ése es fácil. Ahora si tomamos nuestro, nuestro ocho y nueve
+conectados, simplemente comprobamos que tienen la misma raíz y ambos tienen la misma
+raíz ocho y por tanto están conectados. Cinco y cuatro su raíz cuarta es 8. La raíz quinta es
+cinco. Son diferentes. No están conectados. Cinco y cero. Cinco va a ser
+un hijo de cero. Siete y dos siete va a ser un hijo de la raíz de dos que es uno. ruta, por eso cero se convierte en hijo de uno.
+Cada una de estas operaciones de unión sólo afecta a cambios en una entrada del array.
+Y finalmente, siete y tres. Por eso la raíz de siete es uno, la raíz de tres es ocho, uno
+se convierte en hijo de ocho. Bien y ahora tenemos uno conectado con todos los elementos
+juntos. Muy bien, por eso ahora vamos a ver el código para implementar Quick-union.
+El constructor es el mismo que en el otro. Creamos el array y entonces colocamos
+cada elemento para que sea su propia raíz. Ahora tenemos un método privato que implementa este
+proceso de encontrar la raíz siguiendo los punteros padre hasta que llegamos al punto
+donde I es igual a ID o I, y si no es igual, sólo movemos I un nivel por encima en
+el árbol, poner I igual a ID de I y devolverlo. Por eso empezando en cualquier nodo, sólo 
+tienes que seguir ID igual a ID o I hasta que son iguales y entonces estás en una raíz y es
+un método privado que podemos utilizar para implementar la operación de localizar o la 
+operación de conectar. Sólo encuentras la raíz de P y la raíz de Q y si
+compruebas si son iguales. Y entonces la operación de unión es simplemente encontrar las dos raíces I
+y entonces fijar la idea de que el primero podría ser el el segundo. En realidad, menos código que 
+para Quick Find, no más bucles. Hay un bucle del que tenemos que preocuparnos
+un poco. Pero es una rápida y elegante implementación de código para resolver
+el problema de conectividad dinámica llamado Quick-union. Por eso ahora vamos a tener que
+ver si ¿es efectivo este código para problemas grandes? Bueno desafortunadamente
+la Quick-union es más rápida, pero es también demasiado lenta. Y es una forma un poco diferente de
+ser demasiado lenta entonces para Quick Find, hay veces en las que puede ser rápida, pero también
+hay veces en las que puede ser demasiado lenta. Y el defecto para Quick-union es que los
+árboles pueden llegar a ser demasiado altos. Lo que significaría que la operación de localización sería demasiado
+cara. Podrías terminar con un largo y delgado árbol. De cada objeto que apunta sólo
+al siguiente y entonces para hacer una operación de localización para los objetos al fondo prodría significar
+recorrer todo el camino a lo largo del árbol Costos involucrados en los ejes del rayo sólo
+para ejecutar la operación de búsqueda y esta
+estaría sería demasiado lento si se tienen muchas operaciones.

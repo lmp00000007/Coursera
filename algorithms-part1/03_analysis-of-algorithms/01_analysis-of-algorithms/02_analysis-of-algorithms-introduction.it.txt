@@ -1,0 +1,89 @@
+Ben ritrovati. Oggi ci occuperemo un po' di
+matematica e un po' di scienza. Non molto, ma abbiamo bisogno di una base scientifica per
+comprendere la performance dei nostri algoritmi per poterli utilizzare opportunamente in pratica.
+Perciò oggi parleremo di come osservare le caratteristiche della
+performance degli algoritmi. Vedremo come è possibile costruire modelli matematici
+e come classificare gli algoritmi a seconda dell'ordine di grandezza del loro tempo di
+esecuzione. Parleremo un po' della teoria degli algoritmi e inoltre come analizzare l'utilizzo della
+memoria. Quindi per contestualizzare tutto ciò, analizzeremo queste questioni
+dal punto di vista di diversi ruoli. Allora, il primo è il programmatore
+che deve risolvere un problema e farlo funzionare e implementarlo.
+Il secondo è il cliente che vuole usare il qualsivoglia programma per poter completare
+il lavoro.  Il terzo è il teorico, uno che vuole capire per davvero
+che cosa accade. E l'ultimo è, per così dire, il gruppo. Questo
+lavoro di base da mediano a volte è necessario per passare dal dire al fare.
+Così, c'è un po' di ognuno di questi nella lezione di oggi. E effettivamente
+quando sei uno studente devi pensare che un giorno potresti essere uno
+qualsiasi di questi ruoli. Quindi è abbastanza importante capire i diversi
+punti di vista. Allora, il punto su cui ci soffermeremo è il tempo di esecuzione. E effettivamente
+l'idea di comprendere il tempo di esecuzione di una computazione risale addirittura a
+Babbage e forse anche prima. Ed ecco una citazione di Babbage: "Quando la prima macchina
+analitica sarà costruita, necessariamente guiderà il corso futuro della
+scienza. Ogni volta che si cercherà di arrivare ad un risultato con il suo aiuto, verrà posta la questione:
+per mezzo di quale percorso di calcolo questi risultati possono essere ottenuti dalla macchina nel più breve
+tempo?". Se si osserva la macchina di Babbage detta la macchina analitica, essa ha una
+manovella sul lato. E letteralmente l'interesse che Babbage aveva nel sapere quanto tempo avrebbe
+richiesto una computazione consiste in quante volte dobbiamo girare la manovella. Non è poi
+così diverso nel mondo odierno. La manovella può essere qualcosa di elettronico che
+avviene un miliardo di volte al secondo. Ma tuttavia, stiamo cercando di sapere quante volte
+un'operazione finita deve essere svolta per poter portare a termine una
+computazione. Quindi, ci sono molte ragioni per analizzare gli algoritmi. Nel contesto di questo
+corso siamo principalmente interessati a prevedere la performance. E vogliamo anche essere
+in grado di comparare la performance di diversi algoritmi per lo stesso compito, ed essere in
+grado di fornire delle garanzie sul loro livello di performance. Infine, comprendere alcune
+basi teoriche riguardo a come gli algoritmi operano. Ma soprattutto, la
+ragione pratica per cui vogliamo analizzare gli algoritmi e capirli
+è evitare i bug da performance. Vogliamo una certa sicurezza che i nostri
+algoritmi completeranno il lavoro in un lasso di tempo che è quello che ci
+aspettiamo. Ed è veramente frequente vedere nell'odierna infrastruttura computazionale, una
+situazione dove il cliente ha delle cattive performance perché il programmatore non ha
+compreso le caratteristiche di performance dell'algoritmo. E con la lezione di oggi vorremmo
+proprio evitare che questo accada. In questo corso ci occuperemo della performance
+e comparazione degli algoritmi. Ci sono corsi più avanzati in un tipico
+piano di studi in informatica che contengono più informazioni a proposito delle
+basi teoriche degli algoritmi e farò un accenno a questo più avanti. Ma il nostro
+obiettivo resta l'essere in grado di prevedere la performance e comparare gli algoritmi. C'è
+una lunga serie di storie di successo nel progettare algoritmi con performance migliori
+che hanno permesso di risolvere problemi che altrimenti non sarebbe stato possibile
+risolvere. Farò alcuni esempi. Uno dei primi e il più famoso è
+il cosiddetto algoritmo FFT. Un algoritmo per scomporre un'onda ottenuta da
+n campioni di un segnale in componenti periodiche. Ciò è alla base del funzionamento
+dei dvd, dei jpeg e di molte altre applicazioni. C'è un modo facile di farlo che richiede
+un tempo proporzionale a N^2. Ma l'algoritmo FFT richiede solo N log N
+passi. La differenza tra N log N e N^2 è la differenza che c'è tra essere
+in grado di risolvere un grosso problema e non essere in grado di risolverlo. Molta della
+tecnologia digitale, della tecnologia dei media digitali che oggi possediamo è permessa
+da questo veloce algoritmo. Un altro esempio fu sviluppato da Andrew Appel, che oggi
+è il Presidente della Facoltà di Informatica qui a Princeton. E fu sviluppato quando lui era uno
+studente universitario che stava studiando per la sua tesi finale di laurea. È un algoritmo veloce
+per il problema della simulazione a N corpi. L'algoritmo semplice richiede un tempo proporzionale
+a N^2 ma l'algoritmo di Appel è un algoritmo N log N, il che significa che gli scienziati
+sono ora in grado di fare simulazioni a N corpi anche per enormi valori di N. Ciò ha permesso
+nuovi sviluppi nella ricerca. Perciò la sfida che di solito dobbiamo affrontare è: il mio programma
+sarà in grado di gestire un input di grosse dimensioni? A dire il vero, un programmatore affronta questa
+questione molto spesso nel suo lavoro. Perché, perché il mio programma è così lento?
+Perché consuma tutta la memoria? Questo problema cruccia i programmatori da moltissimo
+tempo. L'intuizione, avuta da Knuth negli anni '70, per affrontare questo problema fu di usare il metodo scientifico per comprendere la performance degli
+algoritmi. Forse non sveleremo nuovi segreti dell'universo ma possiamo comunque
+utilizzare il metodo scientifico e considerare il computer come qualcosa da studiare in
+quel modo e arrivare ad una comprensione di come il nostro programma funzionerà.
+Analizziamo questa idea più nel dettaglio. Questo è solo un breve sommario di ciò che
+noi intendiamo con metodo scientifico, il quale è stato utilizzato con successo per qualche centinaio
+di anni ad oggi. Quello che faremo è osservare una qualche caratteristica del mondo
+naturale. Nel nostro caso sarà il tempo di esecuzione del nostro programma su un computer.
+Poi faremo un'ipotesi. Proporremo un modello coerente con le
+osservazione e spereremo che l'ipotesi fatta è buona abbastanza da
+permetterci di prevedere qualcosa. Di solito, prevedere il tempo di esecuzione per
+un problema di dimensioni maggiori su un computer diverso. Quindi verificheremo le previsioni facendo
+ulteriori osservazioni e convalideremo finché non saremo soddisfatti di come il nostro
+modello di ipotesi concordi con le osservazioni. Quello è un modo per assicurarsi di
+capire la performance dei nostri programmi. Ora, nel metodo scientifico ci sono
+dei principi di base e il primo è che se uno esegue degli esperimenti,
+poi dovrebbe anche aspettarsi che qualcun'altro dovrebbe essere in grado di eseguire
+quegli esperimenti e ottenere gli stessi risultati. Inoltre l'ipotesi deve avere una specifica
+proprietà per cui l'esperimento può dimostrare che l'ipotesi è sbagliata. Quindi,
+l'ipotesi deve essere fatta con attenzione e cercheremo di fare in modo che sia così. Perciò,
+di nuovo, la caratteristica del mondo naturale che studiamo è qualche computer in particolare che
+esiste nel mondo naturale. Il computer trasforma l'algoritmo da un'astrazione in un qualcosa
+di fisico e tangibile come degli elettroni che si muovono
+all'interno del computer

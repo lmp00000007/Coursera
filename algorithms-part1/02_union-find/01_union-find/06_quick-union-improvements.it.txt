@@ -1,0 +1,120 @@
+Bene, abbiamo visto gli algoritmi quick-union e
+quick-find. Entrambe sono facili da implementare, ma semplicemente
+non possono gestire un problema di connessione
+dinamica di grandi dimensioni Allora, come migliorare? E' quello che
+vedremo di seguito Un miglioramento molto efficace è
+chiamato ponderato. Potrebbe esservi venuto in mente mentre valutavamo questi algoritmi.
+L'idea è che mentre si implementa l'algoritmo quick-union si facciano
+dei passi per evitare di avere alberi alti. Se si devono unire un albero grande ed uno
+piccolo quello che dovete cercare di fare è evitare di mettere quello grande nella
+posizione bassa, perchè porterebbe ad un albero alto. C'è un modo relativamente semplice
+per farlo. Ciò che facciamo è tenere traccia del numero di oggetti in ogni albero
+e poi, manterremo un equilibrio assicurandoci sempre di collegare la radice
+dell'albero più piccolo alla radice di quello più grande. Così evitiamo questa prima
+situazione dove il più grande viene posto nel livello inferiore. Nell'algoritmo
+ponderato mettiamo sempre il più piccolo sotto. Come lo facciamo lo vedremo implementandolo.
+Vediamo prima una demo. Iniziamo dalla solita posizione di partenza, quella nella quale
+ognuno appartiene al proprio albero. Quando ci sono solo due elementi da collegare
+funziona esattamente come prima. Ma ora che vogliamo unire 8 con 4 e 3,
+mettiamo 8 come figlio, non importa l'ordine degli argomenti,
+perchè quello è l'albero più piccolo. Così 6 e 5 non danno problemi, chi va sotto
+non è un problema. Vediamo 9 e 4 e 9 è il piccolo e 4 è quello grande.
+Allora 9 sarà quello che andrà posto sotto. Vediamo 2 e 1, 5 e zero.
+Ora 5 è nell'albero più grande così zero va sotto.
+Vediamo 7 e 2, 2 è nell'albero più grande così 7 va sotto. Vediamo 6 e 1 che sono in alberi
+della stessa dimensione. Vediamo 7 e 3. 3 è nell'albero più piccolo così va sotto.
+Quindi l'algoritmo pesato garantisce sempre che l'albero più piccolo va sotto.
+Di nuovo ci ritroviamo con un solo albero che rappresenta tutti gli oggetti. Ma
+questa volta abbiamo qualche garanzia che nessun oggetto sarà troppo lontano dalla radice
+ne parleremo più chiaramente tra poco. Qui abbiamo un esempio che mostra
+l'effetto di eseguire l'unione pesata dove mettiamo sempre l'albero più piccolo
+sotto con lo stesso insieme di comandi di unione. Questo vale per un centinaio di oggetti e
+88 operazioni di unione. Potete vedere che l'albero grande, in cima, ha alcuni alberi ed alcuni nodi,
+ad una certa distanza dalla radice. Nella parte bassa nell'algoritmo pesato, tutti i nodi sono ad una
+distanza massima dalla radice di 4. La distanza media dalla radice è molto inferiore.
+Diamo un'occhiata al codice Java e così vediamo maggiormente in dettaglio
+le informazioni relative alle quantità. Utilizzeremo le stesse strutture dati, tranne
+che ora ci serve un array in più quello che per ogni elemento ci dice
+il numero di oggetti dell'albero da attraversare per arrivare a quell'elemento. Sarà aggiornato
+nell'operazione di unione. L'operazione find è identica a quella di quick union, dovete
+solo controllare se le radici sono uguali. Per l'implementazione dell'unione, dobbiamo
+modificare il codice per controllare le dimensioni, e per collegare la radice dell'albero più piccolo
+a quella dell'albero più grande in ogni caso. Poi, dopo aver cambiato il collegamento id[i],
+dobbiamo anche cambiare l'array della dimensione, se id[i]i diventa figlio di j, allora dobbiamo incrementare
+la dimensione dell'albero di j con quella dell'albero di i. O, se facciamo nell'altro modo, dobbiamo
+incrementare la dimensione dell'albero di i con quella dell'albero di j. Ecco qui il codice
+completo nella parte bianca per implementare quick union. Non è molto lungo, ma è
+molto meglio come velocità. In fatti possiamo analizzare matematicamente il tempo di lavoro
+e mostrare che definite le operazioni, impiega un tempo proporzionale a quanto deve scendere
+in basso attraverso i nodi dell'albero. Possiamo dimostrare che è garantito che
+la profondità di ogni nodo nell'albero, è al massimo il logaritmo
+in base 2 di N. Usiamo sempre la notazione Lg per i logaritmi in base 2.
+Così se N è mille il valore sarà 10, se N è un milione sarà
+20, se N è un miliardo sarà 30. E' un numero molto piccolo paragonato
+ad N. Ora vediamo la dimostrazione. In questo corso facciamo qualche dimostrazione
+matematica se è importante come questa. Allora, perchè è vero che la profondità massima di ogni
+nodo x è al massimo il logaritmo in base 2 di N? Bene, la chiave per capirlo è guardare esattamente
+in quale punto la profondità di un nodo aumenta. Dove scende ulteriormente
+nell'albero? la profondità di x aumenta di uno quando il suo albero, T1 nel
+diagramma, è incorporato in qualche altro albero, T2 nel diagramma. A questo punto
+diciamo che facciamo così solo se la dimensione è maggiore od uguale a quella di T1.
+Così quando la profondità di x aumenta la dimensione del suo albero almeno radddoppia.
+Questa è la chiave perchè significa che la dimensione dell'albero contenente x al
+massimo può aumentare di logN perchè se tu cominci con uno e lo aumenti di logN ottieni N e
+ci sono solo N nodi nell'albero. Questa è una traccia della dimostrazione che
+la profondità di ogni nodo è al massimo log base 2 di N. Questo ha un impatto importante nella
+resa di questo algoritmo. Fino ad ora le inizializzazioni sono state sempre proporzionali
+ad N, ma ora sia l'unione sia la ricerca sono operazioni con tempo
+proporzionale al logaritmo in base due di N. Questo è un algoritmo che cresce in proporzione.
+Se N cresce da un milione a un miliardo il costo va da 20 a 30, che non
+è accettabile. E' vero che è molto facile da implementare e che ci potremmo fermare,
+ma quello che succede in genere nel progettare algoritmi è che dobbiamo capire cosa
+consideriamo una resa vantaggiosa, Diamo un'occhiata e vediamo di migliorarlo.
+In questo caso è molto facile migliorarlo anche di molto. Questa
+è l'dea della compressione del percorso. Quando noi cerchiamo di trovare
+la radice dell'albero contenete un dato nodo, noi attraversiamo tutti i nodi
+sul cammino da quel nodo alla radice. Mentre facciamo questa operazione, possiamo
+far si che ognuno di questi nodi punti proprio alla radice. Non c'è motivo per non farlo.
+Così quando guardiamo, cerchiamo di trovare la radice di P e dopo averla trovata, possiamo
+tornare indietro e far si che ogni nodo di quel cammino punti proprio alla radice.
+Questo diventa un costo extra costante Noi risaliamo il cammino una volta per trovare la
+radice. Ora risaliamo di niovo proprio per appiattire l'albero. E non c'è motivo per non farlo.
+Ci serve una linea di codice per appiattire l'albero. Stupefacente. Veramente,
+per scrivere una linea di codice, usiamo una semplice variazione dove facciamo
+si che ogni nodo nel cammino punti a suo nonno nel percorso per risalire l'albero.
+Ora, non è altrettatanto valido come appiattirlo completamente, ma nella pratica
+va bene ugualmente. Così con una unica linea di codice possiamo
+appiattire quasi completamente l'albero. Questo algoritmo è stato scoperto abbastanza in fretta
+dopo aver immaginato l'uso di un "peso", è anche interessante da analizzare anche oltre il
+nostro scopo. Ma noi abbiamo utilizzato questo esempio per spiegare come anche
+un semplice algoritmo possa essere interessante e complesso da analizzare. Quello che è stato
+dimostrato da Hopcroft Ulman e Tarjan è che se si hanno N oggetti, qualsiasi sequenza di M
+operazioni di unione e ricerca visiterà l'array al massimo c(N+M lg* N) volte.
+Lg*N è una funzione particolare. E' il numero di volte che devi prendere il
+lgN per arrivare ad uno. Il modo di pensarla è chiamato la funzione iterativa del logaritmo.
+Nel mondo reale è meglio pensare a questo come ad un numero
+minore di 5 perchè lg2^65536 è 5. Questo significa che il tempo di elaborazione
+di quick union pesato con la compressione del cammino sarà lineare nel mondo reale e veramente
+può essere migliorato per arrivare ad una funzione più interessante chiamata la funzione di
+Ackermann, che cresce anche più lentamente del logaritmo. Un altro punto interessante
+di questo algoritmo è che sembra molto prossimo a diventare lineare quando
+il tempo è proporzionale ad N piuttosto che essere proporzionale a N volte la funzione
+lenta di crescita in N. C'è un algoritmo semplice e lineare? Lo si è cercato a lungo,
+e veramente questo funziona per dimostrare che un tale algoritmo non esiste.
+C'è molta teoria dietro all'algoritmo che usiamo.
+E' importante che noi conosciamo la teoria, perché ci aiuti a
+decidere come scegliere l'algoritmo che useremo nella pratica
+e dove concentrare i nostri sforzi per trovare algoritmi migliori. E' un fatto
+sorprendente,ed è stato dimostrato da Friedman and Sachs, che non ci sia un
+algoritmo lineare per i problemi di unione e ricerca. Ma, quick union pesato con
+il compattamento del cammino è, in pratica abbastanza vicino ad essere la soluzione
+valida per problemi di grandi dimensioni. Riassumiamo gli algoritmi per risolvere il
+problema della connessione dinamica. Se usiamo quick union pesato con la compressione
+del cammino, possiamo risolvere problemi che altrimenti non potremmo trattare.
+Per esempio, se si hanno un miliardo di operazioni ed un miliardo di oggetti, come ho detto
+prima, ci potrebbero volere 30 anni. Noi lo possiamo risolvere in 6 secondi. Ciò che
+è più importante capire di tutto questo è la struttura dell'algoritmo che permette
+la soluzione del problema. Un computer più veloce non aiuta molto. Non potete spendere
+milioni per un  super computer e magari risolvere il problema in 6 anni anziché 30,
+piuttosto che in 2 mesi, ma con un algoritmo veloce lo potete risolvere
+in secondi sul vostro PC.

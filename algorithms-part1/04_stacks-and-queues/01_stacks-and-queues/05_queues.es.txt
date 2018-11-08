@@ -1,0 +1,41 @@
+Bueno, a continuación, vamos a a ver las implementaciones
+de colas utilizando las mismas estructuras de datos fundamentales. Asi, este es
+el correspondiente API para colas de cadenas De hecho, es el mismo API de Pilas
+solo los nombres son diferentes En lugar de push tenemos enqueue en lugar de
+pop, tenemos dequeue. Y la semantica es diferente. Para enqueue añadimos un elemento
+al final de la cola y para dequeue quitamos un elemento del principio. Es como
+si estas esperando en la cola para comprar una entrada Cuando estas a la cola estas al final y
+cuando eres el que mas tiempo lleva alli eres el primero en dejar la cola. Veamos
+como la implementamos, primer utilizando listas enlazadas y despues con arrays. asi, ahora nuestra
+representacion de una cola con la lista enlazada necesitamos mantener dos punteros
+uno al primer elemento en la lista y el otro al último elemento de la
+lista. Cuando añadimos vamos a añadir el elemento al final de la lista en lugar de
+al principio y cuando quitamos haremos lo mismo y lo quitaremos del inicio.
+Por tanto esta es la implementacion de dequeue Es identica al codigo de pop de una
+pila. Almacenamos el elemento. Borramos la primera nota? avanzando la referencia
+y luego retornamos el elemento, por tanto identico. Para añadir un nodo o encolar, añadir un nuevo nodo
+a la lista enlazada, queremos ponerlo al final para que sea el ultimo de la cola.
+Asi, para añadirlo al final la primera cosa que necesitamos es guardar el enlace al último
+nodo. Necesitaremos hacer esto por que necesitamos cambiar su referencia de nulo a
+apuntar al nuevo nodo. Despues crearemos una nueva nota para el final de la lista
+rellenaremos sus campos y despues el viejo enlace cambiará de nulo a un puntero al
+nuevo nodo. Por lo que de nuevo unas pocas lineas de código. Esto es procesamiento basico de lista enlazadas.
+De hecho, hace tiempo cuando eseñabamos cursos de algoritmos y estructuras de datos la mayoria del
+curso era sobre este tipo de manipulación de punteros pero actualmente esto
+esta restringido a unas pocas implementaciones como pilas y colas y otras pocas
+estructuras de datos fundamentales. Asi que no necesitamos tanto ya programas generales para
+manipular listas enlazadas. Los encampsulamos en tipos basicos de datos como estos.
+De acuerdo, volvamos a nuestra completa implementación y es para cuidar
+de reunir una curva de las diapositivas anteriores pero tambien tener cuidado de
+casos especiales cuando la cola esta vacia para asegurar que si la cola esta vacia despues
+de quitar un elemento, vamos a poner el ultimo a nulo y asegurar que tanto el primero como
+el último siempre son lo que queremos que sean. Estos son detalles que son faciles de
+comprobar. Bien, ¿Qué pasa con los arrays? Bien queremos hacer los detalles pero no es
+dificil implementar colas cambiando el tamaño de los arrays y tampoco es dificil
+pero es definitivamente un dificil ejercicio de programación que la gente esta invitada a intentar.
+Por lo tanto mantendremos dos punteros. El primer elemento en la cola y el final de la cola que es
+la posición para el proximo elemento a encolar asi, para encolar añadis un nuevo elemento al final
+y para sacar de la cola eleminas un elemento de la cabeza. Y el truco es que una vez que 
+pasas la capacidad, tienes que volver a cero y eso require un poco de código extra
+u luego tienes que añadir la capacidad de redimensionamiento tambien para implementar 
+la estructura de datos i gual que para una cola. Y dejaremos esto como un ejercicio.

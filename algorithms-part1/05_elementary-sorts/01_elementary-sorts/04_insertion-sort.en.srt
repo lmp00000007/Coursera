@@ -1,0 +1,630 @@
+1
+00:00:02,190 --> 00:00:03,642
+Now we'll look at insertion sort,
+
+2
+00:00:03,642 --> 00:00:07,730
+which is another elementary method
+that interestingly has quite
+
+3
+00:00:07,730 --> 00:00:10,560
+different performance
+characteristics than selection sort.
+
+4
+00:00:13,190 --> 00:00:15,960
+Let's look at a demo of insertion sort.
+
+5
+00:00:15,960 --> 00:00:19,860
+For insertion sort, what we're
+going to do is we'll move an index i
+
+6
+00:00:19,860 --> 00:00:23,670
+from left to right as before,
+but now, in the i'th iteration,
+
+7
+00:00:23,670 --> 00:00:27,860
+we're going to move a[i] into position
+among the elements to its left.
+
+8
+00:00:27,860 --> 00:00:30,820
+Let's look at how that works
+on our example with cards.
+
+9
+00:00:33,570 --> 00:00:38,527
+So, now we start by initializing
+i at the first card, and
+
+10
+00:00:38,527 --> 00:00:44,826
+we take the idea that everything from i
+to its left is going to be sorted, and
+
+11
+00:00:44,826 --> 00:00:49,920
+everything from the right we're
+not going to look at at all.
+
+12
+00:00:51,350 --> 00:00:55,650
+So everything to the left of i is in
+ascending order, everything to the right,
+
+13
+00:00:55,650 --> 00:00:57,680
+we haven't seen it all yet.
+
+14
+00:00:57,680 --> 00:01:01,010
+So now when we increment i, well,
+in this case it's already in order,
+
+15
+00:01:01,010 --> 00:01:02,280
+we don't have anything else to do.
+
+16
+00:01:03,680 --> 00:01:08,200
+In the third case now,
+when i is at the third entry in the array,
+
+17
+00:01:08,200 --> 00:01:14,600
+now we start a index j, and
+we move that starting at i to the left.
+
+18
+00:01:14,600 --> 00:01:19,660
+And what we need to do is just exchange
+the 5 with every element to its left
+
+19
+00:01:19,660 --> 00:01:20,610
+that's greater.
+
+20
+00:01:20,610 --> 00:01:24,440
+So first we exchange it with the 10,
+it's still not in place, so
+
+21
+00:01:24,440 --> 00:01:26,390
+we exchange it with the 7.
+
+22
+00:01:26,390 --> 00:01:30,840
+Now we get to the beginning of the array,
+and once we've done that or
+
+23
+00:01:30,840 --> 00:01:36,040
+we've hit a smaller element, then we have
+everybody to the left of i in order.
+
+24
+00:01:37,850 --> 00:01:41,500
+So now we increment that again,
+and we come to the 3.
+
+25
+00:01:41,500 --> 00:01:46,630
+Again, we exchange as long as the card
+immediately to the left is greater.
+
+26
+00:01:49,830 --> 00:01:50,900
+And once we've done that,
+
+27
+00:01:50,900 --> 00:01:54,160
+then we have everything to
+the left by in ascending order.
+
+28
+00:01:55,380 --> 00:02:00,030
+Now, in this case, we have the 8, and
+we only have to exchange one, and
+
+29
+00:02:00,030 --> 00:02:03,410
+now it's got the 7 to its left and
+everything is in order.
+
+30
+00:02:03,410 --> 00:02:07,000
+So we've achieved putting it in
+order with less work in this case.
+
+31
+00:02:07,000 --> 00:02:09,530
+We don't always have to go all
+the way back to the beginning.
+
+32
+00:02:10,860 --> 00:02:14,943
+4, exchange it with everybody
+to its left that's greater,
+
+33
+00:02:14,943 --> 00:02:19,271
+until we find a smaller element,
+then it's in ascending order.
+
+34
+00:02:19,271 --> 00:02:22,006
+2 has to go all the way
+back to the beginning.
+
+35
+00:02:27,509 --> 00:02:34,902
+But then the very next one,
+the 9 has to only go back one position,
+
+36
+00:02:34,902 --> 00:02:39,290
+and the 6 has to go about halfway back.
+
+37
+00:02:39,290 --> 00:02:41,320
+And then we have the entire array sorted.
+
+38
+00:02:42,350 --> 00:02:46,440
+Again, we can look at insertion
+sort in terms of invariants.
+
+39
+00:02:46,440 --> 00:02:49,070
+Our pointer still scans
+from left to right, but
+
+40
+00:02:49,070 --> 00:02:52,930
+now the elements to the left
+of the pointer, including it,
+
+41
+00:02:52,930 --> 00:02:57,480
+are in order, but the elements to
+the right have not yet been seen at all.
+
+42
+00:02:57,480 --> 00:03:00,990
+So we have to look at the code that's
+going to maintain that invariant as
+
+43
+00:03:00,990 --> 00:03:03,040
+the pointer increments.
+
+44
+00:03:03,040 --> 00:03:05,805
+Move the pointer to the right,
+it's incremented again.
+
+45
+00:03:05,805 --> 00:03:10,148
+Now the invariant's broken
+because the element on
+
+46
+00:03:10,148 --> 00:03:13,650
+the pointer is not in sorted order.
+
+47
+00:03:13,650 --> 00:03:18,176
+To put it in sorted order, we have to move
+from right to left, exchanging it with
+
+48
+00:03:18,176 --> 00:03:22,787
+every larger elements to its left, and
+that's what the code at the bottom does.
+
+49
+00:03:22,787 --> 00:03:26,824
+It starts j at i, and decrements j,
+
+50
+00:03:26,824 --> 00:03:31,804
+exchanging j with
+the elements to its left,
+
+51
+00:03:31,804 --> 00:03:37,051
+a of j with the element to its left,
+a of j-1,
+
+52
+00:03:37,051 --> 00:03:43,680
+as long as a of j is less than a of j-1 or
+j is bigger than 0.
+
+53
+00:03:43,680 --> 00:03:48,030
+And that immediately gives this code for
+insertion sort,
+
+54
+00:03:48,030 --> 00:03:54,290
+which is similar to our code for
+selection sort and just as simple.
+
+55
+00:03:54,290 --> 00:03:58,707
+It's got two nested for loops,
+selection sort had two nested for loops,
+
+56
+00:03:58,707 --> 00:04:03,210
+a test, a comparison, and
+an exchange inside the for loop.
+
+57
+00:04:03,210 --> 00:04:07,220
+And that's a fine implementation
+of an elementary sorting method.
+
+58
+00:04:08,800 --> 00:04:12,310
+What about the analysis of insertion sort?
+
+59
+00:04:12,310 --> 00:04:13,830
+It's more complicated.
+
+60
+00:04:13,830 --> 00:04:20,340
+Our proposition says that insertion sort,
+to sort randomly ordered array
+
+61
+00:04:20,340 --> 00:04:25,660
+with distinct keys, it'll use about
+one quarter N squared compares,
+
+62
+00:04:25,660 --> 00:04:30,750
+and about the same number, one quarter
+N squared exchanges, on the average.
+
+63
+00:04:30,750 --> 00:04:33,210
+This is more complicated to prove.
+
+64
+00:04:33,210 --> 00:04:36,650
+It depends on the array
+being randomly ordered.
+
+65
+00:04:36,650 --> 00:04:38,930
+And again, you can get a feeling for
+
+66
+00:04:38,930 --> 00:04:44,430
+where the proposition comes from
+by looking at this N by N trace.
+
+67
+00:04:44,430 --> 00:04:47,750
+Again, the black elements
+are the ones that we compare, and
+
+68
+00:04:47,750 --> 00:04:50,330
+actually, they're also the exchanges.
+
+69
+00:04:50,330 --> 00:04:52,940
+On the red one is the one
+that's finally put into place.
+
+70
+00:04:53,945 --> 00:04:59,129
+And you can see that for a large array
+that's randomly ordered, the element
+
+71
+00:04:59,129 --> 00:05:03,758
+that we put into place is going to go
+about halfway back on the average.
+
+72
+00:05:03,758 --> 00:05:07,604
+So that means about half the elements
+below the diagonal are going to be black
+
+73
+00:05:07,604 --> 00:05:08,930
+on the average.
+
+74
+00:05:08,930 --> 00:05:11,000
+There's N squared over
+2 below the diagonal,
+
+75
+00:05:11,000 --> 00:05:12,625
+half of that is N squared over 4.
+
+76
+00:05:14,050 --> 00:05:18,510
+The exact analysis is not
+much more detailed than that.
+
+77
+00:05:20,928 --> 00:05:23,906
+This is a bigger trace that shows, again,
+
+78
+00:05:23,906 --> 00:05:28,725
+about half the elements below
+the diagonal are involved in the sort.
+
+79
+00:05:28,725 --> 00:05:35,187
+[COUGH] Let's look at an animation.
+
+80
+00:05:35,187 --> 00:05:38,120
+Since N squared over 4
+versus N squared over 2,
+
+81
+00:05:38,120 --> 00:05:42,450
+insertion sort's going to be about
+twice as fast as selection sort.
+
+82
+00:05:42,450 --> 00:05:47,326
+So we can do about twice as many items
+in the trace in the same amount of time.
+
+83
+00:05:50,796 --> 00:05:55,420
+It grabs an element and
+brings it back into position every time.
+
+84
+00:05:57,580 --> 00:06:01,590
+So that's an animation for
+randomly ordered items.
+
+85
+00:06:01,590 --> 00:06:06,650
+Now, insertion sort does depend
+on the initial order of the data.
+
+86
+00:06:07,890 --> 00:06:12,334
+Let's look at the best case and the worst
+case, which are certainly outliers.
+
+87
+00:06:13,440 --> 00:06:18,090
+If the array happens to be already sorted,
+all insertion sort
+
+88
+00:06:18,090 --> 00:06:23,080
+does is really validate that each element
+has got smaller elements to its left.
+
+89
+00:06:23,080 --> 00:06:25,190
+So it does no exchanges.
+
+90
+00:06:25,190 --> 00:06:28,480
+It gets the sorting job done
+with just N minus 1 compares.
+
+91
+00:06:29,590 --> 00:06:33,465
+On the other hand,
+if the array is in descending order and
+
+92
+00:06:33,465 --> 00:06:37,750
+has no duplicates,
+then every element goes all the way back.
+
+93
+00:06:38,950 --> 00:06:43,170
+It makes n squared over 2 compares and
+n squared over 2 exchanges.
+
+94
+00:06:44,310 --> 00:06:45,780
+So in the first case, it's much,
+
+95
+00:06:45,780 --> 00:06:50,170
+much faster than selection sort,
+linear instead of quadratic.
+
+96
+00:06:50,170 --> 00:06:53,505
+In the second case,
+it's slower than selection sort,
+
+97
+00:06:53,505 --> 00:06:59,290
+because it uses about the same number of
+compares, but it uses many more exchanges.
+
+98
+00:06:59,290 --> 00:07:01,240
+So let's see that in the animation.
+
+99
+00:07:02,880 --> 00:07:05,990
+So this is when the items
+come in in reverse order.
+
+100
+00:07:05,990 --> 00:07:10,540
+Now, every time it gets a new item,
+
+101
+00:07:10,540 --> 00:07:13,290
+it has to exchange it all
+the way back to the beginning.
+
+102
+00:07:15,530 --> 00:07:20,460
+Same kind of dynamic characteristic
+as selection sort, except, for
+
+103
+00:07:20,460 --> 00:07:22,360
+every step, it's not just comparing,
+
+104
+00:07:22,360 --> 00:07:26,390
+it's also exchanging,
+which makes it even slower in practice.
+
+105
+00:07:28,740 --> 00:07:33,180
+So this is a bad case that we wouldn't
+like to see in a practical application.
+
+106
+00:07:34,220 --> 00:07:38,860
+But there's also a good case that actually
+we take advantage of in plenty of
+
+107
+00:07:38,860 --> 00:07:41,310
+practical applications.
+
+108
+00:07:41,310 --> 00:07:45,880
+And that has to do with when
+the array is partially sorted.
+
+109
+00:07:45,880 --> 00:07:50,900
+To talk about this in a quantitative way,
+we define what's called an inversion.
+
+110
+00:07:50,900 --> 00:07:54,800
+An inversion is just a pair of keys
+that are out of order in the array.
+
+111
+00:07:56,110 --> 00:07:59,360
+So this array has six inversions, T and
+
+112
+00:07:59,360 --> 00:08:02,530
+R are out of order,
+because R should go before T.
+
+113
+00:08:02,530 --> 00:08:05,300
+T and P are out of order, and so forth.
+
+114
+00:08:05,300 --> 00:08:07,119
+This array has six inversions.
+
+115
+00:08:08,260 --> 00:08:12,710
+And we define an array to be
+partially sorted if its number of
+
+116
+00:08:12,710 --> 00:08:16,650
+inversions is linear,
+if it's less than some constant times N.
+
+117
+00:08:18,000 --> 00:08:22,510
+And partially sorted arrays
+appear often in practice.
+
+118
+00:08:22,510 --> 00:08:27,640
+For example, if you have a large array
+with just a few, that's sorted except for
+
+119
+00:08:27,640 --> 00:08:31,170
+just a few unsorted elements
+appended at the end,
+
+120
+00:08:31,170 --> 00:08:34,950
+it's going to be partially sorted.
+
+121
+00:08:34,950 --> 00:08:38,170
+Or in other cases, if you only
+have a few entries out of place,
+
+122
+00:08:38,170 --> 00:08:40,390
+the array's going to be partially sorted.
+
+123
+00:08:40,390 --> 00:08:44,710
+These types of things arise
+often in practical applications.
+
+124
+00:08:44,710 --> 00:08:50,370
+And what's interesting about insertion
+sort is that it runs in linear time for
+
+125
+00:08:50,370 --> 00:08:52,630
+partially sorted arrays.
+
+126
+00:08:52,630 --> 00:08:56,410
+And the proof is, the number of
+comparisons and the number of exchanges is
+
+127
+00:08:56,410 --> 00:09:01,170
+equal to the number of exchanges equal
+to the number of inversions, and
+
+128
+00:09:01,170 --> 00:09:05,410
+there's an extra compare for
+every element except the first.
+
+129
+00:09:05,410 --> 00:09:08,510
+So let's look at how that
+looks in the animation.
+
+130
+00:09:08,510 --> 00:09:10,800
+Here's a partially sorted array, and
+
+131
+00:09:10,800 --> 00:09:15,060
+you can see that insertion sort
+quickly gets the job done.
+
+132
+00:09:15,060 --> 00:09:18,110
+We're going to take advantage of this
+a little bit later in this lecture.
+
+133
+00:09:20,310 --> 00:09:23,888
+That's insertion sort,
+our second elementary sorting method.

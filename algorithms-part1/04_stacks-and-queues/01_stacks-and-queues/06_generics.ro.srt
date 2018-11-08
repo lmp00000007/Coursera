@@ -1,0 +1,429 @@
+1
+00:00:01,082 --> 00:00:06,475
+În continuare vom lua în considerare abordarea 
+unui alt defect fundamental în
+
+2
+00:00:06,475 --> 00:00:11,664
+implementări despre care am considerat până în prezent 
+că acele implementări sunt bune numai
+
+3
+00:00:11,664 --> 00:00:16,503
+pentru șiruri de caractere. Ce se întâmplă dacă vrem să avem
+ cozile și stivele de alte tipuri de date?
+
+4
+00:00:16,503 --> 00:00:22,573
+Și asta ne aduce la subiectul de 
+generice. În regulă. Deci, am implementat
+
+5
+00:00:22,573 --> 00:00:29,075
+stiva de șiruri de caractere, dar în aplicații 
+avem toate tipurile de date diferite pe care noi
+
+6
+00:00:29,075 --> 00:00:35,675
+am putea să dorim să le punem în aplicare să spunem 
+ca stivă de întregi sau URL-uri sau autoturisme sau autoutilitare sau orice alte
+
+7
+00:00:35,887 --> 00:00:41,386
+date pe care noi le-am putea prelucra. Deci cum 
+vom ajunge să implementăm stive și
+
+8
+00:00:41,386 --> 00:00:46,796
+cozi pentru acele tipuri de date. Ei bine, primul 
+lucru la care putem, l-am putea considera
+
+9
+00:00:46,796 --> 00:00:51,869
+și de fapt am fost forțați să-l luăm în considerare 
+într-o mulțime de medii de programare, este
+
+10
+00:00:51,869 --> 00:00:57,135
+să implementăm o clasă stivă separată pentru 
+fiecare tip de date pe care îl utilizăm. Aceasta
+
+11
+00:00:57,135 --> 00:01:02,900
+într-adevăr pare nesatisfăcător. Avem codul 
+nostru atent elaborat care face
+
+12
+00:01:02,900 --> 00:01:09,348
+redimensionare de matrici și așa mai departe și vom 
+copia acest cod și vom schimba tipul de date
+
+13
+00:01:09,348 --> 00:01:15,129
+șir la date de tip variabil sau întregi 
+peste tot. Și ce se întâmplă dacă noi avem sute
+
+14
+00:01:15,129 --> 00:01:21,039
+de diferite tipuri de date pe care le 
+prelucrăm. Avem sute de diferite
+
+15
+00:01:21,039 --> 00:01:26,470
+implementări. Din păcate, această 
+situație de la începutul Java unde
+
+16
+00:01:26,470 --> 00:01:31,424
+noi suntem blocați cu asta și există o mulțime de 
+limbaje de programare, unde practic
+
+17
+00:01:31,424 --> 00:01:36,425
+suntem blocați cu asta astfel la ceea ce vrem să ne
+ uităm este o abordare modernă pentru a evita
+
+18
+00:01:36,425 --> 00:01:42,509
+să avem multiple implementări pentru fiecare 
+tip de date. Deci o tăietura rapidă, care este
+
+19
+00:01:42,509 --> 00:01:51,399
+utilizată pe scară largă, este de a utiliza conversia pentru a implementa ⏎ pentru a reutiliza codul pentru diferite tipuri de date.
+
+20
+00:01:51,704 --> 00:01:59,435
+Deci, vom face implementarea noastră cu tipul 
+Object, deci totul în Java este un subtip
+
+21
+00:01:59,435 --> 00:02:07,050
+al Object și, apoi, clientul, atunci când 
+clientul vine să-l folosească, pur și simplu va converge
+
+22
+00:02:07,050 --> 00:02:13,491
+rezultatul la tipul corespunzător. Eu 
+nu vreau să petrec o mulțime de timp cu
+
+23
+00:02:13,491 --> 00:02:19,643
+aceasta deoarece cred ca e o soluție 
+nesatisfăcătoare. Așa că, în acest exemplu noi avem două
+
+24
+00:02:19,643 --> 00:02:25,878
+tipuri cu două stive una de mere și
+ una de portocale. Și apoi, depinde de
+
+25
+00:02:25,878 --> 00:02:32,007
+client când scoate ceva de pe 
+stiva de mere sa facă conversia la mar pentru a menține
+
+26
+00:02:32,007 --> 00:02:37,103
+sistemul de verificare de tip, fericit. 
+Problema cu aceasta este că, codul clientului
+
+27
+00:02:37,270 --> 00:02:43,100
+trebuie sa facă aceasta, acestă conversie și este un fel 
+de eroare insidioasă dacă nu se înțelege
+
+28
+00:02:43,100 --> 00:02:51,458
+destul de bine. Deci, a treia încercare, de care vom 
+vorbi utilizează generice. Și
+
+29
+00:02:51,458 --> 00:03:00,357
+astfel codul de client nu face 
+conversie. Putem descoperi greșeli în incompatibilități
+
+30
+00:03:00,652 --> 00:03:08,018
+de tip la compilare în loc de 
+rulare. Deci, în acest caz, noi punem, cu
+
+31
+00:03:08,018 --> 00:03:16,698
+generice, putem avea un parametru de tip în
+ clasa noastră și aceasta include, este în interiorul
+
+32
+00:03:17,011 --> 00:03:24,080
+parantezelor unghiulare în acest cod și apoi, 
+putem [tuse] dacă avem o stivă de mere
+
+33
+00:03:24,378 --> 00:03:32,980
+și am încercat să împingem o portocală la o 
+stivă de mere, apoi noi vom obține o
+
+34
+00:03:32,980 --> 00:03:38,027
+eroare de compilare pentru că această stivă 
+a fost declarată compusă numai din, din
+
+35
+00:03:38,027 --> 00:03:44,492
+mere. Și doar principiul director în programarea modulară 
+bună este că ar trebui să
+
+36
+00:03:44,492 --> 00:03:51,730
+fie bine venite erori la momentul compilării și să evităm
+ erori la momentul execuției, deoarece dacă putem detecta
+
+37
+00:03:51,730 --> 00:03:58,323
+o eroare la compilare, atunci putem livra 
+produsul nostru sau lansa implementarea noastră
+
+38
+00:03:58,323 --> 00:04:04,310
+implementarea noastră a unui API și să aveți ceva 
+încredere că va funcționa pentru orice
+
+39
+00:04:04,310 --> 00:04:09,664
+client întrucât, eroarea nu va fi 
+descoperită până la execuție ar putea
+
+40
+00:04:09,853 --> 00:04:16,082
+să apară cu ceva developare a clientului. Acum, 
+ani după, trebuie să lansăm
+
+41
+00:04:16,347 --> 00:04:23,849
+software-ul nostru și ar fi extrem de dificil pentru 
+toată lumea. Ok. Deci de fapt cu o bună
+
+42
+00:04:23,849 --> 00:04:32,268
+implementare generica, nu este greu să 
+pur și simplu [tuse], luăm fiecare loc în care
+
+43
+00:04:32,268 --> 00:04:40,637
+am folosit șirul de caractere și să-l înlocuim cu un nume
+ de tip generic ca în acest cod aici.
+
+44
+00:04:40,637 --> 00:04:48,018
+În stânga este implementarea noastră a unei stive
+ de șiruri de caractere folosind link-ul lista. În dreapta
+
+45
+00:04:48,018 --> 00:04:53,095
+este o implementare generică. Deci, fiecare 
+loc în care am folosit tip șir de caractere în
+
+46
+00:04:53,095 --> 00:04:59,520
+stânga, am folosit cuvântul Item din dreapta.
+Şi în partea superioară, declarația de la clasa pe care noi
+
+47
+00:04:59,520 --> 00:05:05,539
+am declarat-o între paranteze unghiulare ca acel Item este 
+tipul generic pe care noi avem de gând să-l utilizăm.
+
+48
+00:05:05,746 --> 00:05:11,836
+Implementarea cu greu ar putea fi mai 
+simplă şi este un mod excelent
+
+49
+00:05:11,836 --> 00:05:18,862
+de a rezolva problema manipulării mai multor 
+tipuri de date cu o implementare.
+
+50
+00:05:19,298 --> 00:05:29,269
+Cu matrici, nu prea funcționează şi 
+din nou toate limbajele de programare şi, voi
+
+51
+00:05:29,269 --> 00:05:35,404
+știți, multe limbaje de programare din zilele noastre
+ au dificultăți cu asta şi Java are
+
+52
+00:05:35,404 --> 00:05:41,231
+o dificultate particulară. Deci, ceea ce 
+dorim să facem este doar să declarăm o matrice nouă
+
+53
+00:05:41,443 --> 00:05:48,057
+folosind numele nostru generic Item, ca şi în 
+linia evidențiată aici. Altfel este
+
+54
+00:05:48,057 --> 00:05:55,059
+același. Din păcate, Java nu permite 
+crearea de matrici generice. Deci, există diverse
+
+55
+00:05:55,059 --> 00:06:02,125
+motive tehnice pentru asta şi voi puteți 
+citi, citi dezbateri extinse despre aceasta pe
+
+56
+00:06:02,125 --> 00:06:08,718
+web, asta va merge dincolo de scopul 
+nostru. Deocamdată , ce trebuie noi să facem este să punem
+
+57
+00:06:08,718 --> 00:06:15,322
+o conversie să facem asta să meargă. Deci, noi creăm o matrice de obiecte şi facem conversia
+
+58
+00:06:15,322 --> 00:06:22,461
+într-o matrice de elemente. Acum, în opinia mea, 
+un cod de bun are zero conversii. Deci, noi vrem să
+
+59
+00:06:22,461 --> 00:06:28,622
+evitam conversiile, pe cât posibil, deoarece acesta, 
+ asta într-adevăr este declararea unui fel de
+
+60
+00:06:28,622 --> 00:06:35,306
+slăbiciune in ce facem noi.Dar în acest 
+caz trebuie să punem în acesta conversie și
+
+61
+00:06:35,306 --> 00:06:41,647
+deci ceea ce am auzit despre faptul că este conversia 
+urâtă nu, nu face să vă simțiți
+
+62
+00:06:41,647 --> 00:06:47,734
+bine despre cod. Nu este ceva 
+care vă va veni pe cont propriu şi
+
+63
+00:06:47,734 --> 00:06:52,789
+asta e o caracteristică nedorită.
+Eu cred pentru coduri așa de simple ca acesta. Dar
+
+64
+00:06:52,789 --> 00:06:58,276
+din fericire, noi putem trece prin cam 
+tot ceea ce avem de gând să facem în
+
+65
+00:06:58,276 --> 00:07:04,297
+acest curs doar știind despre această 
+conversie laică. Deci acum, când noi compilam acest
+
+66
+00:07:04,297 --> 00:07:10,490
+program vom obține un, un mesaj de avertizare de la
+ Java. El spune că noi folosim neverificate
+
+67
+00:07:10,490 --> 00:07:15,610
+sau nesigure operații şi noi ar trebui
+ să recompilăm cu un - Xlint egal
+
+68
+00:07:15,610 --> 00:07:21,787
+unchecked pentru detalii. Deci, putem merge mai departe
+ şi să facem acest lucru şi spune că ați pus
+
+69
+00:07:21,787 --> 00:07:27,247
+în, în codul vostru o conversie neverificată şi 
+noi vă avertizăm despre aceasta deoarece voi
+
+70
+00:07:27,247 --> 00:07:33,428
+nu ar trebui să puneți conversii neverificate.
+Şi bine, e bine şi voi veți
+
+71
+00:07:33,428 --> 00:07:40,014
+vedea asta atunci când voi faceți compilări folosind cod 
+ca acesta. Eu, cred ca poate s-ar fi putut
+
+72
+00:07:40,014 --> 00:07:45,494
+adăuga la asta avertizarea "Ne cerem scuze că v-am făcut să faceți asta".
+
+73
+00:07:45,494 --> 00:07:51,770
+Nu e vina noastră că a trebuit să facem asta, noi 
+a trebuit să facem asta din cauza cerinței voastre
+
+74
+00:07:51,770 --> 00:07:57,908
+de a nu ne permite să declarăm matrici 
+generice. Deci cu această notă vă rugăm să nu
+
+75
+00:07:57,908 --> 00:08:03,915
+gândiți că e ceva în neregulă cu codul 
+vostru dacă urmați prescripția noastră şi,
+
+76
+00:08:03,915 --> 00:08:10,596
+şi primiți acest mesaj de avertizare. Bine, atunci 
+este unul din detaliile de care Java
+
+77
+00:08:10,596 --> 00:08:19,274
+are grijă şi asta e despre tipuri 
+primitive [tuse] deci tipul generic pe care
+
+78
+00:08:19,274 --> 00:08:26,636
+noi îl folosim este pentru obiecte şi voi știți,
+ noi facem conversie din matrice de obiecte.
+
+79
+00:08:26,876 --> 00:08:34,517
+Deci, pentru a gestiona tipuri generice, noi 
+trebuie să utilizăm tipuri de obiecte wrapper din Java.
+
+80
+00:08:34,782 --> 00:08:40,751
+Deci, tipul Integer cu litere capitalizate 
+pentru întreg şi așa mai departe şi mulți dintre voi au fost
+
+81
+00:08:40,751 --> 00:08:46,419
+probabil, familiarizați cu asta. Şi există un 
+proces numit auto-încapsulare care
+
+82
+00:08:46,419 --> 00:08:51,827
+automat face conversia între tipuri primitive şi clase wrapper deci toate acele manipulări,
+
+83
+00:08:51,827 --> 00:08:57,633
+problema de a trata cu tipuri 
+primitive,e într-un fel în spatele scenei. Şi
+
+84
+00:08:57,633 --> 00:09:04,693
+concluzia este că noi putem articula un 
+API pentru stive generice, care funcționează pentru orice
+
+85
+00:09:04,693 --> 00:09:10,665
+tipuri de date şi am luat două 
+implementări, link-ul listă şi matrici
+
+86
+00:09:10,665 --> 00:09:20,867
+care funcționează foarte bine pentru [tuse]
+ orice tip de date folosind, redimensionarea
+
+87
+00:09:20,867 --> 00:09:26,035
+sau link-ul listă, cum l-am descris.

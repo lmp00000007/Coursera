@@ -1,0 +1,203 @@
+1
+00:00:01,086 --> 00:00:07,708
+Bueno, a continuación, vamos a a ver las implementaciones
+de colas utilizando las mismas
+
+2
+00:00:07,708 --> 00:00:13,663
+estructuras de datos fundamentales. Asi, este es
+el correspondiente API para colas de cadenas
+
+3
+00:00:13,890 --> 00:00:19,964
+De hecho, es el mismo API de Pilas
+solo los nombres son diferentes
+
+4
+00:00:20,162 --> 00:00:25,926
+En lugar de push tenemos enqueue en lugar de
+pop, tenemos dequeue. Y la semantica es
+
+5
+00:00:25,926 --> 00:00:32,201
+diferente. Para enqueue añadimos un elemento
+al final de la cola y para dequeue
+
+6
+00:00:32,390 --> 00:00:38,301
+quitamos un elemento del principio. Es como
+si estas esperando en la cola para comprar una entrada
+
+7
+00:00:38,512 --> 00:00:44,758
+Cuando estas a la cola estas al final y
+cuando eres el que mas tiempo lleva alli eres
+
+8
+00:00:44,758 --> 00:00:50,892
+el primero en dejar la cola. Veamos
+como la implementamos, primer utilizando listas enlazadas
+
+9
+00:00:50,892 --> 00:00:56,168
+y despues con arrays. asi, ahora nuestra
+representacion de una cola con la lista enlazada
+
+10
+00:00:56,168 --> 00:01:02,441
+necesitamos mantener dos punteros
+uno al primer elemento en la
+
+11
+00:01:02,441 --> 00:01:08,328
+lista y el otro al último elemento de la
+lista. Cuando añadimos vamos a añadir
+
+12
+00:01:08,328 --> 00:01:13,761
+el elemento al final de la lista en lugar de
+al principio y cuando quitamos haremos
+
+13
+00:01:13,761 --> 00:01:19,704
+lo mismo y lo quitaremos del inicio.
+Por tanto esta es la implementacion de dequeue
+
+14
+00:01:19,704 --> 00:01:27,231
+Es identica al codigo de pop de una
+pila. Almacenamos el elemento. Borramos
+
+15
+00:01:27,231 --> 00:01:35,403
+la primera nota? avanzando la referencia
+y luego retornamos el elemento, por tanto identico.
+
+16
+00:01:35,403 --> 00:01:43,298
+Para añadir un nodo o encolar, añadir un nuevo nodo
+a la lista enlazada, queremos ponerlo al
+
+17
+00:01:43,298 --> 00:01:50,921
+final para que sea el ultimo de la cola.
+Asi, para añadirlo al final la primera cosa
+
+18
+00:01:50,921 --> 00:01:58,085
+que necesitamos es guardar el enlace al último
+nodo. Necesitaremos hacer esto por que 
+
+19
+00:01:58,085 --> 00:02:06,459
+necesitamos cambiar su referencia de nulo a
+apuntar al nuevo nodo. Despues crearemos una
+
+20
+00:02:06,459 --> 00:02:14,577
+nueva nota para el final de la lista
+rellenaremos sus campos y despues el viejo enlace
+
+21
+00:02:14,577 --> 00:02:22,331
+cambiará de nulo a un puntero al
+nuevo nodo. Por lo que de nuevo unas pocas lineas de
+
+22
+00:02:22,331 --> 00:02:31,418
+código. Esto es procesamiento basico de lista enlazadas.
+De hecho, hace tiempo cuando eseñabamos cursos
+
+23
+00:02:31,418 --> 00:02:37,517
+de algoritmos y estructuras de datos la mayoria del
+curso era sobre este tipo de 
+
+24
+00:02:37,517 --> 00:02:44,035
+manipulación de punteros pero actualmente esto
+esta restringido a unas pocas implementaciones
+
+25
+00:02:44,035 --> 00:02:50,580
+como pilas y colas y otras pocas
+estructuras de datos fundamentales. Asi que no
+
+26
+00:02:50,580 --> 00:02:56,139
+necesitamos tanto ya programas generales para
+manipular listas enlazadas. Los encampsulamos
+
+27
+00:02:56,139 --> 00:03:02,754
+en tipos basicos de datos como estos.
+De acuerdo, volvamos a nuestra completa
+
+28
+00:03:02,754 --> 00:03:09,029
+implementación y es para cuidar
+de reunir una curva de las
+
+29
+00:03:09,029 --> 00:03:16,030
+diapositivas anteriores pero tambien tener cuidado de
+casos especiales cuando la cola esta vacia para
+
+30
+00:03:16,030 --> 00:03:22,669
+asegurar que si la cola esta vacia despues
+de quitar un elemento, vamos a poner el ultimo a
+
+31
+00:03:22,669 --> 00:03:29,535
+nulo y asegurar que tanto el primero como
+el último siempre son lo que queremos que sean.
+
+32
+00:03:29,797 --> 00:03:36,069
+Estos son detalles que son faciles de
+comprobar. Bien, ¿Qué pasa con los arrays? Bien
+
+33
+00:03:36,069 --> 00:03:41,096
+queremos hacer los detalles pero no es
+dificil implementar colas
+
+34
+00:03:41,096 --> 00:03:47,030
+cambiando el tamaño de los arrays y tampoco es dificil
+pero es definitivamente un dificil
+
+35
+00:03:47,030 --> 00:03:52,761
+ejercicio de programación que la gente esta invitada a intentar.
+Por lo tanto mantendremos dos punteros. El primer
+
+36
+00:03:52,761 --> 00:03:58,411
+elemento en la cola y el final de la cola que es
+la posición para el proximo elemento a encolar
+
+37
+00:03:58,576 --> 00:04:03,087
+asi, para encolar añadis un nuevo elemento al final
+y para sacar de la cola eleminas un elemento
+
+38
+00:04:03,087 --> 00:04:10,554
+de la cabeza. Y el truco es que una vez que 
+pasas la capacidad, tienes que volver a 
+
+39
+00:04:10,554 --> 00:04:18,058
+cero y eso require un poco de código extra
+u luego tienes que añadir la
+
+40
+00:04:18,058 --> 00:04:25,077
+capacidad de redimensionamiento tambien para implementar 
+la estructura de datos i gual que para una cola. Y 
+
+41
+00:04:25,077 --> 00:04:28,013
+dejaremos esto como un ejercicio.

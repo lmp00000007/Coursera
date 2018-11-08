@@ -1,0 +1,728 @@
+1
+00:00:00,000 --> 00:00:04,616
+Bien, quelles sont les règles que nous allons devoir suivre ?
+Eh bien, commençons par étudier
+
+2
+00:00:04,616 --> 00:00:10,094
+un problème de tri typique. Soit une université
+stockant des informations concernant les étudiants.
+
+3
+00:00:10,094 --> 00:00:16,094
+Pour chaque étudiant, il y a un certain nombre
+de données. Par exemple, un numéro de classe,
+
+4
+00:00:16,094 --> 00:00:22,067
+un niveau, un numéro de téléphone,
+peut–être une adresse pour se référer à un élément
+
+5
+00:00:22,067 --> 00:00:27,304
+et un enregistrement ou l'information
+que nous allons trier. Mais en 
+
+6
+00:00:27,304 --> 00:00:32,118
+particulier, il y a une partie de l'entrée
+appelée une clé et ce que nous souhaitons faire
+
+7
+00:00:32,118 --> 00:00:37,175
+c'est arranger les entrées en ordre selon
+cette clé. C'est le problème du tri. Réorganiser
+
+8
+00:00:37,175 --> 00:00:43,204
+un tableau de n éléments en ordre croissant
+selon une clé qui fait partie de l'élément.
+
+9
+00:00:43,204 --> 00:00:49,165
+Bien, notre but est d'être capable
+de trier n'importe quel type de données. Alors intéressons nous
+
+10
+00:00:49,165 --> 00:00:55,608
+à quelques programmes d'application. Le premier example
+est simplement le tri de nombre réels aléatoires
+
+11
+00:00:55,608 --> 00:01:00,884
+en ordre croissant. Donc voici une application
+qui appelle notre méthode de tri par insertion et
+
+12
+00:01:01,070 --> 00:01:07,068
+tout ce qu'elle fait c'est de lire des nombres depuis
+l'entrée standard dans un tableau et ensuite d'appeler
+
+13
+00:01:07,068 --> 00:01:12,515
+le tri par insertion et enfin de les afficher.
+Et vous pouvez voir sur la droite que les 
+
+14
+00:01:12,515 --> 00:01:18,581
+nombres sont affichés dans l'ordre.
+Cela semble un ensemble d'entrée artificielle
+
+15
+00:01:18,581 --> 00:01:24,326
+mais en fait nous en verrons une application
+dès ce cours. De plus, il y a de nombreuses
+
+16
+00:01:24,326 --> 00:01:31,300
+applications pour lequelles des entrées
+aléatoires constituent un modèle représentatif. Ici, il s'agit
+
+17
+00:01:31,300 --> 00:01:37,934
+peut-être d'une application de tri plus familière, sur des chaînes
+de charactères. Dans ce cas, elle lit les chaînes depuis
+
+18
+00:01:37,934 --> 00:01:44,232
+un fichier en utilisant cette méthode readStrings() de la
+class In qui prend un fichier en paramètre.
+
+19
+00:01:44,232 --> 00:01:50,186
+Donc nous prenons le nom du fichier comme premier
+paramètre de la ligne de commande, nous lisons dans un tableau
+
+20
+00:01:50,186 --> 00:01:56,389
+les chaînes séparées par des blancs,
+et nous appelons encore la méthode Insertion.sort().
+
+21
+00:01:56,389 --> 00:02:03,047
+Bien, Insertion.sort est une méthode qui prend
+en paramètre un tableau, et c'est le premier
+
+22
+00:02:03,047 --> 00:02:08,817
+paramètre, et elle réorganise
+les chaînes de ce tableau afin qu'elles soient triées.
+
+23
+00:02:08,817 --> 00:02:15,571
+Dans ce cas, words three.text
+a un certain nombre de mots
+
+24
+00:02:15,571 --> 00:02:22,014
+de trois lettres et ce programme
+va produire la liste de ces mots de trois lettres
+
+25
+00:02:22,014 --> 00:02:27,673
+rangés en ordre alphabétique.
+Voici une nouvelle application qui pourrait utiliser
+
+26
+00:02:27,914 --> 00:02:34,371
+notre programme de tri, si nous réussissons
+à trier n'importe quel type de donnée.
+
+27
+00:02:34,371 --> 00:02:41,249
+Dans celui-ci, nous allons trier des noms de fichier
+d'un répertoire donné. Encore une fois, nous utilisons
+
+28
+00:02:41,513 --> 00:02:49,508
+la classe File de Java et nous utilisons
+la méthode listFiles() de cette classe
+
+29
+00:02:49,508 --> 00:02:56,788
+pour obtenir un tableau qui contient tous les 
+noms de fichiers du répertoire donné. Il s'agit 
+
+30
+00:03:00,205 --> 00:03:03,622
+tableau avec les noms à l'intérieur. Insertion.sort()
+prend en premier argument ce tableau
+
+31
+00:03:03,622 --> 00:03:10,287
+et encore une fois, trie les éléments.
+Alors nous les parcourons un à un
+
+32
+00:03:10,287 --> 00:03:15,754
+et ils sont écrits à l'écran dans l'ordre
+des noms de fichiers. Il y a donc trois
+
+33
+00:03:15,754 --> 00:03:20,494
+applications différentes, trois types de données
+complètement différents. Et la première
+
+34
+00:03:20,494 --> 00:03:25,508
+règle du jeu à laquelle nous devons penser est,
+comment pouvons-nous faire pour
+
+35
+00:03:25,508 --> 00:03:30,591
+mettre en oeuvre un programme de tri qui puisse
+être utilisé par ces trois applications différentes
+
+36
+00:03:30,591 --> 00:03:35,804
+pour gérer trois types de données différents.
+La manière dont cela se fait est un
+
+37
+00:03:35,804 --> 00:03:41,555
+méchanisme appelé une callback (fonction de rappel).
+C'est notre question de base, comment trier, maintenant comment
+
+38
+00:03:41,555 --> 00:03:46,629
+comparer des données de tous ces différents
+types sans connaître aucune information
+
+39
+00:03:46,629 --> 00:03:52,692
+à propos du type de la clé des éléments ? Et la
+réponse est de mettre en place
+
+40
+00:03:52,692 --> 00:03:59,517
+un mécanisme connu comme callback ou référence
+vers un code exécutable dans lequel l'application,
+
+41
+00:03:59,517 --> 00:04:05,644
+transmet un tableau d'objets à la fonction
+de tri. En Java, il y a un mécanisme
+
+42
+00:04:05,644 --> 00:04:11,724
+implicite qui implique qu'un tel tableau d'objet
+doive avoir une méthode compareTo().
+
+43
+00:04:11,724 --> 00:04:17,604
+Alors la fonction de tri appelle la méthode
+compareTo() associée aux objets
+
+44
+00:04:17,604 --> 00:04:22,351
+du tableau lorsqu'elle en a besoin,
+à chaque fois qu'il est nécessaire de comparer deux éléments.
+
+45
+00:04:22,351 --> 00:04:26,645
+Il y a de nombreux moyens
+de mettre en oeuvre des callbacks et c'est
+
+46
+00:04:26,645 --> 00:04:32,837
+spécifique au langage de programmation. Des langages
+différents ont des mécanismes différents.
+
+47
+00:04:32,837 --> 00:04:38,780
+Dans tous les cas, il s'agit de passer une fonction
+en argument à une autre fonction
+
+48
+00:04:38,780 --> 00:04:45,206
+ce qui constitue une paire et nous amène à la programmation fonctionnelle
+et à penser à tout le chemin depuis Turing et Church.
+
+49
+00:04:45,206 --> 00:04:50,553
+Pour Java, à cause de la volonté
+de vérifier les types au moment de la compilation,
+
+50
+00:04:50,553 --> 00:04:56,246
+on utilise une méthode spécifique appelée une interface.
+Bien, nous allons tout de suite entrer dans les détails
+
+51
+00:04:56,246 --> 00:05:01,040
+de la mise en oeuvre des callbacks
+grâce aux interfaces de Java. Cela va nous
+
+52
+00:05:01,040 --> 00:05:06,086
+faire rentrer dans des détails du langage de programmation,
+mais ça en vaut la peine parce que cela va nous permettre
+
+53
+00:05:06,086 --> 00:05:12,011
+d'utiliser les tris que nous avons développés
+pour n'importe quel type de données du manière sécurisée.
+
+54
+00:05:12,011 --> 00:05:18,084
+Nous nous sommes déjà intéressés à quelques applications.
+Voilà l'exemple de l'application qui
+
+55
+00:05:18,084 --> 00:05:25,001
+trie les fichiers d'un répertoire donné par
+leurs noms. Donc le programme appelle juste notre méthode
+
+56
+00:05:25,001 --> 00:05:31,498
+sort() avec un tableau d'un certain type d'objets
+comme premier argument. Parmi les internes
+
+57
+00:05:31,498 --> 00:05:37,939
+de Java, est fourni ce qui s'appelle l'interface Comparable
+et ce que fait cette interface Comparable
+
+58
+00:05:37,939 --> 00:05:45,024
+est de stipuler qu'un type, un type
+de données qui met en oeuvre Comparable aura
+
+59
+00:05:45,024 --> 00:05:52,956
+une méthode compareTo(). C'est générique
+et ce sera comparé à un certain type
+
+60
+00:05:52,956 --> 00:05:59,902
+d'élément. Maintenant, lorsque nous créerons des objets
+qui vont être triés, nous metterons en oeuvre cette
+
+61
+00:05:59,902 --> 00:06:06,370
+méthode Comparable. C'est en haut de la classe File,
+met en oeuvre des fichiers comparables.
+
+62
+00:06:06,370 --> 00:06:13,351
+Et puisque trier est une opération qui est
+utilisée énormément de situations, la plupart
+
+63
+00:06:13,351 --> 00:06:20,026
+des types standard de Java que vous aimeriez
+pouvoir trier mettent en oeuvre 
+
+64
+00:06:20,026 --> 00:06:27,040
+Comparable. Et tout ce que cela signifie est que
+ce type de données a une méthode d'instance qui
+
+65
+00:06:27,040 --> 00:06:33,068
+met en oeuvre la méthode compareTo().
+Elle compare l'objet par rapport
+
+66
+00:06:33,068 --> 00:06:40,296
+à l'objet passé en argument et selon le résultat
+de quelques tests compliqués, elle retourne -1
+
+67
+00:06:40,296 --> 00:06:46,181
+pour indiquer inférieur, +1 pour supérieur
+et 0 si les deux objets sont égaux. Là, cette méthode
+
+68
+00:06:46,181 --> 00:06:50,726
+compareTo() est vraiment tout ce dont la mise en oeuvre
+du tri a besoin. D'abord il précise qu'il prendra
+
+69
+00:06:50,726 --> 00:06:55,833
+en argument un tableau
+de type Comparable. Cela signifie que
+
+70
+00:06:55,833 --> 00:07:02,023
+les objets du tableau mettent en oeuvre
+l'interface Comparable ou qu'ils
+
+71
+00:07:02,023 --> 00:07:08,000
+ont une méthode compareTo(). Et ainsi
+le code du tri peut simplement utiliser cette méthode
+
+72
+00:07:08,000 --> 00:07:13,052
+compareTo(), invoquée depuis un objet
+comme une entrée dans le tableau 
+
+73
+00:07:13,052 --> 00:07:19,012
+avec en argument une autre instance d'objet
+comme une autre entrée dans le tableau
+
+74
+00:07:19,012 --> 00:07:24,092
+pour tester si le premier est inférieur
+au second comme dans cet exemple. Le point important
+
+75
+00:07:24,092 --> 00:07:31,010
+est que la mise en oeuvre du tri 
+ne dépend pas du type de données
+
+76
+00:07:31,010 --> 00:07:38,250
+manipulé par l'interface Comparable et
+un tableau Comparable différent sera trié
+
+77
+00:07:38,250 --> 00:07:44,862
+de la même manière bien que finalement,
+à cause du méchanisme d'interface, ils utilisent
+
+78
+00:07:44,862 --> 00:07:50,944
+chacun le véritable code de compareTo() associé
+au type d'objets en train d'être trié.
+
+79
+00:07:50,944 --> 00:07:57,603
+Il y a quelques règles qui sont naturelles
+mais il est nécessaire d'en parler
+
+80
+00:07:57,603 --> 00:08:05,112
+et de faire attention à ce que la méthode
+compareTo() se doit de mettre en oeuvre ce qu'on appelle
+
+81
+00:08:05,112 --> 00:08:13,220
+un ordre total. Cela signifie qu'il faut réellement
+que ce soit possible d'organiser les objets
+
+82
+00:08:13,220 --> 00:08:19,133
+en ordre. Il y a trois propriétés.
+La première dit que si v est
+
+83
+00:08:19,133 --> 00:08:25,857
+inférieur ou égal à w et que w est inférieur ou
+égal à v alors la seule manière que ce soit
+
+84
+00:08:25,857 --> 00:08:31,495
+correct est qu'ils soient égaux.
+Il y a aussi la transitivité. Si v inférieur à w,
+
+85
+00:08:31,495 --> 00:08:36,736
+et w est inférieur à x, alors v doit être
+inférieur ou égal à x. Précisément, soit
+
+86
+00:08:36,736 --> 00:08:42,785
+v est inférieur ou égal à w soit w est inférieur
+ou égal à v soit ils sont égaux.
+
+87
+00:08:43,003 --> 00:08:49,420
+Il y a de nombreux ordres totaux tout à fait naturels
+parmi les types de donnés que nous souhaitons classiquement
+
+88
+00:08:49,420 --> 00:08:55,097
+considérer comme clés de tri. Comme les
+entiers ou les nombres naturels ou les nombres
+
+89
+00:08:55,097 --> 00:09:01,185
+réels, ou l'ordre alphabétique pour les chaînes,
+l'ordre chronologique pour les dates ou les durées, etc.
+
+90
+00:09:01,185 --> 00:09:07,280
+Le dessin sur la droite montre
+que tous les ordres ne sont pas forcément des ordres
+
+91
+00:09:07,280 --> 00:09:12,643
+totaux. Papier, ciseaux, cailloux est non transitif.
+Si vous savez que v est moins
+
+92
+00:09:12,643 --> 00:09:17,626
+que w, w inférieur à v, vous ne savez pas
+si v est inférieur ou égal à v. Désolé,
+
+93
+00:09:17,626 --> 00:09:22,135
+v est inférieur à w, w est inférieur ou égal à x
+et vous ne savez pas nécessairement
+
+94
+00:09:22,135 --> 00:09:30,219
+si v est inférieur ou égal à x. Bien.
+Alors dans l'API Comparable, par convention,
+
+95
+00:09:30,219 --> 00:09:39,003
+en Java nous devrons toujours mettre en oeuvre compareTo()
+de manière à ce que v comparé à w soit un 
+
+96
+00:09:39,003 --> 00:09:46,852
+ordre total. Et également par convention,
+la méthode retourne un entier négatif pour inférieur
+
+97
+00:09:46,852 --> 00:09:54,408
+zéro si c'est égal et un entier positive si c'est supérieur,
+si cet objet est plus grand que l'objet
+
+98
+00:09:54,408 --> 00:10:00,754
+passé en paramètre. Si les types
+sont incompatibles ou si jamais l'un des objets est vide
+
+99
+00:10:01,011 --> 00:10:07,466
+compareTo() devrait envoyer une exception.
+Encore une fois, de nombreux types standard de Java
+
+100
+00:10:07,713 --> 00:10:15,012
+pour les nombres, les dates, les fichiers, etc
+mettent en oeuvre compareTo() par convention.
+
+101
+00:10:15,207 --> 00:10:20,018
+Maintenant, si nous voulions mettre en oeuvre
+notre propre type alors nous devrions aller plus loin et
+
+102
+00:10:20,018 --> 00:10:24,092
+mettre en oeuvre l'interface Comparable
+en respectant ces règles. Et la plupart du temps,
+
+103
+00:10:24,092 --> 00:10:30,065
+c'est assez direct. Voici un exemple.
+C'est la version simplifiée
+
+104
+00:10:30,065 --> 00:10:37,099
+de la classe Date qui est implantée en interne
+dans le langage Java, simplement pour vous donner une idée de la mise
+
+105
+00:10:37,099 --> 00:10:42,029
+en oeuvre de Comparable. Donc, après 
+la déclaration de la classe, on écrit "implements"
+
+106
+00:10:42,029 --> 00:10:48,356
+Comparable et on remplit le generic
+avec le même type parce que nous allons seulement
+
+107
+00:10:48,356 --> 00:10:53,712
+comparer des dates à d'autres dates.
+Dans cette version, la clase Date a
+
+108
+00:10:53,712 --> 00:10:58,853
+trois variables d'instances. Le mois,
+le jour, l'année et le constructeur
+
+109
+00:10:58,853 --> 00:11:04,098
+les remplit en utilisant les arguments comme vous pouvez le voir.
+Donc maintenant si vous voulez comparer deux
+
+110
+00:11:04,098 --> 00:11:10,238
+dates différentes, alors la première chose à faire
+et de tester si cette année est inférieure à
+
+111
+00:11:10,238 --> 00:11:15,696
+cette année-là, l'année de la date donnée
+en paramètre. Si c'est vrai,
+
+112
+00:11:15,696 --> 00:11:20,291
+alors c'est inférieur, on retourne -1 et si
+l'année est plus grande, on retourne +1.
+
+113
+00:11:20,292 --> 00:11:26,226
+Sinon, les années doivent être égales
+et dans ce cas, nous devons regarder les mois pour
+
+114
+00:11:26,226 --> 00:11:31,964
+effectuer la comparaison et ainsi de suite jusqu'aux jours.
+C'est seulement dans le cas où ils sont tous égaux que nous retournons
+
+115
+00:11:31,964 --> 00:11:36,054
+zéro. Bref, c'est un exemple
+de mise en oeuvre de Comparable en
+
+116
+00:11:36,054 --> 00:11:42,814
+implantant la méthode compareTo() pour
+mettre les dates en ordre comme attendu.
+
+117
+00:11:42,814 --> 00:11:49,775
+Ainsi, le langage Java nous aide avec ce
+mécanisme Comparable pour que nous puissions trier
+
+118
+00:11:49,775 --> 00:11:55,521
+des données de n'importe quel type. Quand nous allons
+avancer pour mettre en oeuvre des algorithmes de tri,
+
+119
+00:11:55,521 --> 00:12:02,245
+nous serons en fait caché sous nos
+propres implantations. En fait, les algorithmes
+
+120
+00:12:02,245 --> 00:12:08,728
+de tri, leur véritable code peut être 
+utilisé pour exécuter des tris dans plusieurs autres
+
+121
+00:12:08,728 --> 00:12:14,650
+langages. La manière de faire ça est de prendre
+les deux opérations primaires, comparer et
+
+122
+00:12:14,650 --> 00:12:20,614
+échanger qui étaient utilisées
+pour se référer aux données et de les encapsuler
+
+123
+00:12:20,614 --> 00:12:26,137
+comme des méthodes statiques. Nous allons
+utiliser une méthode less() qui prend
+
+124
+00:12:26,137 --> 00:12:31,878
+deux objets Comparable en arguments et 
+qui retourne simplement v.compareTo(w) inférieur à 0.
+
+125
+00:12:31,878 --> 00:12:39,218
+Alors ce que nous faisons aussi
+pour trier les objets qui sont dans le tableau
+
+126
+00:12:39,218 --> 00:12:45,861
+est un swap, un échange de l'objet 
+à un indice donné i avec celui à un indice 
+
+127
+00:12:45,861 --> 00:12:52,166
+donné j. Ça c'est ce que tout programmeur fait comme 
+première introduction aux affectations.
+
+128
+00:12:52,166 --> 00:12:59,014
+On sauvegarde a[i] dans une variable swap,
+on met a[j] dans a[i] et alors on remet swap
+
+129
+00:12:59,014 --> 00:13:05,545
+dans a[j]. Donc là, pour se référer aux données,
+notre méthode de tri va seulement utiliser ces deux
+
+130
+00:13:05,545 --> 00:13:10,872
+méthodes statiques. Et il y a une bonne raison à ça.
+Voici un exemple. Supposons que nous souhaitons
+
+131
+00:13:10,872 --> 00:13:16,285
+tester si un tableau est trié. Voici
+une méthode statique qui est sensée retourner
+
+132
+00:13:16,285 --> 00:13:21,298
+vrai si le tableau est trié et faux si ce n'est pas le cas
+Et tout ce qu'elle fait, c'est de parcourir
+
+133
+00:13:21,298 --> 00:13:26,411
+le tableau de 1 jusqu'à la taille du tableau
+et de tester si chaque élément est inférieur
+
+134
+00:13:26,411 --> 00:13:31,440
+au précédent. Si vous avez un élément
+qui est inférieur au précédent alors ce n'est
+
+135
+00:13:31,440 --> 00:13:36,352
+pas trié et vous retournez false. Si vous parcourez
+tout le tableau sans que cela se produise,
+
+136
+00:13:36,352 --> 00:13:41,482
+alors vous dites true, que le tableau est trié.
+C'est un code plutôt simple, la question
+
+137
+00:13:41,482 --> 00:13:47,415
+est, si vous avez un algorithme de tri qui
+valide ce test, êtes-vous sûr
+
+138
+00:13:47,415 --> 00:13:54,124
+qu'il a correctement trié le tableau ? Eh bien
+la réponse à cette question est oui si, oui si,
+
+139
+00:13:54,124 --> 00:14:00,792
+vous avez utilisé seulement les méthodes less()
+et exchange() pour vous référez aux données
+
+140
+00:14:00,792 --> 00:14:07,592
+parce que dans ce cas vous savez, puisque vous avez utilisé
+la méthode exchange(), que les données dans le tableau
+
+141
+00:14:07,592 --> 00:14:13,489
+après le tri sont bien les mêmes que celles
+qui étaient dans le tableau avant le tri. Si vous
+
+142
+00:14:13,489 --> 00:14:18,640
+aviez une méthode de tri qui pouvait stocker
+n'importe quelles valeurs dans un tableau, elle pourrait, par exemple,
+
+143
+00:14:18,640 --> 00:14:24,337
+stocker des 0 dans toutes les entrées du tableau
+et cette méthode réussirait le test, mais n'aurait
+
+144
+00:14:24,337 --> 00:14:29,046
+pas correctement trié le tableau parce qu'elle
+aurait écrasé toutes les valeurs. Du coup,
+
+145
+00:14:29,046 --> 00:14:39,306
+nous utilisons less() et exchange() pour être certain
+de pouvoir vérifier avec une méthode de ce type
+
+146
+00:14:39,306 --> 00:14:44,056
+que nos méthodes fonctionnent correctement.

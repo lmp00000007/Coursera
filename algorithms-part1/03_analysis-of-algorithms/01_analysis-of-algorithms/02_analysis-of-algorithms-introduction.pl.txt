@@ -1,0 +1,88 @@
+Witaj ponownie. Dziś zajmiemy się matematyką 
+i naukami ścisłymi. Nie będzie tego zbyt dużo, ale pewne podstawy są konieczne, żeby
+zrozumieć przebieg używanych przez nas algorytmów, by je później poprawnie
+implementować. A więc dzisiaj będziemy rozmawiać o tym, jak analizować
+przebieg algorytmu. Zobaczymy jak budować modele matematyczne
+i jak klasyfikować algorytmy ze względu na wzrost czasu ich wykonania względem danych
+wejściowych. Trochę czasu poświęcimy też teorii algorytmów i nauczymy się analizować zużycie
+pamięci. Krótko mówiąc, będziemy analizować wymienione zagadnienia
+z różnych punktów widzenia. Zacznijmy od programisty,
+który próbuje rozwiązać pewien problem znajdując i implementując jakieś rozwiązanie.
+Drugi punkt widzenia to klient, który chce użyć programu do wykonania zadania.
+Trzecim jest teoretyk, osoba, która bardzo chce zrozumieć,
+co i jak działa. I jeszcze coś w rodzaju drużyny obrońców, którzy
+zajmując się rozwiązywaniem bieżących problemów, umożliwiają programistom pracę nad projektem.
+W dzisiejszym wykładzie wcielimy się po trochu w każdego z nich. A Ty, jako student, 
+powinieneś mieć świadomość że pewnego dnia, możesz znaleźć się
+w którejś z wymienionych ról. Jest zatem ważne byś zrozumiał różne punkty widzenia.
+Punktem odniesienia dla naszych rozważań będzie upływający czas. Położenie nacisku na
+czas wykonania programu sięga czasów Babbage'a
+a może i jeszcze wcześniejszych. Babbage powiedział: "Gdy tylko pojawi się
+maszyna analityczna, to ona wyznaczy kierunek rozwoju nauki. W przypadku użycia jej
+do znalezienia rozwiązania jakiegoś problemu, pojawia się pytanie, jak przeprowadzić obliczenia
+na tej maszynie, by uzyskać wynik w jak najkrótszym czasie." Jeśli spojrzeć
+na fizyczną maszynę Babbage'a, nazywaną maszyną analityczną, widać
+na niej korbę. Babbage'a zastanawiało, jak długo będzie się wykonywał program, 
+gdyż miało to bezpośrednie przełożenie na ilość obrotów korbką. Szczerze mówiąc,
+niewiele się to różni od współczesnych obliczeń. Tyle że korbka jest elektroniczna, a obroty
+liczone są w milionach na sekundę. My staramy się dowiedzieć, ile razy
+pewna dyskretna operacja musi zostać wykonana, by uzyskać wynik obliczenia.
+Jak widać, jest wiele powodów, by zainteresować się analizą algorytmów. W tym
+kursie, skupimy się na przewidywaniu przebiegu; nauczymy się również
+porównywać wydajność różnych algorytmów dla tego samego problemu
+oraz jak zagwarantować ich poprawność. A ponadto
+zrozumiemy teoretyczne podstawy działania algorytmów. Najważniejszym i praktycznym
+powodem, dla którego zajmujemy się analizą algorytmów
+jest unikanie błędów. Chcemy mieć pewność, że nasze algorytmy
+zakończą zlecone im zadania w przewidzianym przez nas czasie.
+Bardzo często w obecnym świecie IT można zetknąć się z przypadkami,
+gdy klient narzeka na kiepską wydajność programu, gdyż jego twórca
+nie zrozumiał charakterystyki wydajności algorytmu. Dzisiejszy wykład
+ma na celu pomoc w uniknięciu takiej sytuacji. W tym kursie skoncentrujemy się
+na wydajności i porównywaniu algorytmów. W standardowym programie nauczania informatyki,
+po takim podstawowym kursie następują kolejne, dostarczając informacji
+o teoretycznych podstawach algorytmów, o czym jeszcze później wspomnę.
+Teraz skupmy się na przewidywaniu przebiegu i porównywaniu algorytmów.
+Długa jest lista optymistycznych historii opowiadających o ulepszaniu wydajności algorytmów, 
+które to ulepszenia umożliwiły rozwiązywanie problemów dotychczas nierozwiązywalnych.
+Wymienię tutaj kilka przykładów. Jednym z pierwszych i najbardziej znanych jest
+algorytm FFT (Szybkiej transformacji Fouriera). Algorytm ten dzieli ciągły sygnał falowy
+złożony z n próbek na cykliczne komponenty. Jest to wykorzystywane w 
+DVD, JPEG i wielu innych aplikacjach. Da się to prosto policzyć, ale czas takiego
+prostego wykonania jest proporcjonalny do N^2. Algorytmowi FFT zajmuje to jedynie N log N kroków.
+Różnica między N log N a N^2, jest różnicą między
+dużym problemem rozwiązywalnym a problemem nierozwiązywalnym.
+Spora część technologii cyfrowej, mediów cyfrowych, z których dzisiaj korzystamy, może istnieć
+dzięki temu szybkiemu algorytmowi. Kolejny przykład, to algorytm stworzony przed Andrew Appel'a, który
+jest teraz profesorem informatyki tutaj, w Princeton. Został zaimplementowany,
+gdy on był jeszcze studentem i pracował nad swoją pracą magisterską. Jest to szybki algorytm
+dla symulacji problemu wielu ciał. Prostszy algorytm dla tego problemu, zajmuje czas proporcjonalny do
+N^2, a algorytm zaproponowany przez Appel'a - N log N. Oznacza to, że naukowcy
+mogą sumulować problem wielu ciał dla dowolnie dużych wartości N. A to otwiera
+nowe ścieżki badań. Wyzwaniem, z którym przychodzi nam się zmierzyć, jest pytanie, czy mój program będzie w stanie
+rozwiązać problem dla dużych rzeczywistych danych wejściowych? Pracujący programiści mają do czynienia
+z tym problemem na co dzień. Dlaczego mój program jest taki wolny?
+Dlaczego kończy mu się pamięć? Również z tym, oraz z możliwymi rozwiązaniami,
+programiści zmagają się od długiego czasu. Deuter Kanoof w latach '70 XX wieku twierdził,
+że można używać metod naukowych, by zrozumieć przebieg działającego algorytmu.
+Być może nie odkrywany tutaj Ameryki, ale potraktujmy komputer jako narzędzie badań
+i spróbujmy zrozumieć jak nasz program zostanie wykonany.
+Przyjrzyjmy się temu bliżej. Najpierw krótkie przypomnienie, czym
+są metody naukowe, które były z sukcesem wykorzystywane przez
+ostatnich kilka wieków. To, czym się teraz zajmiemy, to obserwacja świata, którym,
+w naszym przypadku, będzie czas pracy naszego programu na komputerze.
+Następnie opracujemy model hipotezy, który będzie zgodny z naszymi obserwacjami<
+mając jednocześnie nadzieję, że ta hipoteza będzie na tyle dobra,
+by pozwolić nam coś przewidzieć. Zazwyczaj będzie to próba oszacowania czasu działania dla problemów
+o dużym rozmiarze lub dla uruchomienia programu na innym komputerze. Później zweryfikujemy nasze przewidywania,
+przeprowadzając kolejne obserwacje i je weryfikując do czasu aż będziemy pewni, że nasza modelowa hipoteza
+zgadza się ze wszystkimi poczynionymi obserwacjami. W ten sposób możemy się upewnić,
+że rozumiemy przebieg naszego programu. Wracając do metod naukowych -
+obowiązuje tutaj kilka podstawowych zasad, spośród których najważniejsza mówi, że jeśli
+przeprowadzasz eksperyment, powinieneś oczekiwać, że jeśli ktokolwiek inny przeprowadzi taki sam
+eksperyment, uzyska on taki sam wynik. Również hipoteza powinna posiadać pewną własność
+- powinna być doświadczalnie falsyfikowalna. Należy więc ją
+starannie przygotować, co z pewnością spróbujemy zrobić. 
+Analizowanym aspektem naszego świata jest konkretny komputer, który
+w tym świecie istnieje. To on materializuje abstrakcyjny algorytm
+w konkretną fizycznie istniejącą rzecz, jak elektrony poruszające się w naszym komputerze.

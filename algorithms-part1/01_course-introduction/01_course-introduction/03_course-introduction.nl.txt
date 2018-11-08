@@ -1,0 +1,106 @@
+Welkom. Ik ben Bob Sedgewick, docent informatica
+bij Princeton. Dit is ons online vak Algoritmes ontwikkelt door mijzelf
+ en Kevin Wayne hier bij Princeton. We beginnen met te bespreken
+ waarom je algoritmes zou willen studeren en wat je nodig hebt om 
+deze cursus te volgen. Dit is een overzichtscursus van gemiddeld
+niveau over algoritmes. We zullen vooral programmeren 
+en probleemoplossen in de voor reële toepassingen, en de focus 
+zal liggen op twee dingen: algoritmes, de methode voor probleemoplossing 
+en datastructuren, die de informatie met betrekking tot het probleem, opslaan. De
+datastructuren gaan hand in hand met de algoritmes. De basisonderwerpen voor 'Algoritmes
+ deel één en deel twee' Het eerste deel gaat over datatype 
+sortering en doorzoeking. We zullen een aantal datastructuren en algoritmes bekijken, die
+de basis vormen voor alle methodes die we beschouwen, waaronder stapels, wachtrijen multisets 
+en voorrangswachtrijen. Dan bekijken we klassieke algoritmes voor sorteren ( dingen in 
+volgorde zetten ). Dat zijn quicksort, mergesort, heapsort en radix sort. We
+hebben het over klassieke zoekmethodes, waaronder binaire zoekbomen, 
+rood-zwart zoekbomen en hashtabellen. Het 2de deel van de cursus behandelt
+ gevordere algoritmes zoals graph algoritmes ( klassiek, 
+minimum spanning tree, kortste pad ), algoritmes voor tekstverwerking
+ zoals regular expressions en data compressie. En verder bespreken we
+meer gevorderde algoritmes die gebruik maken van de eerder besproken basis algoritmes.
+Dus, waarom algoritmes bestuderen? Wel, omdat ze een enorme impact hebben. Van het internet tot biologie, tot
+computer toepassingen, beeldverwerking Security, multimedia, sociale netwerken, 
+wetenschappelijke toepassingen Algoritmes zijn overal. Ze worden gebruikt
+in films, games, simulaties van botsingen van deeltjes, ze worden gebruikt om het 
+genenbestand te bestuderen en noem maar op Dus dat is al een goede reden om 
+algoritmes te bestuderen: hun hun verregaande impact.
+Een volgende reden om algoritmes te bestuderen zijn hun leeftijd. De eerste algoritmes
+dateren van 300 v.c., uit de tijd van Euclides.
+Het concept van algoritmes werd geformaliseerd door Church en Turing in de jaren 1930 hier
+in Princeton. De meeste algoritmes die we bestuderen dateren echter van de
+laatste decennia.Sommige zelfs door Studenten in cursussen zoals deze. en er
+zijn nog heel wat algoritmes die wachten op ontdekking door studenten zoals jij.
+De belangrijkste reden om algoritmes te bestuderen is het kunnen oplossen
+van problemen die anders niet kunnen worden opgelost. Bijvoorbeeld: in de
+eerste les zullen we het hebben over netwerkverbindingen,
+waarbij een voor grote hoeveelheid paarsgewijs gekoppelde items 
+een weg moet vinden doorheen de verbindingen.
+Dit voorbeeld toont ons hoe moeilijk het is een pad te vinden zonder
+een computer. Hier hebben we een efficiënt algoritme voor nodig.
+In dit voorbeeld kunnen we een pad vinden.
+Nog een reden om algoritmes te bestuderen is Intellectuele stimulatie. Algoritmes zijn
+boeiende studieobjecten. Don Knuth, een pionier in deze materie schreef een 
+aantal boeken over algoritmes en zegt: "Een algoritme moet je zien om te geloven". 
+Aan algoritmes denk je niet, maar werk je aan.
+Een andere quote van Francis Sullivan: "Grootse algoritmes zijn poëtisch rekenwerk".
+Net als een vers, kunnen ze 'terse', 'elusive', 'dense' en zelfs mysterieus zijn.
+Maar eens losgelaten schijnen ze een een helder nieuw licht op rekenwerk.
+Algoritmes bestuderen zorgt voor intellectuele stimulatie. Velen onder jullie
+studeren waarschijnlijk algoritmes omdat jullie het noodzakelijk vinden om
+te verstaan hoe goede, efficiente algoritmes en data structuren werken zodat
+jullie beter leren programmeren. Linus Torvalds, de grondlegger van Linux,
+zegt dat het verschil tussen een slechte en een goede programmeur bestaat uit
+feit of hij zijn code of datastructuren belangrijker vindt. Slechte programmeurs
+ focussen op code en goede focussen op data structuren en hun onderlinge
+relatie. En ik voeg hier nog aan toe: De algoritmes die deze verwerken.
+Niklaus Wirth, nog een pioneer in computerwetenschappen, schreef een bekend boek
+"Algorithms + Data Structures = Programs" Algoritmes worden dezer dagen ook
+veel bestudeerd omdat zij een gemeenschappelijke taal om de natuur
+te verstaan, vormen. Algoritmes zijn rekenmodellen en algoritmische modellen vervangen rekenkundige
+modellen in wetenschappelijk onderzoek. In de 20ste eeuw ontwikkelden weten-
+schappers mathematische modellen om natuurfenomenen te doorgronden. Het werd
+al snel duidelijk dat deze mathematische modellen moeilijk op te lossen waren.
+Het was moeilijk om oplossingen die hypotheses testen op natuurlijk fenomenen, te maken.
+Daarom worden nu meer en meer rekenkundige modellen ontwikkeld.
+Hiermee probeert men te simuleren wat mogelijk gebeurt in de natuur
+en dit zo beter te begrijpen. Algoritmes spelen hierbij een belangrijke rol.
+Gedurende de cursus zullen we hier een aantal voorbeelden van zien.
+Ook niet onbelangrijk is dat het vlot algoritmes en datastructuren
+kunnen gebruiken, je kansen op een job in de tech-industrie dramatisch
+toenemen. Dus alle redenen om algoritmes
+ te bestuderen nog eens samengevat: Een zeer brede en diepgaande impact.
+Ze hebben een lange geschiedenis en geven nieuwe mogelijkheden. Ze laten
+ons toe om eerder onoplosbare problemen op te lossen. Ze bezorgen
+intellectuele stimulatie waardoor je beter gaat programmeren. Wie weet
+onthullen ze de geheimen van het universum ze geven plezier en brengen op.
+Je kan je afvragen waarom je nog iets anders zou studeren. Wel, er zijn genoeg redenen
+om andere dingen te studeren, maar Er zijn geen goede redenen om algoritmes
+niet te bestuderen. Er zijn 2 hulpmiddelen die ik
+wil bespreken en er voor zorgen dat je er vertrouwd mee bent.
+Dit is een 'publishing' model dat Kevin Wayne en ik ontwikkelden en
+al jaren gebruiken en we vinden dit een zeer doeltreffende ondersteuning
+is voor het type lessen dat we gaan geven in deze cursus. Onderaan zie je
+een - optioneel - handboek voor deze cursus, dat de onderwerpen
+van deze cursus diepgaand behandelt en dat daarbuiten nog veel meer behandelt. Op de online boek-site vind je nog meer
+ondersteunend materiaal voor dit boek. Op de boek-site vind je de slides van de
+lessen en ook code, oefeningen en een
+boel informatie. Veel meer dan wat je in het boek vindt,
+inclusief een inhoudsopgave Tijdens de cursus zul je hier
+dikwijls naar toe gaan. Als voorkennis voor deze cursus
+verwachten we dat je kan programmeren en dat je weet
+hoe om te gaan met 'loops', 'arrays' en functies. Je moet ook bekend zijn met
+object OO-programmeren en recursie. Wij gebruiken java, zonder al te
+diep in te gaan op de taal. We gebruiken wiskunde, maar
+zeker geen gevorderde. indien je vooraf je voorkennis
+wat wil bijschaven, kan je in secties 1.1 en 1.2 van het
+boek wel een en ander vinden. Dit kan op de boek-site, of in
+het boek. Wil je meer, Dan kan je "An introduction to 
+programming in java: An interdisciplinary
+approach" lezen. Hiervoor is er ook een boek-site
+en tekstboek. Uiteindelijk zal je dus moeten kunnen programmeren
+en dit doe je best door een java programma te schrijven; eventueel met
+behulp van een model uit de boek-site. Meer detail
+krijg je bij de opdrachten. Je kan je eigen
+programeeromgeving gebruiken of je kan de onze downloaden.
+de instructies hiervoor vind je op de website.

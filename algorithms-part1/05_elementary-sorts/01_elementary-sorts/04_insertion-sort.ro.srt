@@ -1,0 +1,531 @@
+1
+00:00:02,190 --> 00:00:03,642
+Acum ne vom uita la sortare prin inserție,
+
+2
+00:00:03,642 --> 00:00:07,730
+care este o altă metodă elementară care are destul de interesante
+
+3
+00:00:07,730 --> 00:00:10,560
+caracteristici de performanță diferite decât cele de sortare prin selecție.
+
+4
+00:00:13,190 --> 00:00:15,960
+Să ne uităm la un demo al sortării prin inserție.
+
+5
+00:00:15,960 --> 00:00:19,860
+Pentru sortare prin inserare, ceea ce vom face este vom muta un indice i
+
+6
+00:00:19,860 --> 00:00:23,670
+de la stânga la dreapta ca înainte, dar acum, în iterația a i-a,
+
+7
+00:00:23,670 --> 00:00:27,860
+noi vom muta a[i] în poziția printre elementele sale spre stânga.
+
+8
+00:00:27,860 --> 00:00:30,820
+Să ne uităm la modul în care funcționează pe exemplul nostru cu cărți.
+
+9
+00:00:33,570 --> 00:00:38,527
+Deci, acum începem prin inițializarea i la prima carte, și
+
+10
+00:00:38,527 --> 00:00:44,826
+luăm ideea că totul de la i la stânga lui va fi sortat și
+
+11
+00:00:44,826 --> 00:00:49,920
+iar la totul din partea dreaptă nu ne vom uita la deloc.
+
+12
+00:00:51,350 --> 00:00:55,650
+Așa că totul în stânga i este în ordine crescătoare, totul la dreapta,
+
+13
+00:00:55,650 --> 00:00:57,680
+nu l-am văzut încă tot.
+
+14
+00:00:57,680 --> 00:01:01,010
+Deci, acum, când noi incrementăm i, bine, în acest caz, este deja în ordine,
+
+15
+00:01:01,010 --> 00:01:02,280
+noi nu avem nimic altceva de făcut.
+
+16
+00:01:03,680 --> 00:01:08,200
+În al treilea caz acum, când i este la a treia intrare în matrice,
+
+17
+00:01:08,200 --> 00:01:14,600
+acum începem un indice j, și noi mișcăm aceea începând de la I la stânga.
+
+18
+00:01:14,600 --> 00:01:19,660
+Și ce trebuie să facem este doar să schimbăm 5 cu fiecare element la stânga sa
+
+19
+00:01:19,660 --> 00:01:20,610
+care e mai mare.
+
+20
+00:01:20,610 --> 00:01:24,440
+Așa că mai întâi îl schimbăm cu 10, nu este încă la loc, astfel încât
+
+21
+00:01:24,440 --> 00:01:26,390
+îl schimbăm cu 7.
+
+22
+00:01:26,390 --> 00:01:30,840
+Acum vom ajunge la începutul matricii, și odată ce am făcut asta sau
+
+23
+00:01:30,840 --> 00:01:36,040
+ne-am lovit de un element mai mic, atunci avem pe toată lumea în stânga lui i în ordine.
+
+24
+00:01:37,850 --> 00:01:41,500
+Deci, acum incrementăm aceea din nou, și am ajuns la 3.
+
+25
+00:01:41,500 --> 00:01:46,630
+Din nou, facem schimb de atâta timp cât cardul imediat la stânga este mai mare.
+
+26
+00:01:49,830 --> 00:01:50,900
+Și odată ce am făcut asta,
+
+27
+00:01:50,900 --> 00:01:54,160
+atunci avem totul la stânga în ordine crescătoare.
+
+28
+00:01:55,380 --> 00:02:00,030
+Acum, în acest caz, avem 8, și avem doar să facem schimb, și
+
+29
+00:02:00,030 --> 00:02:03,410
+acum are 7 la stânga și totul este în ordine.
+
+30
+00:02:03,410 --> 00:02:07,000
+Așa că am realizat punerea în ordine, cu mai puțină muncă în acest caz.
+
+31
+00:02:07,000 --> 00:02:09,530
+Noi nu trebuie întotdeauna să mergem tot drumul înapoi la început.
+
+32
+00:02:10,860 --> 00:02:14,943
+4, îl schimbăm cu tot ce e la stânga lui care e mai mare,
+
+33
+00:02:14,943 --> 00:02:19,271
+până când vom găsi un element mai mic, atunci este în ordine crescătoare.
+
+34
+00:02:19,271 --> 00:02:22,006
+2 trebuie să meargă tot drumul înapoi la început.
+
+35
+00:02:27,509 --> 00:02:34,902
+Dar, apoi chiar următorul, 9 trebuie să meargă înapoi numai o singură poziție,
+
+36
+00:02:34,902 --> 00:02:39,290
+și 6 trebuie să meargă cam jumătate drumul înapoi.
+
+37
+00:02:39,290 --> 00:02:41,320
+Și apoi am sortat întreaga matrice.
+
+38
+00:02:42,350 --> 00:02:46,440
+Din nou, ne putem uita la sortare prin inserție în termeni de invarianți.
+
+39
+00:02:46,440 --> 00:02:49,070
+Indicatorul nostru încă scanează de la stânga la dreapta, dar
+
+40
+00:02:49,070 --> 00:02:52,930
+acum elementele din stânga cursorului, inclusiv el,
+
+41
+00:02:52,930 --> 00:02:57,480
+sunt în ordine, dar elementele la dreapta nu au fost încă observate deloc.
+
+42
+00:02:57,480 --> 00:03:00,990
+Așa că trebuie să ne uităm la codul care va menține acel invariant așa cum
+
+43
+00:03:00,990 --> 00:03:03,040
+crește cursorul.
+
+44
+00:03:03,040 --> 00:03:05,805
+Mutați cursorul spre dreapta, se incrementează din nou.
+
+45
+00:03:05,805 --> 00:03:10,148
+Acum invariantul e stricat, deoarece elementul pe
+
+46
+00:03:10,148 --> 00:03:13,650
+indicator nu este în ordine sortată.
+
+47
+00:03:13,650 --> 00:03:18,176
+Pentru a-l pune în ordine sortată, trebuie să-l mutăm de la dreapta la stânga, schimbând-ul cu
+
+48
+00:03:18,176 --> 00:03:22,787
+fiecare elemente mai mari spre stânga sa, și asta e ceea ce face codul de la partea de jos.
+
+49
+00:03:22,787 --> 00:03:26,824
+Se pornește de la j la i, și decrementează j
+
+50
+00:03:26,824 --> 00:03:31,804
+schimbând j cu elementele din stânga acestuia,
+
+51
+00:03:31,804 --> 00:03:37,051
+a de j cu elementul său la stânga, a de j-1,
+
+52
+00:03:37,051 --> 00:03:43,680
+atâta timp cât un a de j este mai puțin de a de j-1 sau j este mai mare decât 0.
+
+53
+00:03:43,680 --> 00:03:48,030
+Și asta imediat dă acest cod pentru sortare prin inserție,
+
+54
+00:03:48,030 --> 00:03:54,290
+care este similar cu codul nostru de sortare prin selecție și la fel de simplu.
+
+55
+00:03:54,290 --> 00:03:58,707
+Are două bucle imbricate, sortarea prin selecție a avut două bucle imbricate,
+
+56
+00:03:58,707 --> 00:04:03,210
+un test, o comparație, și un schimb interior pentru buclă.
+
+57
+00:04:03,210 --> 00:04:07,220
+Și asta este o punere în aplicare fină a unei metode de sortare elementară.
+
+58
+00:04:08,800 --> 00:04:12,310
+Cum rămâne cu analiza sortării prin inserție?
+
+59
+00:04:12,310 --> 00:04:13,830
+E mai complicat.
+
+60
+00:04:13,830 --> 00:04:20,340
+Propunerea noastră spune că sortarea prin inserție, pentru a sorta matrice ordonată aleator
+
+61
+00:04:20,340 --> 00:04:25,660
+cu chei distincte, se va folosi aproximativ un sfert N la pătrat comparări,
+
+62
+00:04:25,660 --> 00:04:30,750
+și aproximativ același număr, un sfert N la pătrat schimburi, în medie.
+
+63
+00:04:30,750 --> 00:04:33,210
+Acest lucru este mai complicat de dovedit.
+
+64
+00:04:33,210 --> 00:04:36,650
+Aceasta depinde de matrice fiind ordonat la întâmplare.
+
+65
+00:04:36,650 --> 00:04:38,930
+Și din nou, puteți obține un sentiment pentru
+
+66
+00:04:38,930 --> 00:04:44,430
+în cazul în care propunerea vine uitându-ne la această urmă N cu N.
+
+67
+00:04:44,430 --> 00:04:47,750
+Din nou, elementele negre sunt cele pe care le comparăm, și
+
+68
+00:04:47,750 --> 00:04:50,330
+de fapt, ele sunt, de asemenea, schimburile.
+
+69
+00:04:50,330 --> 00:04:52,940
+Pe cel roșu este cel care în cele din urmă e pus la loc.
+
+70
+00:04:53,945 --> 00:04:59,129
+Și puteți vedea că pentru o matrice mare, care e sortată la întâmplare, elementul
+
+71
+00:04:59,129 --> 00:05:03,758
+pe care l-am pus la loc va merge aproximativ jumătate drumul înapoi în medie.
+
+72
+00:05:03,758 --> 00:05:07,604
+Deci asta înseamnă că aproximativ jumătate din elementele de mai jos de diagonală vor fi negre
+
+73
+00:05:07,604 --> 00:05:08,930
+în medie.
+
+74
+00:05:08,930 --> 00:05:11,000
+Există N la pătrat peste 2 sub diagonală,
+
+75
+00:05:11,000 --> 00:05:12,625
+jumătate din care este N pătrat peste 4.
+
+76
+00:05:14,050 --> 00:05:18,510
+Analiza exactă nu este cu mult mai detaliată decât atât.
+
+77
+00:05:20,928 --> 00:05:23,906
+Aceasta este o urmă mai mare, care arată, din nou,
+
+78
+00:05:23,906 --> 00:05:28,725
+aproximativ jumătate din elementele de mai jos de diagonală sunt implicate în sortare.
+
+79
+00:05:28,725 --> 00:05:35,187
+[TUSE] Să ne uităm la o animație.
+
+80
+00:05:35,187 --> 00:05:38,120
+Din moment ce N la pătrat peste 4, față de N la pătrat peste 2,
+
+81
+00:05:38,120 --> 00:05:42,450
+sortarea prin inserție va fi de aproximativ de două ori la fel de rapidă ca și sortarea prin selecție.
+
+82
+00:05:42,450 --> 00:05:47,326
+Așa că putem face de două ori mai multe elemente în urme în aceeași perioadă de timp.
+
+83
+00:05:50,796 --> 00:05:55,420
+Ea apucă un element și îl aduce înapoi în poziție de fiecare dată.
+
+84
+00:05:57,580 --> 00:06:01,590
+Deci asta este o animație pentru articole sortate la întâmplare.
+
+85
+00:06:01,590 --> 00:06:06,650
+Acum, sortarea prin inserție nu depinde de ordinea inițială a datelor.
+
+86
+00:06:07,890 --> 00:06:12,334
+Să ne uităm la cel mai bun caz și cel mai rău caz, care sunt cu siguranță valori aberante.
+
+87
+00:06:13,440 --> 00:06:18,090
+În cazul în care matricea se întâmplă să fie deja sortată, toată sortarea prin inserție
+
+88
+00:06:18,090 --> 00:06:23,080
+face într-adevăr să valideze faptul că fiecare element are elemente mai mici, la stânga lui.
+
+89
+00:06:23,080 --> 00:06:25,190
+Așa că nu face schimburi.
+
+90
+00:06:25,190 --> 00:06:28,480
+Ea face treaba de sortare doar cu N minus 1 comparări.
+
+91
+00:06:29,590 --> 00:06:33,465
+Pe de altă parte, în cazul în care matricea este în ordine descrescătoare și
+
+92
+00:06:33,465 --> 00:06:37,750
+nu are duplicate, atunci fiecare element merge tot drumul înapoi.
+
+93
+00:06:38,950 --> 00:06:43,170
+Se fac n la pătrat peste 2 comparări și n la pătrat peste 2 schimburi.
+
+94
+00:06:44,310 --> 00:06:45,780
+Așa că, în primul caz, este mult,
+
+95
+00:06:45,780 --> 00:06:50,170
+mult mai rapid decât sortare prin selecție, liniară în loc de pătratică.
+
+96
+00:06:50,170 --> 00:06:53,505
+În al doilea caz, este mai lentă decât sortarea prin selecție,
+
+97
+00:06:53,505 --> 00:06:59,290
+deoarece utilizează aproximativ același număr de comparări, dar utilizează mai multe schimburi.
+
+98
+00:06:59,290 --> 00:07:01,240
+Așa că hai să vedem aceea în animație.
+
+99
+00:07:02,880 --> 00:07:05,990
+Deci, acest lucru este atunci când elementele vin în ordine inversă.
+
+100
+00:07:05,990 --> 00:07:10,540
+Acum, de fiecare dată când acesta devine un element nou,
+
+101
+00:07:10,540 --> 00:07:13,290
+ea trebuie să-l schimbe tot drumul înapoi la început.
+
+102
+00:07:15,530 --> 00:07:20,460
+Același tip de caracteristică dinamică ca sortarea prin selecție, cu excepția, pentru
+
+103
+00:07:20,460 --> 00:07:22,360
+fiecare pas, nu doar compararea,
+
+104
+00:07:22,360 --> 00:07:26,390
+ea, de asemenea, face schimb, ceea ce o face chiar mai lentă în practică.
+
+105
+00:07:28,740 --> 00:07:33,180
+Deci, acesta este un caz rău pe care nu ne-am dori să-l vedem într-o aplicație practică.
+
+106
+00:07:34,220 --> 00:07:38,860
+Dar există, de asemenea, un caz bun, de care de fapt să profităm într-o mulțime de
+
+107
+00:07:38,860 --> 00:07:41,310
+aplicații practice.
+
+108
+00:07:41,310 --> 00:07:45,880
+Și asta are de a face cu atunci când matricea este parțial sortată.
+
+109
+00:07:45,880 --> 00:07:50,900
+Pentru a vorbi despre acest lucru într-un mod cantitativ, vom defini ceea ce se numește o inversare.
+
+110
+00:07:50,900 --> 00:07:54,800
+O inversare este doar o pereche de chei, care sunt în afara ordinii în matrice.
+
+111
+00:07:56,110 --> 00:07:59,360
+Astfel încât această matrice are șase inversiuni, T și
+
+112
+00:07:59,360 --> 00:08:02,530
+R sunt în afara ordinii, pentru că R trebuie să meargă înainte de T.
+
+113
+00:08:02,530 --> 00:08:05,300
+T și P sunt în afara ordinii, și așa mai departe.
+
+114
+00:08:05,300 --> 00:08:07,119
+Această matrice are șase inversiuni.
+
+115
+00:08:08,260 --> 00:08:12,710
+Și definim o matrice care urmează să fie parțial sortată în cazul în care numărul său de
+
+116
+00:08:12,710 --> 00:08:16,650
+inversiuni este liniară, în cazul în care este mai mică de câteva ori constantă N.
+
+117
+00:08:18,000 --> 00:08:22,510
+Și matrici parțial sortate apar adesea în practică.
+
+118
+00:08:22,510 --> 00:08:27,640
+De exemplu, dacă aveți o matrice mare, cu doar câteva, care sunt sortate cu excepția
+
+119
+00:08:27,640 --> 00:08:31,170
+a doar câteva elemente nesortate anexate la sfârșit,
+
+120
+00:08:31,170 --> 00:08:34,950
+aceasta va fi parțial sortată.
+
+121
+00:08:34,950 --> 00:08:38,170
+Sau, în alte cazuri, dacă aveți doar câteva intrări care nu sunt la loc,
+
+122
+00:08:38,170 --> 00:08:40,390
+matricea va fi partial sortată.
+
+123
+00:08:40,390 --> 00:08:44,710
+Aceste tipuri de lucruri apar adesea în aplicații practice.
+
+124
+00:08:44,710 --> 00:08:50,370
+Și ce e interesant despre sortare prin inserție este că se execută în timp liniar pentru
+
+125
+00:08:50,370 --> 00:08:52,630
+matricile parțial sortate.
+
+126
+00:08:52,630 --> 00:08:56,410
+Iar dovada este, numărul de comparații și numărul schimburilor este
+
+127
+00:08:56,410 --> 00:09:01,170
+egal cu numărul de schimburi egal cu numărul de inversiuni și
+
+128
+00:09:01,170 --> 00:09:05,410
+există o extra comparare pentru fiecare element, cu excepția primului.
+
+129
+00:09:05,410 --> 00:09:08,510
+Deci, să ne uităm la modul în care arată în animație.
+
+130
+00:09:08,510 --> 00:09:10,800
+Iată o matrice parțial sortată, și
+
+131
+00:09:10,800 --> 00:09:15,060
+puteți vedea că sortarea prin inserție face repede treaba.
+
+132
+00:09:15,060 --> 00:09:18,110
+Noi vom profita de acest lucru un pic mai târziu în această prelegere.
+
+133
+00:09:20,310 --> 00:09:23,888
+Asta e sortarea prin inserție, a doua noastră metodă de sortare elementară.

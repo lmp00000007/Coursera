@@ -1,0 +1,163 @@
+1
+00:00:01,086 --> 00:00:07,708
+Als nächstes werden wir kurz Implementierungen von Queues (Warteschlangen) betrachten, indem wir die gleichen
+
+2
+00:00:07,708 --> 00:00:13,663
+zugrundeliegenden Datenstrukturen nutzen. Hier ist die zugehörige API für eine Queue aus Strings,
+
+3
+00:00:13,890 --> 00:00:19,964
+es ist die gleiche wie für Stacks, nur die Namen sind unterschiedlich.
+
+4
+00:00:20,162 --> 00:00:25,926
+Statt "push" haben wir "enqueue", statt "pop" haben wir "dequeue". Und die Semantik
+
+5
+00:00:25,926 --> 00:00:32,201
+ist anders für Enqueue, wir fügen ein Element am Ende der Schlange an und bei Dequeue
+
+6
+00:00:32,390 --> 00:00:38,301
+nehmen wir es am Anfang der Schlange weg. Es ist etwa so
+
+7
+00:00:38,512 --> 00:00:44,758
+wie in einer Warteschlange für einen Fahrkartenkauf. Wenn man sich hinten anstellt, ist man am Ende der Schlange
+
+8
+00:00:44,758 --> 00:00:50,892
+und der, der am längsten ansteht, kommt dran. Also sehen wir uns an, wie wir das implementieren, erst mit einer verketteten
+
+9
+00:00:50,892 --> 00:00:56,168
+Liste und dann mit Feldern. Hier ist also unsere Darstellung mit einer verketteten Liste,
+
+10
+00:00:56,168 --> 00:01:02,441
+wir brauchen zwei Zeigerreferenzen. Eine auf das erste Element
+
+11
+00:01:02,441 --> 00:01:08,328
+in der Liste und eine auf das letzte Element. Wenn wir etwas einfügen, hängen wir
+
+12
+00:01:08,328 --> 00:01:13,761
+das Element ans Ende der Liste statt an den Anfang und wenn wir ein Element  entfernen,
+
+13
+00:01:13,761 --> 00:01:19,704
+machen wir das Gleiche und nehmen es am Anfang weg. Hier ist also die Implementierung von Dequeue.
+
+14
+00:01:19,704 --> 00:01:27,231
+Sie ist identisch zum Code für Pop bei einem Stack. Wir speichern das Element, entfernen
+
+15
+00:01:27,231 --> 00:01:35,403
+den ersten Knoten, indem wir die Referenz um ein Element weiterrücken und dann geben wir das Element zurück, also gleich.
+
+16
+00:01:35,403 --> 00:01:43,298
+Um einen Knoten hinzuzufügen, also Enqueue, wollen wir ihn ans Ende der verketteten Liste
+
+17
+00:01:43,298 --> 00:01:50,921
+setzen, so dass er der letzte ist, der zurückgegeben wird. Um ihn also ans Ende zu setzen,
+
+18
+00:01:50,921 --> 00:01:58,085
+brauchen wir zuerst eine Verkettung mit dem letzten Knoten, und zwar
+
+19
+00:01:58,085 --> 00:02:06,459
+weil wir die Referenz auf den letzten Knoten im neuen Knoten speichern werden. Dann
+
+20
+00:02:06,459 --> 00:02:14,577
+erzeugen wir einen neuen Knoten für das Ende der Liste, befüllen seine Felder und dann wird der alte Zeiger
+
+21
+00:02:14,577 --> 00:02:22,331
+von Null auf den neuen Knoten gesetzt. Also auch nur ein paar Zeilen Code.
+
+22
+00:02:22,331 --> 00:02:31,418
+Das ist das grundsätzliche Verkettete-Listen-Vorgehen. Vor Jahren dachten wir tatsächlich,
+
+23
+00:02:31,418 --> 00:02:37,517
+dass Kurse in Algorithmen und Datenstrukturen so wie dieser vor allem von
+
+24
+00:02:37,517 --> 00:02:44,035
+dieser Art Zeigermanipulation handeln würden, aber heutzutage geht es da nur um ein paar Implementierungen
+
+25
+00:02:44,035 --> 00:02:50,580
+wie Stack und Queue und ein paar andere fundamentale Datenstrukturen. Wir werden also nicht
+
+26
+00:02:50,580 --> 00:02:56,139
+viel mehr Programme brauchen, um eine verkettete Liste zu manipulieren. Wir kapseln
+
+27
+00:02:56,139 --> 00:03:02,754
+sie in Basisdatentypen so wie diesen. Also gehen wir zurück
+
+28
+00:03:02,754 --> 00:03:09,029
+zu unserer Implementierung und das soll nur noch einmal den Code der vorhergehenden Bilder zeigen,
+
+29
+00:03:09,029 --> 00:03:16,030
+aber auch Spezialfälle behandeln, wie den einer leeren Warteschlange oder
+
+30
+00:03:16,030 --> 00:03:22,669
+dass wir bei einer Warteschlange, die nach der Entfernung eines Elements leer ist, den Zeiger "last" auf null setzen
+
+31
+00:03:22,669 --> 00:03:29,535
+und sicherstellen, dass "first" und "last" immer so sind, wie wir es wollen.
+
+32
+00:03:29,797 --> 00:03:36,069
+Diese Details sind leicht zu prüfen. Was ist nun mit Feldern?
+
+33
+00:03:36,069 --> 00:03:41,096
+Wir werden hier nicht die Details behandeln, aber es ist nicht schwierig, Warteschlangen zu implementieren,
+
+34
+00:03:41,096 --> 00:03:47,030
+indem man Felder in der Größe verändert, nicht schwierig, aber definitiv eine verzwickte
+
+35
+00:03:47,030 --> 00:03:52,761
+Programmierübung, die gerne versucht werden kann. Wir haben also zwei Zeiger.
+
+36
+00:03:52,761 --> 00:03:58,411
+Es gibt das erste Element in der Schlange und das Ende, das die Position für das nächste Element ist.
+
+37
+00:03:58,576 --> 00:04:03,087
+Für "Enqueue" hängen wir also ein Element an das Ende an und für "Dequeue" nehmen wir eins
+
+38
+00:04:03,087 --> 00:04:10,554
+am Anfang weg. Und der Trick ist, dass wenn man über die Länge des Feldes hinauskommt, man
+
+39
+00:04:10,554 --> 00:04:18,058
+auf 0 zurücksetzt und das ist ein bisschen Extracode, und dann muss man
+
+40
+00:04:18,058 --> 00:04:25,077
+die Veränderung der Feldgröße ebenfalls implementieren, genau wie beim Stack.
+
+41
+00:04:25,077 --> 00:04:28,013
+Das werden wir als Übung lassen.

@@ -1,0 +1,94 @@
+Xin chào, hôm nay ta sẽ nói về 
+bài toán tìm hợp - union find Một loạt các thuật toán giải bài toán 
+liên thông động - dynamic connectivity Ta sẽ học hai thuật toán kinh điển 
+Quick Find và Quick Union và một số ứng dụng và cải tiến các thuật toán đó.
+Mục tiêu của bài hôm nay thực ra là để đi qua từng bước mà từ nay 
+ta sẽ luôn thực hiện để phát triển một thuật toán hữu ích.
+Bước đầu tiên là mô hình hóa bài toán. Về cơ bản là cố gắng tìm hiểu đâu là các thành tố chính
+của bài toán cần giải quyết. Sau đó, ta sẽ tìm một thuật toán nào đó để giải bài toán.
+Nhiều khi, thuật toán đầu tiên ta nghĩ ra đủ nhanh và vừa với bộ nhớ, khi đó ta sẽ chỉ việc quyết định dùng nó.
+Nhưng nhiều trường hợp khác, có thể nó không đủ nhanh hoặc ta không có đủ bộ nhớ cho nó.
+Khi đó, ta sẽ tìm hiểu xem vấn đề nằm ở đâu tìm một cách khắc phục nguyên nhân của vấn đề đó tìm một thuật toán mới, và lặp đi lặp lại công việc này
+cho đến khi hài lòng. Đó là cách tiếp cận khoa học trong việc thiết kế và phân tích thuật toán. 
+Ta xây dựng các mô hình toán học để cố gắng tìm hiểu xem chuyện gì đang xảy ra, và rồi ta làm thực nghiệm
+để thẩm định các mô hình đó và để cải tiến. Trước hết, ta sẽ nói về
+bài toán liên thông động - dynamic connectivity mô hình của bài toán tìm hợp - union find.
+Ý tưởng như sau. Ta có một tập gồm N đối tượng.
+Không quan trọng chúng là cái gì. Ta sẽ dùng các số từ 0 đến N-1
+để mô hình hóa các đối tượng của ta. Tiếp theo là khái niệm về liên kết - connection
+giữa hai đối tượng. Ta hình dung sẽ có một lệnh kết nối hai đối tượng. 
+Cho hai đối tượng, cho một liên kết giữa chúng. Và phần quan trọng của bài toán là truy vấn find
+hay truy vấn connected truy vấn đó hỏi xem có hay không
+một đường nối giữa hai đối tượng đó. Ví dụ, trong tập hợp gồm 10 đối tượng này, 
+ta đã thực hiện một loạt các lệnh union kết nối giữa 4 và 3, 3 và 8, 6 và 5, 9 và 4, 2 và 1. Và bây giờ ta có một truy vấn connected 
+hỏi xem 0 và 7 có kết nối với nhau hay không. Ở đây câu trả lời là không. 
+Nhưng nếu câu hỏi là 8 có nối với 9 hay không, câu trả lời sẽ là có, 
+mặc dù ta không có đường nối trực tiếp giữa 8 và 9, ta có một đường nối từ 8 qua 3, 4 và tới 9. Đó là bài toán của ta. 
+Ta cần hỗ trợ thực hiện hai lệnh trên cho tập các đối tượng đã cho. Giả sử ta thêm union 5, 0 để tạo một kết nối giữa 5 với 0. 
+union 7 và 2 tạo một kết nối giữa 7 và 2. Và union 6 và 1 nối giữa 6 và 1.
+Bây giờ nếu ta muốn nối 1 và 0, ta cũng làm được.
+Nhưng đó là một kết nối thừa. Và giờ, nếu ta hỏi xem 0 có nối với 7 không
+câu trả lời sẽ là Có. Và đó là bài toán của ta, các lệnh union
+và các truy vấn connected xen vào nhau Ta cần hỗ trợ được các lệnh đó 
+cho một số lượng lớn các đối tượng. Và đây là một ví dụ lớn hơn nhiều.
+Bạn sẽ thấy là ta sẽ cần các thuật toán hiệu quả cho bài toán này. 
+Đầu tiên, bạn thấy là ta sẽ cần một cái máy tính. Một người tính toán 
+thủ công sẽ cần khá nhiều thời gian để xem có kết nối hay không. 
+Trường hợp này có một kết nối. Các thuật toán ta học hôm nay sẽ không
+tìm ra đường đi nối giữa hai đối tượng. Nó chỉ trả lời câu hỏi
+Có một đường đi hay không? Ở phần II khóa học, ta sẽ học 
+các thuật toán thực sự tìm đường đi. Chúng không chạy nhanh bằng union find
+vì chúng phải làm nhiều việc hơn. Các thuật toán này ứng dụng cho 
+đủ loại đối tượng. Chúng được dùng cho ảnh kĩ thuật số, trong đó các đối tượng
+là các điểm ảnh. Chúng dùng cho mạng máy tính với các đối tượng là các máy tính,
+cho mạng xã hội, với đối tượng là người cho chip máy tính, với đối tượng là phần tử mạch
+hay các thứ trừu tượng như các tên biến trong một chương trình, hay phần tử trong một
+tập hợp toán học, hay những thứ vật lý như các vị trí kim loại trong một hệ composite
+Như vậy là đủ loại đối tượng nhưng trong lập trình, ta sẽ gắn cho 
+mỗi đối tượng một cái tên. và ta dùng các số nguyên từ 0 đến N-1 để
+gọi tên các đối tượng. Đó là khởi đầu thuận tiện cho các chương trình của ta, vì ta có thể
+dùng các số nguyên làm chỉ số mảng để truy nhập nhanh tới thông tin liên quan 
+đến mỗi đối tượng. Và bỏ qua được nhiều chi tiết không liên quan đến union find. 
+Thực tế, việc tạo ánh xạ từ tên đối tượng tới các số nguyên từ 0 đến N-1 là áp dụng một bảng kí hiệu hoặc 
+một thuật toán tìm kiếm, trong khóa học này ta sẽ học các cấu trúc dữ liệu và thuật toán để giải bài toán đó. Bây giờ, về các liên kết,
+ta cần một số tính chất trừu tượng mà các liên kết - connection - phải thỏa mãn
+Các tính chất đều tự nhiên và trực quan. Kết nối là một quan hệ tương đương.
+Nghĩa là mỗi đối tượng đều kết nối với chính nó. Nó là quan hệ đối xứng- symmetric, 
+nếu P nối với Q, thì Q cũng nối với P. Nó là quan hệ bắc cầu - transitive,
+nếu P nối với Q, Q nối với R, thì P cũng nối với R. Các tính chất này rất trực quan, nhưng 
+vẫn cần phát biểu một cách tường minh và đảm bảo rằng các thuật toán của ta
+bảo vệ các tính chất đó. Khi ta có một quan hệ tương đương, 
+một tập các đối tượng cùng với các kết nối tách thành các tập con, gọi là các thành phần liên thông.
+Một thành phần liên thông là một tập tối đa các đối tượng đôi một có đường nối tới nhau. 
+Chẳng hạn trong ví dụ nó này có ba thành phần liên thông, 
+một thành phần chỉ gồm duy nhất đối tượng 0; thành phần thứ hai gồm 1, 4 và 5; 
+thành phần thứ ba gồm bốn đối tượng còn lại. Các thành phần này đều có đặc điểm: hai 
+đối tượng bất kì bên trong đều liên thông với nhau và không có đối tượng nào bên ngoài 
+liên thông với một đối tượng bên trong. Đó là các thành phần liên thông. Các thuật toán
+của ta sẽ lưu các thành phần liên thông và dùng tri thức đó để nhanh chóng trả lời
+các truy vấn được đưa ra. Ta cần cài đặt hai thao tác: 
+truy vấn find và lệnh union. Và ta sẽ lưu giữ các thành phần liên thông. find sẽ kiểm tra xem hai đối tượng có thuộc 
+cùng một thành phần liên thông hay không. Lệnh union sẽ thay thế hai 
+thành phần liên thông chứa hai đối tượng bằng hợp của chúng. Ví dụ, 
+nếu ta có các thành phần liên thông này và ta chạy union để nối 2 và 5.
+ta cần nhập thành phần liên thông chứa 2 
+với thành phần chứa 5 thành một để được một thành phần liên thông lớn
+Và ta còn lại hai thành phần liên thông. Trong lập trình, nó dẫn đến việc 
+định nghĩa một cấu trúc dữ liệu đặc tả các phương thức mà
+ta cần cài đặt để giải bài toán này. Với Java, ta sẽ tạo một lớp có tên UF
+với hai phương thức, một phương thức cài đặt lệnh union,
+một phương thức cài đặt truy vấn connected Constructor lấy tham số N là số phần tử và xây dựng cấu trúc dữ liệu dựa trên số đối tượng. Khi xây dựng thuật toán, ta phải luôn nhớ rằng số lượng đối tượng có thể rất lớn
+số lượng thao tác cũng vậy Ta có thể có số lần gọi union và connected rất lớn và thuật toán của ta cần phải hiệu quả
+trong các điều kiện đó. Trong khóa học này, 
+ta thường kiểm tra thiết kế API trước khi đi quá sâu vào bài toán, 
+ta viết một chương trình client sử dụng cấu trúc dữ liệu mà 
+ta đang phát triển. Ở ví dụ này, ta có một chương trình client đọc thông tin 
+từ standard input, Đầu tiên là một số nguyên là số đối tượng cần xử lý.
+Và một chuỗi các cặp tên đối tượng Nhiệm vụ của chương trình client là
+đọc số nguyên từ input chuẩn và tạo một đối tượng UF. 
+Và trong khi input vẫn còn chưa hết nó sẽ đọc một cặp số nguyên từ input
+Và nếu hai số đó không liên thông nó sẽ kết nối hai đối tượng đó
+và output chúng. Nếu chúng đã liên thông chương trình sẽ bỏ qua. Đó là một 
+chương trình client tốt để đảm bảo rằng các cài đặt thuật toán UF sẽ 
+chạy đúng như trông đợi của ta. Vậy là ta đã mô tả các thao tác mà ta
+muốn cài đặt, chi tiết đến tận mức code và ta đã có chương trình client để chạy thử cài đặt đó

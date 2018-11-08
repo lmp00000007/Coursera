@@ -1,0 +1,77 @@
+De acuerdo. Ahora que hemos visto
+ implementaciones de los algoritmos que pueden resolver la unificación del problema por un gran 
+número de  instancias del problema,  vamos a ver como pueden ser aplicados. Hay un gran 
+número de aplicaciones para encontrar las uniones. Nosotros hablamos acerca de la conectividad dinámica en
+redes,  hay muchos otros ejemplos en nuestra infraestructura computacional. 
+En la parte inferior, está una parte importante de ella, es un procesamiento de imágenes para entender 
+como etiquetar áreas en imágenes. Veremos más tarde el algoritmo de árbol de expansión mínima de Kruskal
+el cual es un algoritmo de  procesamiento de grafos. el cual usa Busca-Union como una
+subrutina. Hay algoritmos en física para comprender fenómenos físicos que 
+nosotros vamos a ver varios ejemplos en esta lista. Asi que del que vamos   
+a hablar ahora es llamado filtración. Ese es un modelo para muchos sistemas fisicos
+Les daré el modelo abstracto y entonces hablamos brevemente sobre como se aplica a
+a los sistemas físicos. Así que vamos a pensar en una tabla de n por n al que llamaremos sitios.
+Y diremos que cada sitio está abierto. El area que esta en blanco en el diagrama con probabilidad   
+P o bloqueada, y el área en negro en el diagrama con probabilidad 1 - P y definimos 
+un sistema, decimos que un sistema es filtrado si la parte superior y la inferior están 
+conectadas por sitios abiertos. De modo que en el sistema a la izquierda, tú puedes encontrar una manera de
+ir de la parte superior a la inferior a través de los
+cuadros blancos, pero el sistema de la derecha no filtra, 
+no hay manera de llegar de la parte superior a la parte inferior a través de 
+una casilla blanca.  Así que ese es un modelo para muchos sistemas. Puedes se aplicado en electricidad. 
+Si se piensa que en un espacio vacante como un conductor y, y un sitio negro como un
+un aislante. De modo que si hay un conductor desde la parte superior  a la parte inferior, entonces es un conductor
+electrico. 
+También puedes pensar que es como el agua que fluye a través de 
+una sustancia porosa de algún tipo. De modo que las áreas en blanco representan espacios vacíos 
+y las negras contienen matera, así que el agua fluye desde la parte superior, o no. 
+O puedes pensar en una red social donde hay gente conectada y ya sea que 
+hay una conexión entre dos personas o no y este modelo representa un manera de llegar de 
+un grupo de personas a otro comunicándose a través de la red social. 
+Estos son unos pocos ejemplos del modelo de filtración. Así que si estamos 
+hablando sobre un modelo aleatorio, donde los sitios que están vacíos con la 
+probabilidad dada.
+De modo que  es bastante claro que es así.  La probabilidad de que un sitio esté vacío
+es baja como en la izquierda, los ejemplos de la izquierda en este diagrama, no fluyen. 
+No hay suficientes áreas vacias para que haya la conexión desde arriba hasta abajo. 
+Si la probabilidad es alta y hay un muchos espacios abiertos, 
+definitivamente fluye. Habrá muchas maneras de ir desde lo alto a lo bajo. 
+Pero en la centro, cuando está a medias, es difícil saber si fluirá o no. 
+Por lo que la pregunta scientífica o la pregunta matemática 
+que se desprende de este modelo es, como sabemos si fluirá o no? In este problema 
+y en otros muchos similares, hay lo que se llama una fase de transición. 
+Que dice que,  cuando es pequeño, no va fluir. Cuando es alto,
+fluirá. Y actualmente, el umbral entre cuando fluye
+ y cuando no lo hace es muy marcada. Y actualmente hay un 
+ N, el cual entre más grande el sistema no fluirá cierto de que fluye, 
+si es más grande al menos ocurre ciertamente. La cuestión es cual es
+este valor. Hay un ejemplo de un modelo matemático donde el problema está
+muy bien articulado. Cual es el valor del umbral pero, nadie sabe la
+solución de ese problema matemático. La única solución que hemos encontrado es un
+modelo computacional, donde corremos simulaciones para probar y determinar el valor
+de esa probabilidad. Y esas simulaciones son solo permitidas para búsqueda 
+rápida de algoritmos, que es nuestro ejemplo pero por qué necesitamos más rápidez en los algoritmos de búsquedas,
+lo que Vamos a correr es denominado y llamado
+simulacion Monte Carlo. Donde nosotros inicializaremos toda la tabla para ser bloqueada
+toda negra y despues aleatoreamente se llenaran los espacios abiertos. Y seguiremos. Y cada vez añadimos un espacio vacio, revizamos para ver si hace que el sistema filtre. Y 
+seguimos hasta que llegamos al punto donde el sistema filtra. Podemos ver 
+que el porcentaje de vacantes en el instante en que el sistema filtra es una estimación de este valor límite. Así que lo que queremos es correr el experimento millones de veces,
+lo cual podemos hacer en una computadora, tanto como podamos y eficientemente hacer el cálculo de
+filtra o no. Esa es la simulación Monte Carlo, un problema computacional
+que nos da una solución a este problema científico el cual nadie sabe aún resolver matemáticamente. Así que, veamos con un poco mas
+de detalle cómo vamos a usar nuestro modelo dinámico de conectividad para hacer
+esto. Así que está claro que, crearemos un objeto correspondiente a cada sitio y
+le daremos un nombre, de cero a N^2-1 como se indica aquí. Entonces los conectaremos
+juntos. Si están conectados por sitios abiertos. Así que el modelo de filtrado a
+la izquierda corresponde al modo de conexión de la derecha, de acuerdo con lo
+que hemos estado haciendo. Ahora, tú dirás, bien,  si lo que quiero hacer es conectar
+y chequear si algun sitio en la fila inferior está conectado a cualquier sitio en la fila superior,
+y utilizar la unión para encontrarla. El problema con esto es, que que sería un algoritmo de fuerza bruta.  Sería cuadrático, Porque tendría N^2
+ llamadas para encontrar, chequear si éstos están conectados. Para cada sitio en la parte superior, tendría que
+comprobar cada sitio en la parte inferior.  Es demasiado lento. En  lugar de ello, lo que hacemos es crear un  
+sitio virtual en la parte superior y en la parte inferior. Y luego, cuando se quiera conocer si
+ este sistema filtra, solo chequeamos si el sitio virtual superior está conectado
+con el sitio virtual inferior. Entonces ¿Cómo vamos a modelar la apertura de un nuevo sitio? Bueno para abrir un 
+sitio nos conectamos a todos los sitios adyacentes abiertos. Esto se hace con unas pocas llamadas 
+a la Unión, pero es fácil de implementar.  Y entonces con ésta, simple, interrelación podemos
+ usar utilizar el código exacto que hemos desarrollado para continuar y ejecutar una simulación para este problema de conectividad. Y ahí es donde obtenemos el resultado, ejecutando suficientes simulaciones para un n lo suficientemente grande, que es, el umbral de filtración es más o menos 0.592746. Con este algoritmo rápido podemos obtener una respuesta precisa a la pregunta científica. Si usamos un algoritmo Union-find (Busca-Unión) no podremos utilizarlo para grandes problemas y no obtendremos una respuesta muy precisa. Así que en resumen, tenemos un problema importante. La, el problema de conectividad dinámica. Hemos modelado el problema para intentar entender con precisión que tipos de estructuras de datos y algoritmos tenemos que para resolverlo. Vimos algunos algoritmos fáciles para resolver el problema, y rápidamente vimos que eran inadecuados para resolver grandes problemas. Pero entonces vimos cómo mejorarlos para obtener algoritmos eficientes. Y entonces nos quedamos con aplicaciones que no pueden ser resueltas sin estos algoritmos eficiente. Todo esto supone el método científico. Para el diseño de algoritmos donde intentamos desarrollar modelos matemáticos que nos ayuden a entender las propiedades de los algoritmos que estamos desarrollando. Y entonces probamos esos modelos a través de la experimentación, permitiéndonos mejorar la iteración de los algoritmos, desarrollando mejores algoritmos y modelos más refinados hasta que obtenemos lo que necesitamos para resolver problemas prácticos que nos interesan. Eso es lo que va a ser la arquitectura general para estudiar algoritmos que vamos a usar a través del curso.

@@ -1,0 +1,109 @@
+De fapt, ordinea clasificărilor 
+de creștere sunt atât de importante că au condus la o cantitate enormă de cercetare în 
+ultimii ani și doar vorbesc pe scurt despre asta acum. Deci, există, viața este un pic 
+mai complicată decât cea subliniată în ultimul exemplu și o problemă este că
+intrările pot determina performanța algoritmulului să varieze foarte mult. Așa că de multe ori trebuie să ne
+ gândim la modalități diferite de analiză a algoritmului în funcție de 
+intrare. Așa că, timpul de rulare va fi undeva între cel mai bun caz și cel mai 
+rău caz. Cel mai bun caz este limita inferioară la cost. Oferă ceva la care 
+timpul de rulare va fi mai mare decât acela întotdeauna sau nu mai mic decât acela și apoi 
+e cel mai rău caz, care este cel mai dificil de introdus. Dacă vom analiza asta atunci 
+putem garanta că timpul de rulare în algoritmii nu va fi mai mare decât 
+acela. Și apoi, într-o mulțime de situații noi am putea lua în considerare intrarea noastră să fie aleatorie.
+ Ei bine, avem nevoie, de a modela oarecum, ceea ce noi înțelegem prin aleator pentru problema pe care noi o
+rezolvăm, dar există o mulțime de situații unde putem face asta și apoi avem un 
+mod de a prezice performanța chiar și atunci când intrarea poate varia foarte mult . Deci, de exemplu, 
+pentru 3-sumă, e cam mereu la fel. Cu notația tilda, singura 
+variabilitate în acel algoritm este de câte ori contorul este incrementat
+și asta e în termeni de ordine inferioară așa că nu are nevoie să se amestece în analiza noastră.
+ Pentru căutarea binară este, ați putea găsi ce cautăm imediat în care caz este constantă de timp și putem arăta că media și cel mai rău caz sunt ambele lg baza doi (N) .
+Acolo e altul, în alte exemple care să fie chiar de mai multă variabilitate. Așa că, noi avem
+aceste diferite tipuri de analiză în funcție de intrare. Și, dar întrebarea este, 
+ce putem spune despre problema actuală pe care clientul încearcă să rezolve? Așa că trebuie să 
+înțelegem astea două pentru a putea fi în măsură să înțelegem performanța algoritmului. 
+Și, există două abordări, care sunt, sau de succes în asta. Una dintre ele este de a elabora pentru 
+cel mai rău caz. Doar să vă  asigurați că algoritmul vostru întotdeauna se execută rapid 
+și asta e cu siguranță ideal. O alta este de a, în cazul în care nu puteți face asta este să luați la ȋntamplare
+ și apoi depinde de un fel de garanție probabilistică și vom vedea 
+exemple cu ambele dintre acestea pe măsură ce trecem prin curs. Acum, aceste tipuri de 
+considerații, știți ideea de ordine a creșterii duce la discutarea, a ceea ce se 
+numește, ceea ce eu numesc teoria algoritmilor. Și aici obiectivele noastre sunt, noi
+avem o problemă de rezolvat ca rezolvarea problemei 3-sumă și vrem să știm cât de 
+greu este. Ne dorim să găsim cel mai bun algoritm pentru rezolvarea acelei probleme.
+Abordarea pe care o folosește omul de știință pentru asta este să încerce să suprime cât mai multe detalii posibile în analiză. Și așa doar analizează timpul de funcționare spre sau
+ într-un factor constant. Asta e ceea ce ordinea creșterii obține și, de asemenea, eu 
+vreau, nu vă faceți griji cu privire la modelul de intrare deloc. Și așa ne-am concentrat pe cel mai rău caz 
+de proiectare și putem vorbi despre performanța algoritmilor doar în ceea ce privește ordinea 
+de creștere și este de fapt posibil, este de fapt posibil de a face acest lucru într-un mod foarte
+ riguros, care ne-a învățat o mulțime despre dificultatea de a rezolva probleme. 
+Și scopul nostru este de a găsi un algoritm optim unde putem garanta într-un factor constant performanță sigură pentru orice intrare pentru că am descoperit cel mai rău caz, 
+dar noi, de asemenea, am putut aproba că nu am știut algoritm care poate oferi o garanție de 
+performanță mai bună. Voi da câteva exemple simple despre aceasta. Acum, în scopul de 
+a face aceasta sunt, aceste notații utilizate în mod obișnuit numite notații theta mare,O mare și 
+omega mare. Astfel încât și acele definiții sunt date aici. Așa că notația theta mare este doar modul de a descrie ordinea creșterii. Theta (N) ^ 2 este un fel de mână scurtă pentru orice N ^ 2. Este mărginită sus și jos de constanta de timp N ^ 2 și 
+asta e ceea ce folosim cu adevărat pentru a clasifica algoritmii. Și apoi, există o notație O mare 
+care este limita superioară de la performanţă. Atunci când spunem O (N ^ 2), înțelegem 
+că este mai mică decât o constantă de timp N ^ 2 cum crește N. constant time N^2 as N grows. So those
+three notations were able to use to classify algorithms and I'll show them in
+the following. So, examples from our 1-sum, 2-sum, and 3-sum are easy to
+articulate so our goals are to establish the difficulty of the problem and to
+develop an optimal algorithm. So, the 1-sum problem is 00 in the array. Well, an
+upper bound on the difficulty of the problem is some specific algorithm. So,
+for example, the brute force algorithm that looked, that looks at every array
+entry is a specific algorithm and it means that and that takes O(N) time. We have to
+look at every, it's less than a constant time N for some constant. So, the running
+time of the optimal algorithm has to be O(N) that is that's specific algorithm
+provides an upper bound on the running time of the optimal algorithm. And but in
+this case it's also easy to develop a lower bound, that's a proof that no
+algorithm can do better. Well, for 1-sum you have to examine all entries in the
+array. If you miss one, then that one might be zero so that means that the
+optimal algorithm has to have a running time at least some constant times N where
+we say the running time is omega of n. Now in this case, the upper bound and the
+lower bound match. So, doing the constant factor so, that's a proof that the brute
+force algorithm for 1-sum is optimal. It's running time is theta(N). It's both omega
+and O(N). That's, for that simple problem it was okay to get the optimal algorithm.
+For a more complicated problems it's going to be more difficult to get upper balance
+and lower balance and particularly upper balance and lower balance that match. For
+example let's look at 3-sum. So, upper bound for 3-sum, say our first brute force
+algorithm, say that the proof, was a proof that the running time of the optimal
+algorithm is O(N^3) but we found a better improved algorithm. Whose running time is
+O(N^2) lg N. So, that's a better upper bound. Lower bound well, we have to
+examine all entries cuz again, we might miss one that makes 3-sum = zero and
+that's a proof that the running time in the optimal algorithm is omega(N) but
+nobody knows higher or lower bound for 3-sum. So there's a gap between the upper
+bound and the lower bound and open problems. Is there an optimal algorithm
+for 3-sum? We don't know what it is. We don't even know if there's a algorithm
+whose running time is < O(N^2) or we don't know higher lower bound and linear. So
+that's an example of an open problem in the theory of algorithms we don't know how
+difficult it is to solve the 3-sum problem. Now, this point of view has been
+extremely successful in recent decades. We have a new problem, develop some
+algorithm, proves some lower bound. If there's a gap, we look for new algorithm
+that will lower the upper bound or we try to find a way to raise the lower bound.
+Usually it's very difficult to prove non-trivial or lower bounds. Trivial or
+lower bound like look at every input items is not so hard non-trivial lower bounds
+like for example, the proof that we're talking about for Union-find problem are
+much more difficult. And in the last several decades people have learned about
+the computational difficulty of problems by examining steadily decreasing upper
+bounds so the algorithms were better worst case running times for lots and lots of
+important problems and plenty of optimal algorithms and plenty of gaps still
+remain. It's a fascinating field of research that many people are engaged in.
+Now there is a couple of caveats on this on the context to this course. And the
+first one is maybe it's overly pessimistic to be focusing on the worst case. We've
+got data out there. We've got problems to solve. Maybe it's not worst case data and
+lots of fields of engineering and science. We don't focus on the worst case. The
+worst case for this course would be lightning to strike and it would be over
+so we don't plan for that. And since similar it's true for algorithms. Maybe we
+should be focusing on understanding prope rties of the input and finding algorithms
+that are efficient for that input. And the other thing is in order to really predict
+performance and compare algorithms we need to do a closer analysis than to within a
+constant factor. So we talked about the tilde notation in the big theta, big O,
+and big omega, omega that are used in the theory of algorithms. And really there's
+so much published research in the theory of algorithms that a lot of people make
+the mistake of interpreting the big O results that are supposed to give improved
+upper bounds on the difficulty of the problem as approximate models for the
+running time and that's really a mistake. So in this course, we're going to focus on
+approximate models by, you know making sure that we use the tilde notation and
+we'll try to give specific results for certain quantities of interest and the
+constant, any unspecified constant in the running time. We'll have to do with
+properties in the machine and in the system so they will be able to use these
+results to predict performance and to compare algorithms.

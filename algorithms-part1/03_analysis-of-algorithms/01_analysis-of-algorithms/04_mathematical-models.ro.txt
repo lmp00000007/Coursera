@@ -1,0 +1,119 @@
+Observând ce se întâmplă așa cum am făcut-o în
+ultima secțiune ne dă o, un mod de a prezice performanța dar chiar nu
+ne ajută să înțelegem ce algoritmul. face. Deci în continuare, ne vom uita la 
+modelul matematic. Un mod de a obține un mai bun concept a ceea ce se întâmplă cu adevărat. Din nou,
+acest concept a fost într-adevăr elaborat și popularizat de Don Knuth începând de la 
+sfârșitul anilor '60. La acea vreme, sistemele informatice deveneau într-adevăr complicate pentru
+prima dată. Și oamenii de știință de calculatoare au fost preocupați dacă noi într-adevăr 
+o să fim capabili să înțelegem ce se întâmplă. Și Knuth a fost foarte direct în 
+a spune că acest lucru este ceva ce noi cu siguranță putem face. Putem calcula 
+timpul total de funcționare a unui program prin identificarea tuturor operațiunile de bază, 
+încercând să imagineze costurile, încercând să priceapă frecvența de execuție și însumând 
+frecvența de timp de costuri pentru toate operațiuni. Trebuie să analizați 
+programul pentru a determina ce set de operații și costul depinde de mașina și de calculatorul în sistem este despre ceea ce am vorbit înainte. Frecvența 
+ne conduce la matematică, pentru că depinde de algoritm  și datele de intrare. Knuth a
+scris o serie de cărți care dau foarte foarte detaliate și exacte analize în cadrul unui 
+anumit model de calculator pentru o gamă largă de algoritmi. Deci, de la Knuth, știm
+că, în principiu, putem obține exacte modele matematice pentru performanța
+algoritmilor sau programe și operații. În regulă. Deci, ce, cum arată acest proces? Ei bine, puteți, dacă doriți, să executați experimente. În, în vremuri străvechi, ne-am
+ uita de fapt la manualul calculatorului și fiecare calculator a venit cu un manual care
+a spus exact cât de mult fiecare instrucțiune ar dura.  Dar în zilele noastre, e un pic
+mai complicat. Deci, vom rula experimente și, și puteți merge mai departe și să faceți un miliard 
+de căutări și să vă dați seama că poate pe calculatorul dumneavoastră, o căutare ia 2.1 nano secunde. Sau
+voi puteți face funcții mai complicate cum ar fi sinus de calculator sau arc tangentă
+deși asta deja se apropie de analiza algoritmilor. Deci, există o 
+cale de a determina costurile operațiilor de bază. Și așa, noi tocmai în
+cele mai multe, cele mai multe cazuri noi doar vom postula că e un constantă și voi
+vă puteți da seama ce constantă este. Deși când lucrăm cu o
+colecție de obiecte, de n obiecte acolo există unele lucruri care iau timp
+proporțional cu N cum ar fi dacă aveți de gând să alocați o matrice de dimensiune N ia timp
+proporțional cu N deoarece în Java implicit este că toate elementele din
+matrice se inițalizează la zero. În alte operații aceasta depinde de implementarea 
+sistemului și una importantă este concatenare string-uri. Dacă voi concatenați
+două string-uri timpul de rulare este proporțional cu lungimea string-ului.
+De multe ori programatorii începători în Java, fac o greșeală presupunând că este o operație 
+constantă de timp, pe când nu e așa. În regulă, deci acesta e costul fiecărei operații. Mai 
+interesantă este frecvența de operare, de executare a operațiilor. Deci, aceasta este
+o, o, e o variantă foarte simplă a problema 3SUM. Asta e problema o 
+sumă. Asta e cât de multe numere sunt de fapt egale cu zero? Câte numere 
+unice adăugați până la zero? Deci, aceea, e doar una pentru buclă, și trecem prin, și 
+am testat numărul zero și incremenăm sau numărăm. Și prin analizarea acelui cod voi puteți
+vedea că i și count trebuie să fie declarate și apoi ele trebuie să se atribuie la zero. 
+Acolo sunt comparații ale lui i împotriva lui N și acolo e N + una dintre ele. Acolo sunt comparații
+ale lui A(i) împotriva lui zero, acolo sunt N dintre acelea, N acces matrice  și numărul incrementat
+este  numărul de ori când există un increment este variabil. i a fost incrementat de N ori, dar
+count ar putea fi incrementat orice număr de la zero la N ori. Și așa că frecvența este
+dependentă de datele de intrare. Sau am putea avea nevoie de un model pentru a descrie aceea sau poate
+acolo sunt alte operații care sunt mult mai costisitoare și nu va trebui să ne facem griji cu privire
+ la asta. Deci, să ne uităm la următoarea mult mai complicată problemă este despre 
+frecvența de executare a instrucțiunilor în acest program care este problema 2-SUM,
+cât de multe perechi de numere întregi se însumează la zero? Ei bine, în acest caz, trebuie să faceți un
+pic de matematică pentru a vedea că, atunci când noi când i merge de la zero la N, și j merge
+de la i+a la N numărul de comparații pe care le facem, plus acces matrice pe care 
+o facem este doi pentru fiecare dată declarația if este executată pentru a[i] și a[j] și acel moment
+este, este executat de N-1  ori prima dată prin buclă și N -2 ori a doua oară
+și așa mai departe. Este suma numerelor întregi de la zero până la N-1 care este o simplă 
+sumă discretă 1/2N(N-1) și întrucât, iar din moment ce o facem de două ori 
+numărul de acces matrice este N(N-1). Deci, putem merge mai departe și să obținem aceste numărări 
+exacte actuale. Dar deja, se face un pic plictisitor să facem asta. Și încă de la 
+Turing care a știut, de asemenea, asta și la fel de bine ca Babbage, că vrem să avem o 
+măsură a cantității de muncă implicate în proces. El a recunoscut că voi nu 
+doriți neapărat să mergeți și să faceți în detaliu. Este încă util să avem 
+o estimare brută. Deci, ați putea număra de câte ori care se aplică fiecare 
+operație, ați putea da ponderi și, și număra scăderi [nu se aude] şi aşa mai departe. Dar poate că noi
+ar trebui să le numărăm doar pe cele care sunt cele mai costisitoare asta a spus Turing în 1947,
+și realist asta e ceea ce facem în zilele noastre. Deci, mai degrabă decât a merge și de a număra fiecare detaliu, vom lua unele operații de bază, care sunt probabil cele mai 
+costisitoare și sau și sau pe cea care este executată mai des. Cea care costă
+și frecvența este cea mai mare și folosim asta ca un proxy pentru timpul de rulare. În esență,
+făcând ipoteza că timpul de rulare este, va creste ca o constanta
+de ori asta [inaudibil]. Deci, în acest caz, avem de gând să alegem accesele de matrice. Deci, asta e
+prima simplificare. Și a doua simplificare este că vom
+ignora termenii de ordine mici în formulele pe care le derivăm. Și există un mod ușor să 
+facem asta. Se numește notația tilda și, și ideea este când N este mare într-o
+formulă ca aceasta termenul N ^ 3 este mult, mult mai mare decât termenul N sau șaisprezece. De fapt, atât de mult încât nu am mai observa decât cu greu acești termeni de ordine de mici. Deci,
+toate aceste formule sunt tilda o șesime N^3 și asta e o reprezentativă bună sau
+aproximativă, aproximarea la aceste cantități. Și simplifică foarte mult
+calculele lor la un, printr-un mod la mai mici, la ordine mai mici ca asta. Deci, 
+concentrându-se pe o singură operație și, aruncând deoparte tilde,  termenii mai mici și
+aceasta este o definiție tehnică a tilda. E doar, f(n) tilda g(n) ) înseamnă
+lim de f(n) supra g(n) egal unu, și puteți verifica că va ține în aceste tipuri de situații. Deci, asta simplifică foarte mult numărarea  frecvenței. Și dacă
+noi doar alegem un lucru noi doar vorbim despre tilda N^2 și, poate, un alt
+tilda N^2 pentru incrementul pentru problema 2 SUM, bine. Deci, din nou, atunci când N este
+mare, termenii sunt neglijabili și când N este foarte mic, nu sunt neglijabile
+dar nu ne pasă cu adevărat pentru că noi încercăm să estimăm timpul de funcționare pentru N 
+mare și timpul de funcționare pentru N mic vor fi mici indiferent de ce. Bine, deci
+acum, noi folosim ambele modelul costului și notația tilda și apoi noi putem simplu
+spune, , că acest program folosește tilda N^2 accese matrice și are implicit
+ipoteza că noi credem că timpul de funcționare va fi tilda, o constantă, ori N
+pătrat. Bine, acum ce e cu 3-SUM să facem o, o problemă reală. Deci, acum,
+avem o buclă triplă. Și apoi, trebuie să facem o problemă combinatorială mai 
+complicată nu este mare lucru într-adevăr ne uitam la numărul distinct de
+moduri în care puteți alege trei lucruri din N și că e coeficient binomial. Și 
+din nou, făcând matematica și utilizând tilda, e doar tilda o șesime N ^ 3 trei accese 
+matrice pentru fiecare triplă astfel putem spune o jumătate N ^ 3. Deci nu calculăm și
+însumăm costurile tuturor operațiilor care e prea mult de lucru. Noi alegem cel mai
+costisitor în ceea ce privește timpul de cost frecvență și aproximarea că și încercarea de a obține un
+model bun pentru timpul de execuție. Deci, acum cel mai mult, noi nu vom face o completă
+matematică discretă în acest curs, dar există câteva lucruri de bază pe care vom dori 
+să le folosim și sunt, nu sunt atât de dificil de înțeles. Deci, de multe ori află
+că avem nevoie de a veni cu o estimare a unei sume discrete. Cum am facut pentru unu +
+doi până la N. Sau unele dintre pătrate sau alte lucruri, cum ar fi 3-SUM buclă
+triplă. Și astfel, de fapt, dacă ați avut baza de calcul, un mod de vă gândi la ea ca să 
+înlocuiți doar suma cu un interval, integral. Aceasta de obicei funcționează sau putem face
+matematica și să utilizăm așa-numitul Euler-Maclaurin formulă de însumare pentru a obține
+o aproximare adevărată. Dar dacă vă gândiți în acest fel ne veți crede când spunem
+că, acel lucru este tilda o jumătate N ^ 2 sau sumă de unu + unu pe doi + o treime până la unu
+/ N. E ca și integrală de la x = unu la N din 1/x și asta e logaritm natural de N. Acum
+chiar un tip de buclă triplă 3-Sum pe care ați folosit-o la mai multe integrale, eu va voi
+da repede 1/6 N^3. Există mult mai multe și alte tehnici
+pe care le-am putea folosi pentru acesta. Și noi nu le vom învăța pe toate acelea, dar noi ne
+vom referi uneori la rezultate de acest tip. Bine, deci în principiu, Knuth ne spune
+că modelele matematice exacte sunt disponibile în practică, putem obține într-adevăr
+formule complicate. Noi, de asemenea, am putea nevoie de ceva matematică avansată pe care
+teoreticianul o va descoperi. Dar asta poate că oamenii care învață pentru prima 
+dată algoritmi nu ar fi de așteptat să știe. Deci, la final modelele cu grijă exacte, sunt cele mai bune,
+lăsate pentru ieșire, experți. Sunt într-adevăr o mulțime de lucruri care pot merge mai departe. Pe 
+de alta parte modele aproximative cu siguranță merită. Și pentru toți
+algoritmii pe care îi considerăm vom încerca să comunicăm un model aproximativ rezonabil
+care poate fi folosit pentru a descrie timpul de funcționare. Uneori vom da
+dovezi matematice și alte ori trebuie să cităm doar activitatea unor experți.

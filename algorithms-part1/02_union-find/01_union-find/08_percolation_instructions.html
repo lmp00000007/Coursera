@@ -1,0 +1,287 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2">
+  <strong>
+   Specification
+  </strong>
+ </h2>
+ <p>
+  Here is the programming assignment
+  <a href="http://coursera.cs.princeton.edu/algs4/assignments/percolation.html">
+   specification
+  </a>
+  that describes the assignment requirements.
+ </p>
+ <p>
+  Be sure that your code conforms to the prescribed APIs: each program must be in the "default" package (i.e., no
+  <strong>
+   package
+  </strong>
+  statements) and include only the public methods and constructors specified (extra private methods are fine). Note that
+  <strong>
+   algs4.jar
+  </strong>
+  uses a "named" package, so you must use an
+  <strong>
+   import
+  </strong>
+  statement to access a class in
+  <strong>
+   algs4.jar
+  </strong>
+  .
+ </p>
+ <h2 level="2">
+  <strong>
+   Checklist
+  </strong>
+ </h2>
+ <p>
+  The
+  <a href="http://coursera.cs.princeton.edu/algs4/checklists/percolation.html">
+   checklist
+  </a>
+  contains frequently asked questions and hints. If you're not sure where to start, see the section at the end of the checklist.
+ </p>
+ <h2 level="2">
+  <strong>
+   Testing
+  </strong>
+ </h2>
+ <p>
+  The file
+  <a href="http://coursera.cs.princeton.edu/algs4/testing/percolation.zip">
+   percolation.zip
+  </a>
+  contains sample data files and programs that you can use to test Percolation.java.
+ </p>
+ <h2 level="2">
+  <strong>
+   Web Submission
+  </strong>
+ </h2>
+ <p>
+  Submit a zip file named
+  <strong>
+   percolation.zip
+  </strong>
+  that contains only the two source files
+  <strong>
+   Percolation.java
+  </strong>
+  and
+  <strong>
+   PercolationStats.java
+  </strong>
+  . Here are three approaches to creating the zip file:
+ </p>
+ <p>
+  Mac OS X.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Select the required files in the Finder.
+   </p>
+  </li>
+  <li>
+   <p>
+    Right-click and select
+    <em>
+     Compress 2 Items
+    </em>
+    .
+   </p>
+  </li>
+  <li>
+   <p>
+    Rename the resulting file to
+    <strong>
+     percolation-submit.zip
+    </strong>
+    .
+   </p>
+  </li>
+ </ul>
+ <p>
+  Windows.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Select the required files in Windows Explorer.
+   </p>
+  </li>
+  <li>
+   <p>
+    Right-click and select
+    <em>
+     Send to -&gt; Compressed (zipped) folder
+    </em>
+    .
+   </p>
+  </li>
+  <li>
+   <p>
+    Rename the resulting file to
+    <strong>
+     percolation-submit
+    </strong>
+    (the .zip extension is automatic).
+   </p>
+  </li>
+ </ul>
+ <p>
+  Command line (Linux or Mac OS X).
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Change to the directory containing the required .java files.
+   </p>
+  </li>
+  <li>
+   <p>
+    Execute the command:
+    <strong>
+     zip percolation-submit.zip Percolation.java PercolationStats.java
+    </strong>
+   </p>
+  </li>
+ </ul>
+ <h2 level="2">
+  <strong>
+   Assessment Report
+  </strong>
+ </h2>
+ <p>
+  Here is some information to help you interpret the assessment report. See the
+  <a href="https://www.coursera.org/learn/algorithms-part1/resources/R2mre">
+   Assessment Guide
+  </a>
+  for more details.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    <em>
+     Compilation
+    </em>
+    : we compile your .java files using a Java 8 compiler. Any error or warning messages are displayed and usually signify a major defect in your code. If your program does not compile, no further tests are performed.
+   </p>
+  </li>
+  <li>
+   <p>
+    API: we check that your code exactly matches the prescribed API (no extra methods and no missing methods). If it does not, no further tests are performed.
+   </p>
+  </li>
+  <li>
+   <p>
+    <em>
+     Bugs
+    </em>
+    : we run
+    <a href="https://spotbugs.github.io" title="Spotbugs home page">
+     Spotbugs
+    </a>
+    to check for common bug patterns in Java programs. A warning message strongly suggests a bug in your code but occasionally there are false positives. Here is a summary of
+    <a href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html" title="Spotbugs bug descriptions">
+     bug descriptions
+    </a>
+    , which you can use to help decode warning messages.
+   </p>
+  </li>
+ </ul>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    <em>
+     Style
+    </em>
+    : we run
+    <a href="http://checkstyle.sourceforge.net">
+     checkstyle
+    </a>
+    to automatically checks the style of your Java programs. Here is a list of available
+    <a href="http://checkstyle.sourceforge.net/checks.html" title="Checkstyle checks">
+     Checkstyle checks
+    </a>
+    , which you can use to help decode any warning messages.
+   </p>
+  </li>
+ </ul>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    <em>
+     Correctness
+    </em>
+    : we perform a battery of unit tests to check that your code meets the specifications.
+   </p>
+  </li>
+  <li>
+   <p>
+    <em>
+     Memory
+    </em>
+    : we determine the amount of memory according to the 64-bit memory cost model from lecture.
+   </p>
+  </li>
+  <li>
+   <p>
+    <em>
+     Timing
+    </em>
+    : we measure the running time and count the number of elementary operations.
+   </p>
+  </li>
+ </ul>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

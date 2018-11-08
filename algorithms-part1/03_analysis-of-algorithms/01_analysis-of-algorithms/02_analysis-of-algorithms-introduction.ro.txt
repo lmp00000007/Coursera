@@ -1,0 +1,89 @@
+Bine ați revenit. Astăzi vom face puțină
+matematică și puțină știință. Nu mult, dar e necesar să avem o bază științifică pentru
+a înțelege performanța algoritmilor, pentru a-i utiliza corespunzător în
+practică. Astăzi vom vorbi despre cum să examinăm caracteristicile de
+performanță ale algoritmilor. Vom vedea cum să realizăm modele matematice
+și cum să clasificăm algoritmii în funcție de ordinul de creștere al timpului lor de
+execuție. Vom vorbi puțin despre teoria algoritmilor și despre cum să analizăm utilizarea
+memoriei. Deci, pentru a fi obiectivi, ne vom gândi la aceste chestiuni din
+punctul de vedere al mai multor tipuri de personaje. Primul este programatorul
+care trebuie să rezolve o problemă să o facă să funcționeze și să o pună în execuție.
+Al doilea este clientul care dorește să ultilizeze ceea ce acel program a rezolvat.
+Al treilea este teoreticianul, care este acea persoană care dorește să
+înțeleagă ceea ce se întâmplă. Iar Ultima pe lista este echipa care actioneaza adesea necesar pentru a face toate aceste lucruri să funcționeze.
+Astfel că există câte puțin din fiecare personaj în cursul de azi. Și de fapt
+când ești student trebuie să te gândești că s-ar putea să joci unul sau chiar toate
+aceste roluri la un moment dat. Așa că este destul de important să înțelegem diferitele
+puncte de vedere. Astfel, ideea pe care ne vom axa este timpul de rulare. Și de fapt, pentru
+a înțelege timpul de rulare al unui calcul a apărut încă de pe timpul
+lui Babbage și poate chiar de mai demult. Un citat din Babbage spune: "De îndată ce un
+motor analitic există, va ghida în mod necesar viitorul mers al
+științei. Oricând se caută un rezultat cu ajutorul său, va apare și întrebarea prin
+intermediul căror calcule pot fi aceste rezultate obținute de către mașină în cel mai scurt
+timp posibil". Dacă ne uităm la mașinăria lui Babbage denumită motor analitic, ea are o 
+manivelă. Și literal îngrijorările lui Babbage referitor la cât de mult va dura un
+calcul se raportează la numărul de ori cât trebuie întoarsă manivela. Nu e 
+chiar așa de diferit în ziua de azi. Manivela poate fi ceva electronic 
+ce se întâmplă de 1 miliard de ori pe secundă. Dar încă ne uităm de câte ori trebuie ca
+o operație discretă să fie realizată pentru a obține rezultatul
+final. Așa că, există multiple alte motive pentru a analiza un algoritm. În contextul acestui
+curs suntem interesați în mod deosebit de predicția performanței. Și de asemenea dorim
+să comparăm perfomanțele diferiților algoritm pentru același task și să 
+putem oferi anumite garanții referitor la cât de bine evoluează. Alături de aceasta,
+se află și înțelegerea anumitor baze teoretice pentru modul în care algoritmii evoluează. Dar în primul rând, 
+motivul practic din care dorim să să analizăm algoritmii și să-i înțelegem
+este pentru a evita erorile de performanță. Dorim să avem o anumită încredere că 
+algoritmii noștri vor finaliza task-ul în durata de timp în care ne gândim că îl va
+realiza. Și se poate observa în mod frecvent în infrastructura computațională de azi, o 
+situație în care un client obține performanțe proaste, deoarece programatorul nu
+a înțeles caracteristicile de performanță ale algoritmului. Iar
+cursul de azi se referă la evitarea acestor situații. Acum, ne vom concentra
+pe performanțe și compararea algoritmilor în acest curs. Sunt cursuri ulterioare în
+curicula standard pentru știința calculatoarelor ce oferă mai multe informații despre
+bazele teoretice ale algoritmilor si voi menționa câte ceva despre asta mai târziu.
+Dar scopul nostru este de a putea prezice performanța și de a compara algoritmii. 
+Există o listă lungă de povești de succes în proiectarea algoritmilor cu performanțe
+mai bune, în facilitarea soluțiilor la anumite probleme ce altfel nu ar fi putut fi
+rezolvate. Și o să dau doar câteva exemple. Unul dintre primii și cei mai faimoși
+este așa numitul algoritm FFT. Acesta este un algorithm ce împarte forma de undă alcătuită din
+n eșantioane ale unui semnal în componente periodice. Iar aceasta este baza pentru
+DVD-uri, JPEG-uri și  multe alte aplicații Există o soluție simplă ce ia un 
+timp proporțional cu N^2. Dar algoritmul FFT durează doar N log N
+pași. Iar diferența dintre N log N și N^2, este diferența dintre a 
+putea rezolva probleme complexe și a nu le putea rezolva. Multe dintre
+tehnologiile digitale, tehnologiile media digitale de care dispunem azi se datorează
+acestui algoritm rapid. Un alt exemplu a fost dezvoltat de Andrew Appel,
+care este acum decan la departamentul de știința calculatoarelor aici la Princeton. Și a fost dezvoltat 
+atunci când și-a redactat lucrarea de licență. Este un algoritm rapid pentru 
+problema simulării a N corpuri. Algoritmul simplu durează un timp proporțional cu N^2,
+dar algoritmul lui Appel dura N log N ceea ce înseamnă că acum
+oamenii de știință pot face simulări de N corpuri pentru valori foarte mari ale lui N. Iar aceasta facilitează
+cercetarea. Așadar, provocarea pe care o întâmpinăm adesea esteL va reuși programul meu
+să rezolve un input practic imens? Și de fapt, programatorul se 
+lovește de aceasta tot timpul. De ce, de ce rulează programul meu atât de încet?
+De ce nu mai are memorie disponibilă? Și asta a fost problema programatorilor pentru mult timp
+și modul de abordare a acesteia. Deuter Kanoof în anii 1970, a spus că 
+putem folosi o metodă științifică pentru înțelege performanțele algoritmilor în 
+timpul operării. Poate nu dezvăluim noi secrete ale universului, dar putem
+folosi această metodă științifică și putem trata calculatorul ca și ceva ce poate fi studiat în 
+acest fel și pentru a înțelege cum programul nostru va evolua. Și 
+să ne uităm la aceasta în mai detaliu. Deci acesta este un scurt rezumat al ceea ce ne referim a fi
+metoda științifică, care a fost de succes de câteva secole
+deja. Așa că, ceea ce vom face este, să observăm anumite caracteristici ale lumii
+reale. În acest caz, va fi timpul de rulare al unui program pe un computer
+Apoi vom dezvolta ipoteze ale unui model ce este în concordanță cu
+observațiile și vom spera că acele ipoteze sunt destul de bune
+pentru a ne permite să prezicem ceva. De obicei, timpul de rulare pentru o
+problemă de dimensiuni mai mari, sau pe un calculator diferit. Iar apoi vom verifica predicțiile prin
+realizarea mai multor observații și vom valida până ce avem încredere că ipoteza
+modelului și observațiile sunt corelate. Aceasta este o metodă de a avea încredere 
+că înțelegem performanțele programului nostru. Acum, în cadrul metodei
+științifice, există anumite principii de bază și prima este că dacă vom
+rula experimente, ar trebui să ne așteptăm ca și altcineva să poată rula aceleași 
+experimente și să obțină aceleași rezultate. Și de asemenea că ipotezele trebuie să aibă
+o proprietate specifică pe care experimentele să o poată contrazice. Astfel că
+trebuie proiectate cu grijp și vom încerca să facem asta. Așa că, din nou
+viitorul lumii naturale pe care o studiem este un anumit calculator specific care
+există în lumea naturală. El modifică algoritmul de la o abstractizare la
+un anumit tip de model fizic ce se produce în timp ce electronii trec prin
+interiorul calculatorului.

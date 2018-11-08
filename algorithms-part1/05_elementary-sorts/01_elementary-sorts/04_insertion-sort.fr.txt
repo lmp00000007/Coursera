@@ -1,0 +1,95 @@
+Maintenant, nous allons nous intéresser au tri par insertion
+qui est une autre méthode de tri de base et, c'est intéressant, présente des performances
+et des caractéristiques assez différentes du tri par sélection. Regardons une démo
+du tri par insertion. Pour ce tri, ce que nous allons faire est de faire avancer un indice i
+de la gauche à la droite comme précédemment. Mais maintenant, à la ième itération, nous allons déplacer a(i)
+vers une position parmi les éléments à sa gauche. Regardons comment ça marche
+sur notre exemple avec des cartes. Bien donc nous commençons en initialisant i vers la première carte et nous suivons
+le principe que tout ce qui est à gauche de i va être trié et tout ce qui est
+à droite, nous n'allons pas nous y intéresser du tout. Donc, tout ce qui est à gauche de i
+est en ordre croissant, tout ce qui est à droite nous ne l'avons pas encore vu du tout. Ainsi,
+quand nous augmentons i de 1, dans ce cas c'est déjà en ordre, nous n'avons
+rien d'autre à faire. Dans le troisième cas maintenant, quand i pointe vers la troisième entrée
+du tableau. Là, nous commençons avec un indice j et nous le déplaçons vers la gauche en commençons à i et ce que
+nous devons faire est d'échanger le 5 avec chaque élément à sa gauche qui est plus grand.
+Donc d'abord nous l'echangeons avec le 10. Il n'est toujours pas à sa place, donc nous l'échangeons
+avec le 7. Maintenant, nous atteignons le début du tableau et soit nous
+avons fait ça, nous avons atteint un élément plus petit et de ce fait tout le monde à gauche de i
+est dans le bon ordre. Donc maintenant nous augmentons i de 1 encore une fois et nous arrivons au trois.
+Encore une fois, nous l'échangons tant que la carte située juste à sa gauche est plus grande.
+Une fois que nous avons fait ça, nous avons tous les éléments à gauche de i dans l'ordre
+croissant. Maintenant, dans cette situation, nous avons le huit et nous avons seulement à faire un échange
+et déjà, il y a le 7 à sa gauche et tout est en ordre. Là nous avons réussi
+à mettre tout en ordre avec moins de travail. Nous ne sommes pas toujours obligés
+de revenir sur tout le tableau jusqu'à son départ. Pour l'échanger avec tous les éléments à sa gauche qui sont plus grands,
+jusqu'à ce que nous trouvions un plus petit élément dans l'ordre croissant. Pour le 2, il faut retourner
+jusqu'au début du tableau. Mais pour le suivant, le 9, il faut seulement
+revenir d'une position en arrière. Pour le 6, il faut revenir à peu près à la moitié. Et alors,
+nous avons trié le tableau en entier. Nous pouvons considérer le tri par insertion
+en terme d'invariants. Nos pointeurs parcourent toujours le tableau de la gauche à la droite, mais
+là, les éléments à la gauche du pointeur, en l'incluant, sont triés, alors que
+les éléments à la droite n'ont pas encore été vus du tout. Il faut que nous nous intéressions
+au programme qui va maintenir cet invariant alors que le pointeur avance. En déplaçant
+le pointeur vers la droite, il a augmenté de 1. Maintenant, l'invariant est cassé
+parce que l'élément indiqué par le pointeur n'est pas trié. Pour le remettre
+à sa place, nous devons nous déplacer de la droite vers la gauche et l'échanger avec
+chaque élément plus grand que lui à sa gauche. C'est ce que fait le code en bas. j commence 
+à i, j est diminué de 1, et on échange j avec les éléments à sa gauche. A(j) avec
+l'élément à sa gauche, a(j) - tant que a(j) est moins que a(j-1) et que j est 
+plus grand que zéro. Ceci nous donne immédiatement ça, le code pour le tri par insertion
+qui est semblable à notre code pour le tri par sélection et tout aussi simple, il a deux
+boucles for emboitées. Le tri par sélection avait deux boucles emboîtées, un test de comparaison
+et un échange à l'intérier de la boucle for. C'est une mise en oeuvre tout à fait valable
+d'une méthode de tri de base. Que dire en ce qui concerne l'analyse du tri par insertion? C'est plus compliqué.
+Notre proposition dit que pour trier par insertion un tableau de clés distinctes dans un ordre aléatoire
+cela nécessite de l'ordre de un quart N^2 de comparaisons et à peu près le même nombre,
+un quart N^2 d'échanges en moyenne. C'est plus compliqué à prouver.
+Cela dépend du tableau qui est ordonné aléatoirement. Mais encore une fois, vous pouvez sentir
+d'où cette proposition vient en regardant cette carte N par N. Encore ici,
+les éléments noirs sont ceux que nous comparons et en fait, ce sont aussi
+les éléments échangés. Et le rouge et celui qui est finalement mis à sa place. Vous pouvez
+voir que pour un grand tableau ordonné de manière aléatoire, l'élément que nous
+plaçons va devoir revenir à peu près de moitié en arrière, en moyenne. Ce qui signifie que de l'ordre
+de la moitié des éléments en dessous la diagonale seront noirs en moyenne puisque N^2 / 2
+en dessous de la diagonale, la moitié de ça est N^2 / quatre. L'analyse précise
+n'est pas plus détaillée que ça. Voici une plus grosse carte qui montre encore
+que la moitié des éléments en dessous de la diagonale sont impliqués dans le tri. Regardons
+cette animation. Puisque N^2 / quatre versus N^2 / deux, le tri par insertion est 
+à peu près deux fois plus rapide que le tri par sélection. Donc nous pouvons traiter
+deux fois plus d'éléments dans la trace pour la même durée de temps. On prend un élément, et on le ramène
+jusqu'à sa position, à chaque fois. Donc ça c'est une animation pour des éléments désordonnés.
+En pratique, le tri par insertion dépend de l'ordre initial des données. Regardons ce que ça donne
+pour le meilleur et le pire cas qui sont probablement intéressant. Si le tableau est
+déjà trié, tout ce que le tri par insertion fait est de valider que chaque élément
+a bien un élément plus petit à sa droite donc il ne fait pas d'échange
+donc le travail de tri se termine en ayant effectué seulement N - une comparaisons. D'un autre côté,
+si le tableau est en ordre décroissant sans doublon, alors chaque élément doit
+parcourir tout le tableau en arrière. Cela fait N^2 / deux comparaisons et N^2 / deux échanges. Donc dans le premier cas,
+c'est bien plus rapide que le tri par insertion, en temps linéaire au lieu de quadratique.
+Dans le deuxièbe cas, c'est plus lent que le tri par sélection car cela utilise à peu près le même nombre
+de comparaisons mais beaucoup plus d'échanges. Alors, observons ça dans l'animation.
+Ceci est quand un élément arrive en ordre contraire. Là, chaque fois qu'on prend
+un nouvel élément, on va l'échanger pendant tout le chemin en arrière jusqu'au début. C'est le même
+type de dynamique pour le tri par sélection sauf que pour chaque étape, ce n'est pas
+juste une comparaison, c'est aussi un échange ce qui le rend encore plus lent en pratique.
+Donc ça c'est le mauvais cas sur lequel nous ne voudrions pas tomber dans une application mais
+il y a aussi un bon cas qui en fait est utile dans de nombreuses applications pratiques.
+Il s'agit du cas pour lequel le tableau est partiellement trié. Pour 
+en parler de manière chiffrée, nous définissons ce qui est appelé une inversion.
+Une inversion est simplement une paire de clés qui sont en désordre dans le table. Ici,
+ce tableau a 6 inversions, T et R sont dans le désordre car R devrait arriver avant T. T et P sont en désordre
+et ainsi de suite. Ce tableau a 6 inversions. Et nous disons d'un tableau
+qu'il est partiellement trié si son nombre d'inversions est linéaire, si c'est 
+moins qu'une certaine constante fois N. Et les tableaux partiellement triés sont courant en pratique.
+Par exemple, si vous avez un grand tableau qui est trié sauf  pour quelques éléments
+non triés ajoutés à la fin ce sera un tableau partiellement trié.
+D'un autre côté, si vous avez seulement quelques éléments en désordre, le tableau
+est partiellement trié. Ce genre de choses se produit fréquemment dans des applications
+pratiques et ce qui est intéressant avec le tri par insertion c'est qu'il s'exécute
+en temps linéaire pour des tableaux partiellement triés. La preuve tient dans le fait que le nombre de comparaisons
+est égal au nombre d'échanges qui est égal au nombre d'inversions
+et à la fin il y a une comparaison supplémentaire pour chaque élément
+sauf le premier. Donc regardons ce que ça donne sur l'animation. On a là un tableau partiellement
+trié et vous pouvez voir que le tri par insertion fait très rapidement le travail. Nous allons
+tirer partie de cette propriété un peu plus tard dans ce cours. Voilà le tri par insertion,
+notre deuxième algorithme élémentaire de tri.

@@ -1,0 +1,99 @@
+Bienvenue. Je suis Bob Sedgewick,
+professeur d'informatique à Princeton. Ceci est notre cours d'Algorithmique en ligne
+préparé par Kevin Wayne et moi-même ici, à Princeton. Nous allons commencer par un aperçu
+des raisons qui peuvent vous amener à étudier l'algorithmique et nous discuterons des ressources nécessaires pour suivre ce cours. Alors, qu'est-ce que ce cours?
+C'est un cours général, de niveau intermédiaire, sur les algorithmes. Nous allons nous concentrer sur la programmation
+et la résolution de problèmes dans le contexte d'applications réelles,
+et nous nous focaliserons sur deux choses : les algorithmes qui sont des méthodes pour résoudre les problèmes
+et les structures de données qui stockent l'information associée au problème,
+et qui vont de paire avec les algorithmes. Voici les sujets principaux que nous allons traiter
+dans les parties un et deux du cours : La première partie traite de l'ordonnancement et de la recherche de données. Nous verrons plusieurs structures de données et algorithmes
+qui sont la base de toutes les méthodes que nous verrons, ceci inclut les piles, les files, les tas et files de priorité. 
+Ensuite, nous verrons des algorithmes classiques pour trier, ordonner. C'est à dire tri rapide, tri fusion, tri par tas et tri par base. 
+Et nous verrons des méthodes classiques pour la recherche. Notamment les arbres binaires de recherche (ABR),
+les arbres bicolores et les tables de hachage. La seconde partie du cours concerne des algorithmes plus avancés
+entre autres, les algorithmes de graphes, les algorithmes classiques de recherche dans les graphes, 
+l'algorithme d'arbre recouvrant minimal et des algorithmes de plus court chemin, 
+des algorithmes de traitement de chaînes, comprenant les expressions régulières et la compression de données. 
+Puis quelques algorithmes avancés qui utilisent les algorithmes de base que nous aurons vus 
+plus tôt dans le cours. Alors, pourquoi devrait-on étudier des algorithmes ? 
+Eh bien, leur influence est très grande et importante. D'internet à la biologie, en passant par 
+le calcul commercial, l'infographie, la sécurité, les multimédias, les réseaux sociaux, 
+et les applications scientifiques, les algorithmes sont tout autour de nous. 
+Ils sont utilisés pour les films et les jeux vidéos, pour les simulations de collisions de particules, 
+en génétique, et encore bien d'autres applications. Donc c'est une raison importante
+d'étudier les algorithmes : leur portée est considérable et diverse. 
+Les algorithmes sont aussi intéressants à étudier, parce qu'ils ont des racines anciennes. 
+Le premier algorithme que l'on a étudié date de 300 avant J.-C. Il remonte au moins à Euclide. 
+Le concept d'un algorithme a été formalisé en réalité, ici, à Princeton, par Church et Turing, dans les années 1930. 
+Mais la majorité des algorithmes que l'on étudie, ont été découvert dans les dernières décennies. 
+En fait, certains ont été découverts par des étudiants dans un cours 
+comme celui-ci. Et il y a de nombreux autres algorithmes qui attendent d'être découverts
+par des étudiants comme vous. La raison principale pour laquelle on étudie les algorithmes, c'est pour être capable de 
+résoudre des problèmes qui ne pourraient autrement pas être traités. Par exemple, dans le premiers
+cours, nous allons parler du problème de la connectivité réseau, où le 
+problème est, étant donné un grand ensemble d'éléments qui sont connectés deux à deux, y a-t-il
+un moyen d'aller d'un élément à l'autre en passant par les connexions. Comme 
+vous pouvez le voir dans cet exemple, ce n'est pas clair s'il existe un tel chemin ou non,
+on a besoin d'un programme informatique pour cela, en fait, on a besoin d'un algorithme efficace. 
+Dans ce cas, la réponse est qu'il existe un tel chemin. Une autre raison d'étudier
+les algorithmes est la stimulation intellectuelle. Les algorithmes sont des objets
+très intéressants à étudier. Don Knuth qui a écrit plusieurs ouvrages sur les algorithmes
+et qui était un des pioniers de ce champ de recherche a dit "Un algorithme doit être vu pour
+être cru." Vous ne pouvez pas juste penser à un algorithme, vous devez travailler avec lui.
+Une autre citation de Francis Sullivan, dit, "Les grands algorithmes sont la poésie de 
+l'informatique." Exactement comme des vers, ils peuvent être concis, élusifs, denses et même
+mystérieux. Mais une fois déverrouillés, ils donnent une lumière étincellante sur certains aspets de
+la programmation. Les algorithmes sont intéressants pour la stimulation intellectuelle. Une autre raison
+pour laquelle de nombreuses personnes étudient les algorithmes, et je pense bon nombre d'ente vous, est qu'il est nécessaire
+de comprendre les bons algorithmes, les algorithmes efficaces les bonnes structures de données,
+pour devenir un bon programmeur. Linus Torvalds, qui a créé Linux, dit
+que la différence entre un mauvais programmeur et un bon, vient de s'il considère son code ou
+ses structures de données comme le plus important. Les mauvais programmeurs s'inquiètent
+du code, les bons programmeurs s'inquiètent de la structure des données, et de leurs
+relations. Et aussi, je pourrais ajouter des algorithmes qui les traitent. Niklaus
+Wirth, un autre pionnier le l'informatique a écrit un livre célèbre appelé
+ "Algorithms + Data Structures = Programs". Une autre raison d'étudier l'algorithmique, de nos jours, 
+est que c'est devenu une langue commune pour la compréhension de la nature. 
+Les algorithmes sont des modèles computationnels et les modèles algorithmiques remplacent les modèles mathématiques
+dans la recherche scientifique. Au cours du vingtième siècle, 
+des scientifiques mathématiciens ont développé des modèles mathématiques afin d'essayer de comprendre des phénomènes naturels. 
+On comprendra bien vite que ces modèles mathématiques étaient durs à résoudre. 
+Il était difficile de trouver des solutions, de tester des hypothèses par rapport aux phénomènes naturels. 
+En conséquence, de nos jours, de plus en plus de monde développe des modèles computationnels, 
+où ils essayent de simuler ce qui pourrait se passer dans la nature afin de tenter de mieux la comprendre. Les algorithmes jouent un rôle extrêmement important dans ce processus, 
+et nous en verrons quelques exemples dans ce cours. Une autre raison importante est que 
+si vous savez utiliser efficacement les algorithmes et les structures de données, 
+vous aurez une bien meilleure chance au cours d'un entretien de travail, que sinon. Voilà, j'ai survolé quelques raisons d'étudier les algorithmes. Leur influence est étendue, ils ont une histoire, 
+et présentent de nouvelles opportunités. Ils nous permettent de résoudre des problèmes 
+qui ne pourraient l'être autrement. Vous pouvez vous en servir comme stimulation intellectuelle 
+pour devenir un programmeur efficace. Ils pourraient dévoiler des secrets de la vie dans l'univers, et ils peuvent être amusants et profitables. 
+En fait, un programmeur pourrait demander pourquoi étudier quoi que ce soit d'autre ? 
+Eh bien, il y a plein de bonnes raisons d'étudier d'autres choses, mais je ne vois aucune bonne raison de ne pas étudier l'algorithmique. Pour ce cours, nous avons deux ressources dont je veux parler, 
+afin d'être sûr que tout le monde les connait, avant d'entrer dans le vif du sujet. 
+Voici un model de publication développé par Kevin Wayne et moi et 
+utilisé depuis de nombreuses années, et nous pensons qu'il est un moyen très efficace pour etayer le
+types de leçons que nous proposons dans ce cours. En bas de page, nous avons un manuel optionnel pour
+ce cours. Il s'agit d'un manuel traditionnel qui couvre
+plus largement les sujets de ce cours, bien plus de sujets que nous ne 
+pouvons présenter dans nos leçons. En complément de ce manuel, il y a de la documentation gratuite en ligne 
+que l'on appelle le "livre en ligne". Vous pouvez aller sur le livre en ligne pour voir 
+les diapositives des cours. Et, plus important, il y a du code, des exercices et beaucoup d'informations. En fait, peut-être dix fois l’équivalent du livre 
+dont notamment un résumé du contenu. Durant ce cours, vous vous référerez fréquemment au "livre en ligne" 
+lors de votre travail en ligne. Les gens demandent souvent quels sont les prérequis.
+Nous supposons que les personnes qui suivent ce cours savent programmer
+et connaissent les bases des boucles, tableaux, fonctions... Et qu'ils ont été en contact avec 
+la programmation orientée objet et les récursions. Nous utilisons le langage Java mais nous ne nous
+étendons pas sur les détails de Java. Nous l'utilisons essentiellement comme un langage illustratif.
+On fait des maths mais pas des maths avancées. Si vous voulez relire ce que nous pensons être
+les pré-requis pour ce cours, vous pouvez le faire rapidement en 
+regardant les paragraphes 1.1 et 1.2 du livre. Soit dans sa version en ligne, soit dans sa version
+papier. Si vous voulez approfondir cette revue, nous avons tout un livre complet appelé "An
+Introduction to Programming in Java: An Interdisciplinary Approach" (non traduit).
+Il existe en version en-ligne et papier. Le but est que vous soyez capable de
+programmer, et une façon rapide d'être prêt est d'écrire un programme Java
+sur vore ordinateur, par exemple en utilisant un modèle de code tel que décrit sur le site du livre.
+Nous fournirons des informations plus détaillées à ce sujet lorsque nous arriverons aux devoirs.
+Vous pouvez utiliser votre propre environnement de développement si vous
+êtes à l'aise avec un, ou bien télécharger le nôtre. Nous indiquons sur le net
+comment le faire

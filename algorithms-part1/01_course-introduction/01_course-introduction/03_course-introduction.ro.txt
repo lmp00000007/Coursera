@@ -1,0 +1,107 @@
+Bine ați venit. Eu sunt Bob Sedgewick, profesor de
+știința calculatoarelor la Princeton. Acesta este cursul nostru online, Algoritmi, realizat de
+mine și de Kevin Wayne aici la Princeton. Vom începe cu o discuție generală despre
+motivul pentru care ați vrea să studiați algoritmi și o mică discuție despre
+resursele de care aveți nevoie pentru acest curs. Deci, ce este acest curs? Este
+un curs de nivel intermediar despre algoritmi. Ne vom concentra asupra
+programării și rezolvării de probleme în contextul aplicațiilor reale, focalizându-ne
+asupra a două aspecte, și anume Algoritmi, care sunt metode de rezolvare a
+problemelor, și Structuri de date, care memorează informația asociată unei probleme și
+care merg mână în mână cu algoritmii. Acestea sunt subiectele de bază pe care
+le vom aborda în prima parte și în partea a doua a cursului. Prima parte se referă la tipuri de
+date, sortare și căutare. Vom studia câteva structuri de date și algoritmi care sunt 
+de bază pentru toate metodele pe care le abordăm, și anume stive, cozi, saci ("bags")
+și cozi cu priorități. Apoi vom aborda algoritmi clasici de sortare, aranjare într-o anumită
+ordine. Aceștia vor fi sortare rapidă ("quicksort"), sortare prin interclasare ("mergesort"), sortare piramidală ("heapsort")
+și sortare digitală ("radix sort"). Vom mai aborda metode clasice de căutare, incluzând arbori binari de căutare,
+arbori binari de căutare red-black și tabele de dispersie. Partea a doua a cursului este
+pentru algoritmi mai avansați incluzând algoritmi pentru grafuri, algoritmi clasici de căutare
+în grafuri, algoritmi pentru arbore minim de acoperire și pentru drum minim, algoritmi de prelucrare
+a șirurilor de caractere incluzând expresii regulate și compresia datelor. Și apoi,
+câțiva algoritmi avansați care utilizează algoritmii de bază pe care i-am discutat
+mai devreme în curs. Deci, de ce ar studia cineva algoritmi? Ei bine, efectul lor
+este foarte extins și cuprinzător. Începând cu internetul, biologia, comerțul
+electronic, până la grafica pe calculator, securitate, multimedia, rețele sociale și
+aplicații științifice, algoritmii sunt peste tot în jurul nostru. Sunt utilizați pentru
+filme și jocuri video, pentru simularea coliziunii particulelor, sunt utilizați pentru
+studierea genomului și diverse alte aplicații. Deci, acesta e un motiv important
+pentru a studia algoritmi, și anume că efectul lor este extins și cuprinzător. De asemenea,
+studierea algoritmilor e interesantă deoarece au origini foarte vechi. Primul algoritm
+pe care l-am studiat este din 300 d.H., cel puțin din vremea lui Euclid. Conceptul
+de algoritm a fost de fapt formalizat aici la Princeton, de Church și Turing, în
+anii 1930. Dar cei mai mulți algoritmi pe care-i avem în vedere au fost descoperiți
+în ultimele decenii. De fapt, unii au fost descoperiți de studenți într-un curs
+ca acesta. Și există mulți alți algoritmi care așteaptă să fie descoperiți de
+către studenți ca voi. Motivul principal pentru pentru care oamenii studiază algoritmi, este pentru a
+putea rezolva probleme care altfel nu ar putea fi abordate. De exemplu, în primul curs
+vom vorbi despre problema conectivității în rețea, adică
+dându-se o mulțime foarte mare de elemente care sunt conectate două câte două, există
+o modalitate de a trece de la unul la altul pe o cale formată din conexiuni? După
+cum puteți vedea din acest exemplu, nu este clar dacă există sau nu o astfel de cale,
+avem nevoie de un program pentru a afla, de fapt, avem nevoie de un algoritm eficient pentru
+a afla. In acest caz, răspunsul este că există o astfel de cale. Un alt motiv de a studia
+algoritmi este pentru stimularea intelectuală. Algoritmii sunt obiecte de
+studiu foarte interesante. Don Knuth, care a scris mai multe cărți despre algoritmi și
+care a fost un pionier în acest domeniu spunea că "Un algoritm trebuie văzut pentru a fi
+crezut." Nu poți doar să te gândești la un algoritm, trebuie să lucrezi cu el.
+Un alt citat, din Francis Sullivan, spune "Algoritmii remarcabili sunt poezia
+calculului. Ca un vers, ei pot fi" conciși, subtili, denși și chiar misterioși.
+Dar odată descoperiți, ei aruncă o nouă și strălucitoare lumină asupra unui aspect
+al calculului." Algoritmii sunt interesanți pentru stimularea intelectuală. Un alt motiv pentru care
+mulți studiază algoritmi și bănuiesc că mulți dintre voi, este că e necesar să
+înțelegi algoritmii buni, algoritmii eficienți, structuri de date potrivite, pentru a
+fi un programator competent. Linus Torvalds, cel care a creat Linux, spune că
+diferența dintre un programator prost și unul bun este dacă el consideră mai important 
+codul pe care-l scrie sau structurile de date pe care le utilizează. Programatorii proști sunt 
+preocupați de cod, programatorii buni sunt preocupați de structurile de date și de relațiile
+dintre ele. Și, aș adăuga, de algoritmii care le prelucrează. Niklaus
+Wirth, alt pionier în știința calculatoarelor, a scris o carte renumită,
+Algoritmi + Structuri de Date = Programe. Un alt motiv pentru a studia algoritmi în
+zilele noastre este că au devenit un limbaj comun pentru înțelegerea naturii.
+Algoritmii sunt modele computaționale, și modelele algoritmice înlocuiesc în prezent
+modelele matematice în investigația științifică. În secolul douăzeci, oamenii de știință au
+realizat modele matematice pentru a încerca să înțeleagă un fenomen natural. Curând, a devenit
+limpede că acele modele matematice erau dificil de rezolvat. A fost dificil
+de a găsi soluții, pentru a putea testa ipoteze asupra fenomenului natural.
+Deci, din ce în ce mai mult în zilele noastre oamenii creează modele computaționale,
+prin care încearcă să simuleze ce s-ar putea întâmpla în natură pentru a
+încerca s-o înțeleagă mai bine. Algoritmii joacă un rol extrem de important în acest
+proces. Și vom vedea câteva exemple de acest tip în acest curs. Un alt motiv
+important este că, dacă știi cum să utilizezi eficient algoritmi și structuri
+de date, vei avea o șansă mult mai mare la interviuri pentru un job în industria
+IT decât dacă nu știi acest lucru. Deci acestea sunt mai multe motive, pe care tocmai
+le-am discutat, pentru studierea algoritmilor. Impactul lor este extins și cuprinzător,
+au rădăcini foarte vechi și oferă noi oportunități, ne permit să rezolvăm
+probleme care altfel n-ar putea fi abordate, îi puteți utiliza ca stimulent
+intelectual, pentru a deveni un programator competent. Ei ar putea să dezvăluie
+secretele vieții în univers, și sunt utili pentru amuzament și pentru profit. De fapt,
+un programator ar putea întreba, de ce să studiezi și altceva? Ei bine, sunt suficiente motive
+solide pentru a studia și altceva, dar îndrăznesc să afirm că nu există niciun motiv
+pentru a nu studia algoritmi. Deci, pentru acest curs avem două resurse despre care vreau
+să vorbesc și să mă asigur că sunteți familiari cu ele înainte de a intra în conținutul
+propriu-zis. Acesta este un model de publicare pe care Kevin Wayne și cu mine l-am dezvoltat și l-am
+utilizat de mulți ani, și credem că e un mod foarte eficace de a susține prelegerile
+de felul celor pe care le vom susține în acest curs. În partea de jos, opțional
+pentru acest curs, avem un manual. Este un manual tradițional
+care acoperă în detaliu subiectele din curs, de fapt mult mai multe subiecte decât
+putem prezenta în prelegeri. Și apoi, în sprijinul acelui manual, există material gratuit
+online pe care-l numim site-ul cărții. Puteți merge pe site-ul cărții pentru a vedea
+fișierele prezentărilor. Dar mai important, acolo există cod sursă, exerciții și
+multe alte informații. De fapt, poate de zece ori mai mult decât există în carte,
+inclusiv un rezumat al conținutului. Deci, pe parcursul acestui curs veți accesa
+frecvent site-ul cărții în timp ce lucrați online. Adesea oamenii întreabă despre cunoștințele
+anterioare necesare. Vom presupune că, cei care se înscriu la acest curs știu să programeze,
+și cunosc bazele buclelor, tablourilor, funcțiilor. Au anumite cunoștințe de programare
+orientată obiect și recursivitate. Utilizăm limbajul Java, dar nu ne oprim
+asupra limbajului, Îl utilizăm în principal ca limbaj explicativ. Folosim și matematică,
+dar nu matematică avansată. Dacă vreți să revedeți materialul care credem că e necesar
+înainte de a studia materialul din acest puteți face o trecere rapidă în revistă
+studiind secțiunile 1.1 și 1.2 din carte, fie de pe site-ul cărții, fie din
+manual. Dacă vreți o revizuire mai detaliată, avem un manual complet numit O
+introducere în programarea în Java: O abordare interdisciplinară. Există 
+de asemenea un site al cărții și un manual. Dar ideea este că trebuie să puteți scrie programe,
+și un exercițiu rapid de pregătire este de a scrie un program Java pe
+calculatorul dvs., poate utilizând un model de programare, așa cum este descris pe site-ul cărții.
+Vom furniza informații mult mai detaliate despre acest lucru atunci când ajungem la teme.
+Puteți folosi propriul vostru mediu de programare dacă aveți unul preferat, sau
+îl puteți descărca pe al nostru. Avem instrucțiuni pe Internet despre cum se face aceasta.

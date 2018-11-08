@@ -1,0 +1,90 @@
+Ok, el primer paso es ser capaz de hacer
+algunas observaciones acerca del tiempo de ejecución de los programas. Y del analisis
+de algoritmos que es mas facil que muchas disciplinas cientificas, como lo veremos.
+Como ejemplo de ejecucion usaremos el problema llamado 3-sum. Que es un 
+problema facil de estado. Si tienes N enteros distintos, ¿Cuantas tripletas sumadas dan exactamente 
+cero? Por ejemplo en el archivo 8ints.txt Que tiene ocho enteros en el. Donde
+hay cuatro tripletas que sumadas dan cero. 30 -40, 10. 30, -20, -10, etc... nuestro 
+objetivo es escribir un programa que pueda calcular esta cantidad para cualquier archivo
+de entrada, para cualquier conjunto de N enteros. Esto es actualmente un,  un muy importante calculo que
+esta profundamente relacionado con muchos problema de algebra computacional la cual 
+es una rama de la informatica que cubre los algoritmos y las bases cientificas
+relacionadas a los graficos y las peliculas y modelos geometricos de todo tipo. Asi, en la
+actualidad es un importante problema practico. Pero esta es una manera simple de escribir codigo para que veas que puedes escribir este programa sin mucho esfuerzo. Este es, un 
+metodo estatico de conteo que toma como argumento un arreglo de 
+enteros. Y, este es, el numero de enteros, que es el tamaño del arreglo. Iniciamos
+con la variable <i>count</i> igual a cero, y luego un bucle triple, que comprueba
+cada tripleta <i>i</i>, <i>j</i>, <i>k</i>. tenemos <i>i</i> en uno, y <i>j</i> de <i>i+1</i> a <i>n</i>, y <i>k</i> de <i>j+1</i> a <i>n</i>, para que podamos
+conseguir cada tripleta una sola vez. Y si <i>a[i]+a[j]+a[k]</i> es igual a cero,
+incrementamos <i>count</i>. Ok. Y despues que se recorre los tres loops, retornamos
+<i>count</i>. Entonces el metodo <i>main</i>, en esta clase simple solo se lee, todos 
+los enteros, y se imprime <i>count</i>. Ese es un algoritmo de fuerza bruta, que es
+un buen metodo para resolver el problema 3-sum, ahora lo que nos interesa es
+cuanto tiempo se toma la funcion para <i>n</i>? Bien, el tiempo en el que nuestro programa 
+termina lo vemo en un reloj. Si tienes un cronometro, o miras tu reloj, o celular,
+o lo que puede ser que necesites es poner antes un <i>time</i>, si quieres
+o tenemos, Java que tiene esta parte en su libreria estandar, una clase <i>stopwatch</i> que lo 
+ponemos al principio y calcula el lapso de tiempo. Asi, cuando quieras ejecutar el programa, 
+Si esta configurado para tomar como entrada diferentes tamaños, algo natural para hacer, es
+ejecutarlo para tamaños grandes. Asi para ocho enteros el programa no toma mucho tiempo,
+para 1000 enteros se toma medio segundo para 2000 se toma mas tiempo, 3.7 segundos, lo
+ejecutamos otra vez, todavia toma 3.7 segundos para 4000, cada vez doblamos el tamaño
+de la entrada, y esto toma definitivamente mas tiempo, cada vez. De echo como 
+veremos, si un programador tiene el habito de testear en cualquier momento 
+su programa de esta manera puede evaluar con bastante facilidad y 
+rapidez cuando va ha finalizar. De hecho.  Mientras esperas a que
+termine puedes a menudo averiguarlo. Asi que tomo 30 segundos para 4K, y
+sin duda podemos figurarnos cuanto tomara para 8K antes de que
+finalice, y lo veras en tan solo unos segundos. No voy a esperar por ahora.
+Puedes pensar lo que quieras. Ok esto [tos] es un analisis empirico, analisis.
+Ejecutado para varios tamaños de entrada y medimos el tiempo de ejecucion. Ahora
+si este es un problema cientifico donde contamos algo que sucede en el mundo
+natural. El número de hormigas en un hormiguero, o lo que sea, entonces
+tenemos solo unos pocos datos, queremos tratar de entender,  que esta pasando haciendo
+un grafico de tiempo de ejecución con lo que nos interesa en el eje Y, y el tamaño como 
+problema en el  eje X. Es una curva como esta, y actualmente, ¿que hace la ciencia?
+porque muchos problemas caen fuera de esta clase, y se grafica como <i>lg</i>, grafica 
+<i>lg</i>. Si lo haces como <i>lg</i>, grafica <i>lg</i> a menudo obtendras una linea recta. Y
+la pendiente de la linea recta es la clave de lo que esta sucediendo. En este caso, 
+la pendiente  de la linea recta es tres, asi puedes ejecutar lo que es conocido como 
+regresion, mas tarde, la linea recta atraviesa los puntos de datos. Y entonces, no es dificil
+mostrar los calculos para demostrar que si tenemos una linea recta y la pendiente es <i>b</i>,
+entonces la funcion es proporcional a <i>a</i> <i>N^b<i>. Que es la ley de potencia. Y
+que es verdad para muchos, muchos problemas cientificos, incluyendo la mayoria de los algoritmos.
+Asi que aqui hay un poco de matematicas para esto. Asi, la linea recta significa que como hicimos
+<i>lg</i>, la grafica <i>lg</i> con potencia de dos, es <i>lg(T(N) = b lg N + c</i>. Y tenemos valores
+empiricos de <i>b</i> y <i>c</i>, y si elevamos ambos lados de la ecuaciona 
+a pontencia de dos, entonces tenemos T(N) una constante <i>N^b</i>. Asi que tenemos 
+a traves de la observacion un bonito modelo para el tiempo de ejecucion de nuestro
+programa, podemos entenderlo, hacer matematicas y darse cuenta que el tiempo de ejecucion
+es cerca de <i>10^-10xN^3</i> segundos. Podemos utilizar esta hipotesis y adelantarnos, 
+y hacer predicciones. Dando diferentes valores a <i>N</i>, y dira que
+toma 400 segundos para 16,000. 400 segundos es mucho tiempo, pero ahora
+podemos ir adelante e investigar, y ejecutar el experimento, y por supuesto estamos
+cerca a 408 segundos, cuando lo ejecutamos. Podemos hacer predicciones para
+32,000 o por o para cualquier cosa que nos pueda interesar. El modelo nos 
+ayuda a predecir sin tener que invertir el costo de ejecutar el experimento. De hecho,
+en esta situacion si hay una ley de potencia, y nuevamente en una gran mayoria de
+algortimos informaticos el tiempo de ejecucion es una ley de potencia. Lo que
+podemos hacer es doblar el tamaño de la entrada cada vez, y tomar la relacion de
+los tiempos de ejecucion de <i>N</i> y <i>2N</i>. Y si lo haces, la relacion va a converger en una
+constante. De hecho el logaritmo de la relacion va a converger a esa constante, que
+es el exponente de <i>N</i> y el tiempo de ejecucion. Y solo es necesario un poco de 
+matematicas para comprobar esto, pero esta es una muy facil y natural manera de adelantarse
+y predecir el tiempo de ejecucion. Asi que es lo que dije antes, tenemos una rapida manera para 
+calcular <i>b</i> en una relacion de la ley de potencia. ¿Como calculamos <i>a</i>? Pues solo podemos ejecutarlo
+y resolver para <i>a</i>. Asi que una vez que decidimos que el exponente es tres, lo ejecutamos 
+para un <i>N</i> grande y nos acercamos al modelo que teniamos del grafico
+de las cosas. Asi que la hipotesis es casi identica, y se lo conseguimos mediante la 
+ejecucion del programa del doble de <i>N</i> cada vez. OK, hay una gran cantidad de efectos para intentar
+entender el tiempo de ejecucion de un programa, en tu maquina. [tos] Asi. El efecto clave
+es independiente de que maquina sea. Y eso es que el algoritmo que estas 
+usando y que datos. Y eso va a determinar realmente el exponente en la 
+ley de potencia. Y luego existe un monton de efectos de sistemas dependientes. ¿que
+tipo de hardware tienes? ¿tienes un equipo rapido o lento? ¿Que tipo de software?
+¿Que esta pasando en tu computadora? Todas estas cosas realmente determinan
+la constante <i>a</i> en la ley de potencia. Asi. En los sistemas modernos, son muchas
+cosas que pasan en el software y el hardware, a veces es dificil conseguir mediciones
+precisas. Pero por otro lado no tenemos que sacrificar animales, o volar
+a otro planeta como lo hacen otras ciencias, solo podemos ejecutar un gran numero
+de experimentos y usualmente ocuparse de entender estos tipos de efectos.

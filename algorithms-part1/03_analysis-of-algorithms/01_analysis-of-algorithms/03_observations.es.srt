@@ -1,0 +1,452 @@
+1
+00:00:09,035 --> 00:00:15,063
+Ok, el primer paso es ser capaz de hacer
+algunas observaciones acerca del tiempo
+
+2
+00:00:15,063 --> 00:00:22,004
+de ejecución de los programas. Y del analisis
+de algoritmos que es mas facil que muchas 
+
+3
+00:00:22,026 --> 00:00:27,096
+disciplinas cientificas, como lo veremos.
+Como ejemplo de ejecucion usaremos 
+
+4
+00:00:27,096 --> 00:00:34,016
+el problema llamado 3-sum. Que es un 
+problema facil de estado. Si tienes N enteros
+
+5
+00:00:34,016 --> 00:00:40,254
+distintos, ¿Cuantas tripletas sumadas dan exactamente 
+cero? Por ejemplo en el archivo 8ints.txt
+
+6
+00:00:40,254 --> 00:00:48,096
+Que tiene ocho enteros en el. Donde
+hay cuatro tripletas que sumadas dan cero. 30
+
+7
+00:00:48,096 --> 00:00:56,832
+-40, 10. 30, -20, -10, etc... nuestro 
+objetivo es escribir un programa que
+
+8
+00:00:56,832 --> 00:01:03,554
+pueda calcular esta cantidad para cualquier archivo
+de entrada, para cualquier conjunto de N enteros. Esto es
+
+9
+00:01:03,554 --> 00:01:09,796
+actualmente un,  un muy importante calculo que
+esta profundamente relacionado con muchos
+
+10
+00:01:09,796 --> 00:01:16,446
+problema de algebra computacional la cual 
+es una rama de la informatica que
+
+11
+00:01:16,446 --> 00:01:24,536
+cubre los algoritmos y las bases cientificas
+relacionadas a los graficos y las peliculas y
+
+12
+00:01:24,536 --> 00:01:32,040
+modelos geometricos de todo tipo. Asi, en la
+actualidad es un importante problema practico.
+
+13
+00:01:32,040 --> 00:01:40,459
+Pero esta es una manera simple de escribir codigo para que veas que puedes escribir este programa
+
+14
+00:01:40,759 --> 00:01:49,583
+sin mucho esfuerzo. Este es, un 
+metodo estatico de conteo que 
+
+15
+00:01:49,583 --> 00:01:56,317
+toma como argumento un arreglo de 
+enteros. Y, este es, el numero de enteros,
+
+16
+00:01:56,317 --> 00:02:02,660
+que es el tamaño del arreglo. Iniciamos
+con la variable <i>count</i> igual a cero,
+
+17
+00:02:02,660 --> 00:02:09,363
+y luego un bucle triple, que comprueba
+cada tripleta <i>i</i>, <i>j</i>, <i>k</i>. tenemos <i>i</i> en uno, y <i>j</i>
+
+18
+00:02:09,363 --> 00:02:15,181
+de <i>i+1</i> a <i>n</i>, y <i>k</i> de <i>j+1</i> a <i>n</i>, para que podamos
+conseguir cada tripleta una sola vez. Y
+
+19
+00:02:15,181 --> 00:02:19,818
+si <i>a[i]+a[j]+a[k]</i> es igual a cero,
+incrementamos <i>count</i>. Ok. Y despues
+
+20
+00:02:19,818 --> 00:02:25,093
+que se recorre los tres loops, retornamos
+<i>count</i>. Entonces el metodo <i>main</i>, en esta
+
+21
+00:02:25,093 --> 00:02:30,769
+clase simple solo se lee, todos 
+los enteros, y se imprime <i>count</i>. 
+
+22
+00:02:30,769 --> 00:02:35,696
+Ese es un algoritmo de fuerza bruta, que es
+un buen metodo para resolver el problema 
+
+23
+00:02:35,696 --> 00:02:41,615
+3-sum, ahora lo que nos interesa es
+cuanto tiempo se toma la funcion para <i>n</i>?
+
+24
+00:02:41,615 --> 00:02:47,808
+Bien, el tiempo en el que nuestro programa 
+termina lo vemo en un reloj. Si tienes un
+
+25
+00:02:47,808 --> 00:02:54,925
+cronometro, o miras tu reloj, o celular,
+o lo que puede ser que necesites es
+
+26
+00:02:54,925 --> 00:03:02,164
+poner antes un <i>time</i>, si quieres
+o tenemos, Java que tiene esta parte en su
+
+27
+00:03:02,164 --> 00:03:09,024
+libreria estandar, una clase <i>stopwatch</i> que lo 
+ponemos al principio y calcula el lapso de tiempo.
+
+28
+00:03:09,024 --> 00:03:15,968
+Asi, cuando quieras ejecutar el programa, 
+Si esta configurado para tomar como entrada
+
+29
+00:03:15,968 --> 00:03:23,990
+diferentes tamaños, algo natural para hacer, es
+ejecutarlo para tamaños grandes. Asi para
+
+30
+00:03:23,990 --> 00:03:32,381
+ocho enteros el programa no toma mucho tiempo,
+para 1000 enteros se toma medio segundo
+
+31
+00:03:32,381 --> 00:03:42,303
+para 2000 se toma mas tiempo, 3.7 segundos, lo
+ejecutamos otra vez, todavia toma 3.7 segundos
+
+32
+00:03:42,303 --> 00:03:50,231
+para 4000, cada vez doblamos el tamaño
+de la entrada, y esto toma definitivamente
+
+33
+00:03:50,231 --> 00:03:58,930
+mas tiempo, cada vez. De echo como 
+veremos, si un programador tiene el
+
+34
+00:03:58,930 --> 00:04:05,490
+habito de testear en cualquier momento 
+su programa de esta manera puede
+
+35
+00:04:05,490 --> 00:04:13,038
+evaluar con bastante facilidad y 
+rapidez cuando va ha finalizar.
+
+36
+00:04:13,038 --> 00:04:20,010
+De hecho.  Mientras esperas a que
+termine puedes a menudo averiguarlo.
+
+37
+00:04:20,010 --> 00:04:27,000
+Asi que tomo 30 segundos para 4K, y
+sin duda podemos figurarnos cuanto
+
+38
+00:04:27,000 --> 00:04:33,047
+tomara para 8K antes de que
+finalice, y lo veras en tan solo unos
+
+39
+00:04:33,047 --> 00:04:40,037
+segundos. No voy a esperar por ahora.
+Puedes pensar lo que quieras. Ok
+
+40
+00:04:40,037 --> 00:04:45,203
+esto [tos] es un analisis empirico, analisis.
+Ejecutado para varios tamaños de entrada
+
+41
+00:04:45,203 --> 00:04:51,869
+y medimos el tiempo de ejecucion. Ahora
+si este es un problema cientifico donde
+
+42
+00:04:51,869 --> 00:04:57,320
+contamos algo que sucede en el mundo
+natural. El número de hormigas en un
+
+43
+00:04:57,320 --> 00:05:03,255
+hormiguero, o lo que sea, entonces
+tenemos solo unos pocos datos, queremos
+
+44
+00:05:03,255 --> 00:05:08,837
+tratar de entender,  que esta pasando haciendo
+un grafico de tiempo de ejecución con lo que nos
+
+45
+00:05:08,837 --> 00:05:15,240
+interesa en el eje Y, y el tamaño como 
+problema en el  eje X. Es una curva como
+
+46
+00:05:15,240 --> 00:05:21,767
+esta, y actualmente, ¿que hace la ciencia?
+porque muchos problemas caen fuera 
+
+47
+00:05:21,767 --> 00:05:29,001
+de esta clase, y se grafica como <i>lg</i>, grafica 
+<i>lg</i>. Si lo haces como <i>lg</i>, grafica <i>lg</i>
+
+48
+00:05:29,001 --> 00:05:36,320
+a menudo obtendras una linea recta. Y
+la pendiente de la linea recta es la clave
+
+49
+00:05:36,320 --> 00:05:41,582
+de lo que esta sucediendo. En este caso, 
+la pendiente  de la linea recta es tres, asi
+
+50
+00:05:41,582 --> 00:05:49,272
+puedes ejecutar lo que es conocido como 
+regresion, mas tarde, la linea recta atraviesa
+
+51
+00:05:49,272 --> 00:05:55,078
+los puntos de datos. Y entonces, no es dificil
+mostrar los calculos para demostrar que si
+
+52
+00:05:55,078 --> 00:06:01,409
+tenemos una linea recta y la pendiente es <i>b</i>,
+entonces la funcion es proporcional a <i>a</i>
+
+53
+00:06:01,409 --> 00:06:06,799
+<i>N^b<i>. Que es la ley de potencia. Y
+que es verdad para muchos, muchos problemas
+
+54
+00:06:06,799 --> 00:06:13,633
+cientificos, incluyendo la mayoria de los algoritmos.
+Asi que aqui hay un poco de matematicas para esto.
+
+55
+00:06:13,633 --> 00:06:22,794
+Asi, la linea recta significa que como hicimos
+<i>lg</i>, la grafica <i>lg</i> con potencia de dos, es
+
+56
+00:06:22,794 --> 00:06:29,850
+<i>lg(T(N) = b lg N + c</i>. Y tenemos valores
+empiricos de <i>b</i> y <i>c</i>, y si
+
+57
+00:06:29,850 --> 00:06:37,950
+elevamos ambos lados de la ecuaciona 
+a pontencia de dos, entonces tenemos T(N)
+
+58
+00:06:37,950 --> 00:06:44,422
+una constante <i>N^b</i>. Asi que tenemos 
+a traves de la observacion un bonito modelo 
+
+59
+00:06:44,422 --> 00:06:50,512
+para el tiempo de ejecucion de nuestro
+programa, podemos entenderlo, hacer matematicas
+
+60
+00:06:50,512 --> 00:06:59,028
+y darse cuenta que el tiempo de ejecucion
+es cerca de <i>10^-10xN^3</i> segundos.
+
+61
+00:06:59,028 --> 00:07:05,053
+Podemos utilizar esta hipotesis y adelantarnos, 
+y hacer predicciones. Dando
+
+62
+00:07:05,053 --> 00:07:11,067
+diferentes valores a <i>N</i>, y dira que
+toma 400 segundos para 16,000. 400
+
+63
+00:07:11,067 --> 00:07:16,059
+segundos es mucho tiempo, pero ahora
+podemos ir adelante e investigar, y ejecutar el
+
+64
+00:07:16,059 --> 00:07:22,611
+experimento, y por supuesto estamos
+cerca a 408 segundos, cuando lo ejecutamos.
+
+65
+00:07:22,611 --> 00:07:27,109
+Podemos hacer predicciones para
+32,000 o por o para cualquier cosa
+
+66
+00:07:27,109 --> 00:07:32,219
+que nos pueda interesar. El modelo nos 
+ayuda a predecir sin tener que invertir el
+
+67
+00:07:32,219 --> 00:07:38,927
+costo de ejecutar el experimento. De hecho,
+en esta situacion si hay una ley de potencia,
+
+68
+00:07:38,927 --> 00:07:45,689
+y nuevamente en una gran mayoria de
+algortimos informaticos el tiempo de 
+
+69
+00:07:45,689 --> 00:07:51,812
+ejecucion es una ley de potencia. Lo que
+podemos hacer es doblar el tamaño de la
+
+70
+00:07:51,812 --> 00:07:58,009
+entrada cada vez, y tomar la relacion de
+los tiempos de ejecucion de <i>N</i> y <i>2N</i>. Y si
+
+71
+00:07:58,009 --> 00:08:04,713
+lo haces, la relacion va a converger en una
+constante. De hecho el logaritmo de la relacion
+
+72
+00:08:04,713 --> 00:08:10,258
+va a converger a esa constante, que
+es el exponente de <i>N</i> y el tiempo
+
+73
+00:08:10,258 --> 00:08:16,342
+de ejecucion. Y solo es necesario un poco de 
+matematicas para comprobar esto, pero esta
+
+74
+00:08:16,342 --> 00:08:21,460
+es una muy facil y natural manera de adelantarse
+y predecir el tiempo de ejecucion. Asi que es lo
+
+75
+00:08:21,460 --> 00:08:26,756
+que dije antes, tenemos una rapida manera para 
+calcular <i>b</i> en una relacion de la ley de potencia.
+
+76
+00:08:26,767 --> 00:08:33,342
+¿Como calculamos <i>a</i>? Pues solo podemos ejecutarlo
+y resolver para <i>a</i>. Asi que una vez que decidimos
+
+77
+00:08:33,342 --> 00:08:41,138
+que el exponente es tres, lo ejecutamos 
+para un <i>N</i> grande y nos acercamos
+
+78
+00:08:41,138 --> 00:08:48,197
+al modelo que teniamos del grafico
+de las cosas. Asi que la hipotesis es
+
+79
+00:08:48,197 --> 00:08:56,197
+casi identica, y se lo conseguimos mediante la 
+ejecucion del programa del doble de <i>N</i> cada vez.
+
+80
+00:08:56,522 --> 00:09:04,905
+OK, hay una gran cantidad de efectos para intentar
+entender el tiempo de ejecucion de un programa,
+
+81
+00:09:04,905 --> 00:09:10,182
+en tu maquina. [tos] Asi. El efecto clave
+es independiente de que maquina sea.
+
+82
+00:09:10,182 --> 00:09:15,004
+Y eso es que el algoritmo que estas 
+usando y que datos. Y eso va a
+
+83
+00:09:15,004 --> 00:09:20,269
+determinar realmente el exponente en la 
+ley de potencia. Y luego existe un monton
+
+84
+00:09:20,269 --> 00:09:25,632
+de efectos de sistemas dependientes. ¿que
+tipo de hardware tienes? ¿tienes un equipo
+
+85
+00:09:25,632 --> 00:09:30,056
+rapido o lento? ¿Que tipo de software?
+¿Que esta pasando en tu computadora?
+
+86
+00:09:30,056 --> 00:09:35,095
+Todas estas cosas realmente determinan
+la constante <i>a</i> en la ley de potencia.
+
+87
+00:09:35,095 --> 00:09:40,894
+Asi. En los sistemas modernos, son muchas
+cosas que pasan en el software y el hardware,
+
+88
+00:09:40,894 --> 00:09:46,288
+a veces es dificil conseguir mediciones
+precisas. Pero por otro lado no
+
+89
+00:09:46,288 --> 00:09:52,050
+tenemos que sacrificar animales, o volar
+a otro planeta como lo hacen otras
+
+90
+00:09:52,050 --> 00:09:57,304
+ciencias, solo podemos ejecutar un gran numero
+de experimentos y usualmente ocuparse de
+
+91
+00:09:57,304 --> 00:10:00,032
+entender estos tipos de efectos.

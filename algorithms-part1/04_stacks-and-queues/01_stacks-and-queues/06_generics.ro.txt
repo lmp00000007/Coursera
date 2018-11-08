@@ -1,0 +1,83 @@
+În continuare vom lua în considerare abordarea 
+unui alt defect fundamental în implementări despre care am considerat până în prezent 
+că acele implementări sunt bune numai pentru șiruri de caractere. Ce se întâmplă dacă vrem să avem
+ cozile și stivele de alte tipuri de date? Și asta ne aduce la subiectul de 
+generice. În regulă. Deci, am implementat stiva de șiruri de caractere, dar în aplicații 
+avem toate tipurile de date diferite pe care noi am putea să dorim să le punem în aplicare să spunem 
+ca stivă de întregi sau URL-uri sau autoturisme sau autoutilitare sau orice alte date pe care noi le-am putea prelucra. Deci cum 
+vom ajunge să implementăm stive și cozi pentru acele tipuri de date. Ei bine, primul 
+lucru la care putem, l-am putea considera și de fapt am fost forțați să-l luăm în considerare 
+într-o mulțime de medii de programare, este să implementăm o clasă stivă separată pentru 
+fiecare tip de date pe care îl utilizăm. Aceasta într-adevăr pare nesatisfăcător. Avem codul 
+nostru atent elaborat care face redimensionare de matrici și așa mai departe și vom 
+copia acest cod și vom schimba tipul de date șir la date de tip variabil sau întregi 
+peste tot. Și ce se întâmplă dacă noi avem sute de diferite tipuri de date pe care le 
+prelucrăm. Avem sute de diferite implementări. Din păcate, această 
+situație de la începutul Java unde noi suntem blocați cu asta și există o mulțime de 
+limbaje de programare, unde practic suntem blocați cu asta astfel la ceea ce vrem să ne
+ uităm este o abordare modernă pentru a evita să avem multiple implementări pentru fiecare 
+tip de date. Deci o tăietura rapidă, care este utilizată pe scară largă, este de a utiliza conversia pentru a implementa ⏎ pentru a reutiliza codul pentru diferite tipuri de date. Deci, vom face implementarea noastră cu tipul 
+Object, deci totul în Java este un subtip al Object și, apoi, clientul, atunci când 
+clientul vine să-l folosească, pur și simplu va converge rezultatul la tipul corespunzător. Eu 
+nu vreau să petrec o mulțime de timp cu aceasta deoarece cred ca e o soluție 
+nesatisfăcătoare. Așa că, în acest exemplu noi avem două tipuri cu două stive una de mere și
+ una de portocale. Și apoi, depinde de client când scoate ceva de pe 
+stiva de mere sa facă conversia la mar pentru a menține sistemul de verificare de tip, fericit. 
+Problema cu aceasta este că, codul clientului trebuie sa facă aceasta, acestă conversie și este un fel 
+de eroare insidioasă dacă nu se înțelege destul de bine. Deci, a treia încercare, de care vom 
+vorbi utilizează generice. Și astfel codul de client nu face 
+conversie. Putem descoperi greșeli în incompatibilități de tip la compilare în loc de 
+rulare. Deci, în acest caz, noi punem, cu generice, putem avea un parametru de tip în
+ clasa noastră și aceasta include, este în interiorul parantezelor unghiulare în acest cod și apoi, 
+putem [tuse] dacă avem o stivă de mere și am încercat să împingem o portocală la o 
+stivă de mere, apoi noi vom obține o eroare de compilare pentru că această stivă 
+a fost declarată compusă numai din, din mere. Și doar principiul director în programarea modulară 
+bună este că ar trebui să fie bine venite erori la momentul compilării și să evităm
+ erori la momentul execuției, deoarece dacă putem detecta o eroare la compilare, atunci putem livra 
+produsul nostru sau lansa implementarea noastră implementarea noastră a unui API și să aveți ceva 
+încredere că va funcționa pentru orice client întrucât, eroarea nu va fi 
+descoperită până la execuție ar putea să apară cu ceva developare a clientului. Acum, 
+ani după, trebuie să lansăm software-ul nostru și ar fi extrem de dificil pentru 
+toată lumea. Ok. Deci de fapt cu o bună implementare generica, nu este greu să 
+pur și simplu [tuse], luăm fiecare loc în care am folosit șirul de caractere și să-l înlocuim cu un nume
+ de tip generic ca în acest cod aici. În stânga este implementarea noastră a unei stive
+ de șiruri de caractere folosind link-ul lista. În dreapta este o implementare generică. Deci, fiecare 
+loc în care am folosit tip șir de caractere în stânga, am folosit cuvântul Item din dreapta.
+Şi în partea superioară, declarația de la clasa pe care noi am declarat-o între paranteze unghiulare ca acel Item este 
+tipul generic pe care noi avem de gând să-l utilizăm. Implementarea cu greu ar putea fi mai 
+simplă şi este un mod excelent de a rezolva problema manipulării mai multor 
+tipuri de date cu o implementare. Cu matrici, nu prea funcționează şi 
+din nou toate limbajele de programare şi, voi știți, multe limbaje de programare din zilele noastre
+ au dificultăți cu asta şi Java are o dificultate particulară. Deci, ceea ce 
+dorim să facem este doar să declarăm o matrice nouă folosind numele nostru generic Item, ca şi în 
+linia evidențiată aici. Altfel este același. Din păcate, Java nu permite 
+crearea de matrici generice. Deci, există diverse motive tehnice pentru asta şi voi puteți 
+citi, citi dezbateri extinse despre aceasta pe web, asta va merge dincolo de scopul 
+nostru. Deocamdată , ce trebuie noi să facem este să punem o conversie să facem asta să meargă. Deci, noi creăm o matrice de obiecte şi facem conversia într-o matrice de elemente. Acum, în opinia mea, 
+un cod de bun are zero conversii. Deci, noi vrem să evitam conversiile, pe cât posibil, deoarece acesta, 
+ asta într-adevăr este declararea unui fel de slăbiciune in ce facem noi.Dar în acest 
+caz trebuie să punem în acesta conversie și deci ceea ce am auzit despre faptul că este conversia 
+urâtă nu, nu face să vă simțiți bine despre cod. Nu este ceva 
+care vă va veni pe cont propriu şi asta e o caracteristică nedorită.
+Eu cred pentru coduri așa de simple ca acesta. Dar din fericire, noi putem trece prin cam 
+tot ceea ce avem de gând să facem în acest curs doar știind despre această 
+conversie laică. Deci acum, când noi compilam acest program vom obține un, un mesaj de avertizare de la
+ Java. El spune că noi folosim neverificate sau nesigure operații şi noi ar trebui
+ să recompilăm cu un - Xlint egal unchecked pentru detalii. Deci, putem merge mai departe
+ şi să facem acest lucru şi spune că ați pus în, în codul vostru o conversie neverificată şi 
+noi vă avertizăm despre aceasta deoarece voi nu ar trebui să puneți conversii neverificate.
+Şi bine, e bine şi voi veți vedea asta atunci când voi faceți compilări folosind cod 
+ca acesta. Eu, cred ca poate s-ar fi putut adăuga la asta avertizarea "Ne cerem scuze că v-am făcut să faceți asta". Nu e vina noastră că a trebuit să facem asta, noi 
+a trebuit să facem asta din cauza cerinței voastre de a nu ne permite să declarăm matrici 
+generice. Deci cu această notă vă rugăm să nu gândiți că e ceva în neregulă cu codul 
+vostru dacă urmați prescripția noastră şi, şi primiți acest mesaj de avertizare. Bine, atunci 
+este unul din detaliile de care Java are grijă şi asta e despre tipuri 
+primitive [tuse] deci tipul generic pe care noi îl folosim este pentru obiecte şi voi știți,
+ noi facem conversie din matrice de obiecte. Deci, pentru a gestiona tipuri generice, noi 
+trebuie să utilizăm tipuri de obiecte wrapper din Java. Deci, tipul Integer cu litere capitalizate 
+pentru întreg şi așa mai departe şi mulți dintre voi au fost probabil, familiarizați cu asta. Şi există un 
+proces numit auto-încapsulare care automat face conversia între tipuri primitive şi clase wrapper deci toate acele manipulări, problema de a trata cu tipuri 
+primitive,e într-un fel în spatele scenei. Şi concluzia este că noi putem articula un 
+API pentru stive generice, care funcționează pentru orice tipuri de date şi am luat două 
+implementări, link-ul listă şi matrici care funcționează foarte bine pentru [tuse]
+ orice tip de date folosind, redimensionarea sau link-ul listă, cum l-am descris.

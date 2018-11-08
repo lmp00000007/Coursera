@@ -1,0 +1,90 @@
+Okay, quindi il primo passo è essere in grado
+di fare alcune osservazioni sul tempo di esecuzione dei programmi. E per l'analisi degli
+algoritmi ciò è più semplice che in molte altre discipline scientifiche, come vedremo. Useremo
+come esempio il cosiddetto problema 3-sum, o problema 3-somme. Ed è un problema
+facile da formulare. Dati N interi distinti, quanti gruppi di tre interi se sommati danno come
+risultato zero? Per esempio in questo file 8ints.text che contiene otto interi ci sono quattro gruppi
+di tre interi che hanno come somma zero. (30, -40, 10), (30, -20, -10) e così via.
+Perciò il nostro obiettivo è scrivere un programma che calcoli questo valore per qualsiasi file in input, ovvero
+qualsiasi insieme di N interi. Questo è a dire il vero un calcolo veramente
+importante che è profondamente correlato a molti problemi in geometria computazionale che è
+un ramo dell'informatica che si occupa degli algoritmi e della scienza su cui si basano
+legati alla grafica, i film e modelli geometrici di ogni tipo. Quindi questo è
+effettivamente un importante problema pratico. Ma è un problema semplice da risolvere
+con la programmazione. Potreste scrivere questo programma senza troppe difficoltà. C'è un metodo statico
+"count" che prende in input un array di interi. N è il numero di interi ovvero è la lunghezza dell'array. Definiamo
+una variabile count con valore zero. E quindi una serie di tre cicli for annidati, che controllano
+ogni possibile gruppo di tre interi. i varia tra 0 e N j varia tra i+1 e N. k varia da j+1 a N. In questo
+modo controlliamo ogni gruppo di tre interi solo una volta. E poi se a[i] + a[j] + a[k] = 0 allora
+incrementiamo count. E dopo i tre cicli for annidati ritorniamo count.
+Quindi il metodo main, trattandosi di una classe molto semplice, si limita a leggere tutti gli
+interi e a stampare il valore restituito da count. Questo è un esempio di algoritmo brute force, o algoritmo a
+forza bruta che risolve il problema 3-sum. Ma adesso siamo interessati a sapere quanto
+tempo impiega in funzione di N. Beh, un modo di verificare quanto tempo impiega
+è semplicemente guardare all'orologio, se avete un cronometro, oppure guardare all'orologio del
+vostro smartphone o qualcosa di simile. Se volete potete così prendere il tempo.
+Oppure Java ha questa parte della sua libreria standard, una classe Stopwatch, che in italiano
+significa cronometro, che ritorna il tempo trascorso dalla sua creazione. Perciò, ogni volta che eseguite un programma
+se è fatto in modo da accettare un input di dimensioni variabili, potete eseguirlo con dimensioni
+via via sempre più grandi. Quindi per otto interi il programma richiede non troppo tempo.
+Per 1000 interi impiega mezzo secondo. Per 2000 richiede più tempo, circa 3,7 secondi.
+Eseguiamolo di nuovo, ancora circa 3,7 secondi. Perciò ogni volta che raddoppiamo la dimensione
+dell'input questo richiede sempre più tempo. E, come vedremo, un
+programmatore che prende l'abitudine di testare il tempo di esecuzione dei propri
+programmi in questo modo può facilmente e velocemente valutare quanto tempo
+impiegheranno a finire. Infatti spesso mentre si aspetta che finisca è possibile
+calcolare quanto ci metterà. Allora, quello ci ha messo 30 secondi per 4000 interi
+e sicuramente possiamo stabilire quanto impiegherà per 8000 interi prima che abbia finito.
+Fra poco vedremo come fare. Non ho intenzione di aspettare adesso.
+Se volete potete pensarci su. Okay, quindi [tosse], questa è l'analisi empirica.
+Esegui il programma con varie dimensioni di input e misura i tempi di esecuzione. Ora se
+questo fosse qualche problema scientifico dove si conta qualcosa che avviene nel mondo
+naturale, per esempio il numero di formiche in un nido di formiche o altro, allora conosceremmo solo il valore di
+pochi punti grazie ai dati e vorremmo capire cosa accade nel mezzo disegnando un grafico
+con il tempo di esecuzione, o la grandezza che ci interessa, sull'asse delle Y e la dimensione
+del problema sull'asse delle X, ottenendo un grafico simile a questo. Tuttavia, poiché
+molti problemi appartengono a questa classe, gli scienziati sono soliti fare un grafico log-log.
+Facendo un grafico log-log spesso si ottiene una linea retta. La
+pendenza della linea descrive la caratteristica chiave del fenomeno oggetto di studio.
+Nel nostro caso, la pendenza della linea è tre ed è possibile fare una regressione lineare per cercare
+di far passare una retta attraverso tutti i punti. E non è difficile mostrare con un po' di
+matematica che se si ottiene una linea retta e la pendenza è b, allora la funzione è
+proporzionale ad a*N^b. Questa è la cosiddetta power law o legge di potenza
+e si applica a molti problemi scientifici compresi la maggior parte degli algoritmi.
+Ecco un po' di matematica relativa al nostro esempio. Poiché abbiamo fatto un grafico log-log usando
+le potenze di due, la linea retta è descritta dall'equazione lg(T(N)) = b*lg(N) + c dove lg indica il logaritmo in
+base due. Sotto vi sono i valori empirici di b e c. Se eleviamo a potenza di due entrambi
+i lati dell'equazione otteniamo che T(N) equivale a una costante moltiplicata per N^b.
+Perciò già solo con l'osservazione abbiamo ottenuto un modello abbastanza buono per
+il tempo di esecuzione del nostro programma. Con un po' di calcoli si vede che per il nostro esempio il
+tempo di esecuzione è circa 10^(-10) * N^3 secondi. Ora possiamo usare questa ipotesi per fare
+delle previsioni. Basta inserire nella formula diversi valori di N. Per esempio ci vorranno
+400 secondi per 16000 interi. 400 secondi è molto tempo, tuttavia possiamo
+eseguire l'esperimento e come ci aspettavamo siamo intorno a
+quel valore, 408 secondi per la precisione. Ora possiamo fare una previsione per
+32000 interi o per qualsiasi altro valore a cui potremmo essere interessati. Il modello
+ci aiuta a fare previsioni evitando i costi necessari ad eseguire gli esperimenti.
+Infatti in situazione dove c'è una legge di potenza, e, lo ripeto, in un gran numero di algoritmi
+il tempo di esecuzione è una legge di potenza, quello che possiamo fare è raddoppiare la
+dimensione dell'input ogni volta, come stavamo facendo, e poi calcolare il rapporto tra il tempo di
+esecuzione per N e 2*N. Facendo ciò il rapporto converge ad un valore costante.
+E il logaritmo in base due del rapporto converge a sua volta ad una costante che è
+l'esponente di N nella formula per il tempo di esecuzione. E serve solo un po' di matematica per
+verificarlo, ad ogni modo è un facile ed ovvio modo per prevedere i tempi di esecuzione.
+Questo l'ho già detto prima: abbiamo questo modo veloce per stimare
+il valore di b nella relazione della legge di potenza. Come facciamo a stimare a? Beh, possiamo
+eseguire il programma e risolvere per a. Quindi una volta stabilito che l'esponente è tre,
+eseguiamo il programma per un grande valore di N e otteniamo un modello molto simile a quello
+ottenuto con la regressione lineare. È un'ipotesi quasi identica alla precedente e 
+l'abbiamo ottenuta semplicemente raddoppiando N ogni volta. Ci sono molte cause da considerare nel cercare
+di comprendere il tempo di esecuzione di un programma sul vostro computer [tosse]. Le cause
+principali sono indipendenti dal computer che si sta utilizzando. Queste sono quale algoritmo state
+usando e quali sono i dati in input. Queste determinano l'esponente nella legge
+di potenza. Poi vi sono molte cause che dipendono dal sistema in uso. Che tipo di
+hardware avete? Avete un computer veloce o lento? Che software usate? Cos'altro
+sta accadendo sul vostro computer? Tutte queste cose determinano
+la costante a nella legge di potenza. Dal momento che i sistemi di oggi sono molto complessi
+sia dal punto di vista dell'hardware che del software a volte è difficile ottenere delle misurazioni
+molto precise. Ma d'altronde non dobbiamo mica sacrificare animali o volare su un altro
+pianeta come si fa in altre discipline scientifiche, nel nostro caso basta eseguire un elevato numero
+di esperimenti e assicurarsi di aver compreso le cause viste prima.

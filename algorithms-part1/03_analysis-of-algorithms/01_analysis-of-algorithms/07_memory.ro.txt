@@ -1,0 +1,76 @@
+Până acum, am vorbit despre timp de 
+rulare. Acum trebuie să vorbim despre cerințele de memorie la programele noastre, de asemenea.
+Ei bine, elementele de bază sunt vrem să știm cât de mulți biți folosește programul sau octeți, opt
+biți la un moment dat. Și, de fapt, vom vorbi în termeni de milioane de biți sau
+miliarde de biți și de fapt surprinzător există o controversă cu privire chiar la aceste 
+definiții de bază. Oamenii de știință în calculatoare cred că un milion de biți este 2 ^ 20 și un
+miliard este 2 ^ 30 pentru că este un număr de posibile lucruri pe care le puteți potrivi în
+30 biți și totul este în concordanță cu calculele noastre. Alți oameni de știință adaugă
+la un milion sau un miliard pentru o mulțime de motive vom folosi, de obicei, 2 ^ 20, 
+vreau să spun, un megabit. Acum la calculatoarele vechi, noi am folosit pentru mai mulți ani, folosim o mașină 
+pe 32 de biți, astfel încât pointerii au fost de patru biți. Doar în ultimii ani, am trecut în mare parte 
+la un model în care mașinile sunt 64 de biți și pointerii sunt opt biți. Asta ne permite
+să adresăm mult mai multă memorie, dar pointerii folosesc mult mai mult spațiu și de fapt această
+tranziție a cauzat o mulțime de probleme inițial pentru că programele au folosit mult
+mai mult spațiu decât au considerat oamenii că ar trebui. Voi nu va trebui să treceți
+prin acest gen de tranziție în modul în care am făcut-o deoarece 64 de biți sunt cu siguranță
+destul să adreseze orice ați avea nevoie să abordati, 2^64 este într-adevăr un mare
+număr. Deci, în termeni de octeți trebuie să începem cu folosirea de memorie tipică. Acum,
+din nou, acest lucru este foarte dependent de mașină și implementare, dar aceste numere sunt
+rezonabile și se găsesc pe tipice implementări. Deci un boolean, va fi
+frumos la un boolean doar să ia un bit deoarece acesta e doar adevarat sau fals dar actual,
+de obicei noi trebuie să numărăm un octet pentru un boolean. Toți octeți sunt un octet. Caracterul
+în zilele noastre este 2 octeți, 16 biți la caractere. Nu cu mult timp în urmă am folosit opt biți pentru
+caractere. Integer în mod regulat este de patru octeți sau 32 de biți și float este de asemenea de patru octeți
+long int este opt și un double este opt. De obicei, folosim dublu pentru floating point
+și int pentru numere întregi în cele mai multe aplicații. Deci, asta e pentru tipurile 
+primitive. Și apoi pentru matrici există o anumită valoare de deasupra pentru a face o 
+matrice iar apoi, dacă există n elemente, e indiferent de costul tipului primitiv ori n astfel o matrice cu tip double este spunem 8n + 24. Și matricea bidimensională, atunci bine,
+putem merge mai departe și calcula lucrul exact dar acum, acum, este timpul să folosim, 
+notația tilda. Și apoi pentru matrici noi am putea spune o double este 8N ~ pentru
+unidimensional. Pentru bidimensional, matrice bidimensională de duble este
+~8mn. Și există termeni suplimentari pentru ce e deasupra dar pentru m mare și n care o să fie 
+destul de exact. Deci, asta e utilizarea noastră de bază pentru tipurile primitive și matrici într-o 
+implementare Java tipică. Acum, o mulțime dintre programele noastre și obiecte ca lista de link-uri
+și așa mai departe. Deci, trebuie să luăm în considerare, de asemenea în obiectul de deasupra să depășească referința 
+și de asemenea există umplutură construită în, în implementări tipice pentru a face în așa fel încât
+fiecare obiect a folosit un multiplu de opt octeți. Astfel, de exemplu, dacă aveți un obiect 
+dată care a avut trei variabile de instanță int atunci acel obiect ar lua un
+total de 32 de octeți. Fiecare int ia patru octeți, obiectul de deasupra este șaisprezece octeți.
+Este nevoie de patru octeți pentru umplutură așa că este un total de 32 de octeți. Deci, și celălalt 
+care de multe ori vine este un string și string-ul este un pic mai complicat
+decât o decât o matrice, dar implementarea tipică a unui string în Java are o,
+o referință la o matrice de caractere și apoi, are valori int pentru numărul de 
+compensare într-o valoare hash și apoi umplând și adăugând, totul împreună
+[tuse] costul string-ului este de aproximativ 2n + 64 octeți. Deci, acestea sunt bazele de care 
+avem nevoie pentru a analiza utilizarea memoriei pentru un program tipic Java. Ah, în așa fel pentru
+primitive, pentru valoarea tip de date, dacă este un Tipul primitiv este patru pentru un opt, și
+opt pentru double, și așa mai departe. Dacă e o referință, va fi de opt octeți
+și aceasta este pentru pointerul care ia matrice 24 octeți, plus memorie pentru fiecare intrare într-un
+obiect șaisprezece octeți, plus memorie pentru instanță variabilă plus dacă există o 
+clasă internă, sunt încă opt octeți cum am vorbit despre noduri pentru listă link.
+Și apoi există umplutură. Așadar noi trebuie să, să ne gândim cine este responsabil
+pentru obiectele referite, știți, în, în unele cazuri. Și vom avea grijă de asta
+când noi ajungem la aceste situații. Deci, ca un exemplu, un simplu exemplu de analiză a utilizării 
+memoriei, haideți să aruncăm o privire la cât de multă memorie e evaluată funcția quick union UF
+de la, cu câteva lecturi în urmă, folosește ca o funcție de n. Și există doar un cuplu
+de elemente de memorie și fiecare dintre ele sunt analizate cu ușurință folosind bazele pe care 
+tocmai le-am dat că este un obiect astfel încât cei șaisprezece octeți ai obiectului de deasupra sunt două matrici int. Fiecare dintre ele au matrice deasupra de 24 plus și apoi 4n pentru n
+intrări. Fiecare dintre cele n intrări ia patru octeți și există patru octeți pentru numărare
+și există patru octeți pentru umplutură și dacă adăugați totul devine 8n+88
+care e tilda 8n și din nou, toate acestea spun că atunci când n este mare, tot ce
+trebuie să ne pese în termeni de analizarea memoriei este că avem [tuse] 2n
+intregi două matrici de dimensiuni n fiecare unul dintre care ia patru octeți pentru un total
+ de 8n octeți. Bine. Deci, în sumar noi într-adevăr ne putem da seama cum de multe ori noi
+trebuie să pornim manivela pe calculatoarele moderne. O putem face cu analize 
+empirice unde executăm de fapt programul, putem face experimente și folosi
+[inaudibil] legea puterii, formula ipoteze și face predicții. Dar noi
+putem face mai mult, putem face o analiză matematică unde putem identifica operațiunile 
+cele mai costisitoare, analiza frecvența de executare a acestor operațiuni și folosind 
+notația tilda pentru a simplifica analiza. Putem explica de fapt comportamentul, nu
+doar să-l prezicem. Și acesta este un bun exemplu de utilizare a metodei 
+științifice de a înțelege artefactele pe care noi le studiem, algoritmii. Modelele
+noastre matematice sunt, de obicei, independente de un sistem informatic 
+particular și chiar presupun mașini care nu sunt încă construite. Dar noi validăm mereu
+modelele noastre matematice prin rularea de experimente pe mașinile reale, astfel încât noi
+putem fi siguri unde facem predicții și analiza algoritmilor.

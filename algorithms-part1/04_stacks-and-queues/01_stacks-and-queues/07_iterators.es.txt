@@ -1,0 +1,69 @@
+Bien. Hay otra particularidad que Java
+proporciona que conduce a un muy elegante y compacto programa cliente que definitivamente
+vale la pena agregar a nuestros tipos básicos de datos y els la iteración, de eso es de lo
+que vamos a hablar ahora. Entonces, lo que queremos hacer es permitirle al cliente iterar 
+a través de los items en una colección. Pero el cliente no sabe si
+estamos usando un arreglo o una lista de enlaces o cualquier otra representación interna que podamos
+tener en mente. No es relevante para el cliente. Y muchos de los clientes solo quieren
+iterar a través de las cosas en la colección. Pero Java provee una buena
+solución a esto llamada iteración. Entonces lo que vamos a hacer es mirar cómo 
+hacer nuestras pilas, y colas y otras estructuras de datos que consideraremos después
+ para implementar la así llamada interfaz iterable y funcionará para el programa cliente sin importar
+cuál implementación usemos. Veamos en detalle esto. ¿Qué es 
+un iterable? Bueno, en jerga Java un iterable es una clase que tiene un
+método que devuelve un iterador. Y entonces ¿qué es un iterador? Bueno, un iterador es
+algo, una clase que posee los métodos hasNext() y next(). Java también permite remove()
+Pensamos que este último es una mala noticia, no lo usamos porque puede conducir a muchos problemas 
+de debugging. Asi que, tenemos hasNext() y next() para hacer la estructura de datos
+iterable. Vamos a implementar estas cosas. Parece mucho equipaje para
+andar llevando y la razón por la que lo hacemos, por la cual nos tomamos el trabajo de hacerlo
+es que podemos, si tenemos una estructura de datos que sea iterable podemos usar un programa 
+cliente en Java, muy compacto y elegante, la así llamada instrucción for-each. De modo que si tenemos una
+pila por ejemplo - (for String s:stack) Significa que para cada cadena en la 
+pila - imprima. Y si no tuvieramos eso, ahora lo tendríamos, si estuvieramos usando
+iteradores, podríamos adelantarnos y escribir un largo codigo a mano que nunca nadie va a 
+hacer porque es equivalente a este atajo o le podríamos hacer escribir al programa
+cliente que ya hace un montón de solicitudes y envíos innecesarios que simplemente haga esta iteración. Entonces
+esta es la clave que nos habilita a tener un programa cliente que es tan compacto para
+iterar a través de los items en la estructura de datos por lo que vamos a proveerle
+iteración a todas nuestras estructuras básicas de datos y no es tan difícil de hacer
+definitivamente vale el esfuerzo. Asi que aquí está como se vería para una lista de enlaces
+Entonces hay que implementar iterables y qué significa implementar iterable? Es
+que tiene que tener un método iterator() que devuelva un iterador. Entonces ¿qué es un
+iterador? Vamos a usar una clase interna. En este caso, la llamaremos
+Listiterator que implementa iterator y es genérico. Y básicamente lo que esto 
+tiene que hacer es implementar esos métodos hasNext() y next(). Y la semántica está
+clara por los nombres. hasNext() supone que si hemos concluído debe devolver 
+falso. Si no hemos concluido, debería devolver verdadero y next() debería darnos 
+el próximo item en la iteración. Entonces si tenemos una lista enlazada vamos a 
+empezar por el primero. Tenemos este que es nuestro primer item en la lista y vamos a
+mantener una instancia para la variable actual dentro de este iterador que es el que
+actualmente estamos iterando. Entonces, toma el siguiente de la misma manera en que si quisieramos
+remover el primero. Extraemos el item actual y luego avanzamos la referencia actual y 
+devolvemos el item. Volviendo el siguiente lugar el actual. El cliente siempre va a estar
+probando hasNext() tal como ya lo mostramos y con ese código provisorio y cuando 
+se anula devuelve falso en la parada de la iteración Pero para nuestra iteración
+solo tenemos que preocuparnos por la implementación de next() y hasNext() y quizás usar una instancia
+de una variable local para conseguirlo. Tenemos problablemente que hacer código a prueba de balas
+a través de excepciones, si un cliente intenta llamar next() sin items e intenta
+usar remove(), no seremos capaces de dar respuesta a remove(). For y un arreglo for
+es una solución más simple. Así que ahora con el iterador tenemos control sobre en qué orden vamos
+pasando a través de los items y eso va a ir junto con la semántica y las estructuras de
+datos, así que probablemente en una pila quieras conseguir las cosas en el orden que salen de
+la pila y eso es al revés del orden del arreglo, en ese caso
+next() va decreciendo y devuelve el siguiente y nuestra variable es el 
+indice del arreglo. Así, hasNext() sigue bien siempre y cuando sea positivo. 
+Con un poco [tose] de codigo Java nos provee esta utilidad de iterar sin realmente
+tener que hacer demasiado trabajo y puedes ver cómo implementarlo para tus propios
+tipos de datos y usaremos este paradigma para cada tipo básico de tipo de dato que 
+involucre colecciones de objetos que podamos encontrar. Bien, de hecho, esto nos lleva
+a que para un montón de clientes realmente no importa en que orden obtengamos
+los items. Muchas veces en realidad lo que hacemos es simplemente insertar items en una colección
+y luego, más tarde, iterar a través de ellos Esa estructura de datos es
+llamada una bolsa y veamos cómo se ve esa API. El orden no importa
+así que todo lo que vamos a hacer es agregar un item a veces queremos saber el tamaño y 
+queremos iterar a través de todos los items en la bolsa. Por tanto esta es una API mas simple
+y más pequeña pero igual expresa la importante colección de operaciones y, y
+usaremos esta y lo que ya hemos visto sobre implementaciones. Tomaremos la pila
+y quitaremos el meter, o el encolar y quitaremos el desencolar [tose] y tendrán una buena
+imprementación de una útil estructura de datos.
